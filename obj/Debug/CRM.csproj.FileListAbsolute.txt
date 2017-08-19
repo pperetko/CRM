@@ -1,0 +1,10 @@
+G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\CRM.exe.config
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csprojResolveAssemblyReference.cache
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FormMain.resources
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.Properties.Resources.resources
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csproj.GenerateResource.Cache
+G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\CRM.exe
+G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\CRM.pdb
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.exe
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.pdb
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FrmCustomers.resources
