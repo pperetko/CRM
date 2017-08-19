@@ -20,6 +20,8 @@ namespace CRM
         {
             InitializeComponent();
             
+
+
         }
 
 
@@ -115,7 +117,13 @@ namespace CRM
             {
                 Rectangle r = pc_main.GetTabRect(i);
                 //Getting the position of the "x" mark.
-                Rectangle closeButton = new Rectangle(r.Right - 15, r.Top + 4, 9, 7);
+                Rectangle closeButton = new Rectangle(r.Right - 15, r.Top + 4, 19, 7);
+                System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                System.Drawing.Graphics formGraphics = this.CreateGraphics();
+                formGraphics.FillRectangle(myBrush, closeButton);
+                myBrush.Dispose();
+                formGraphics.Dispose();
+                
                 if (closeButton.Contains(e.Location))
                 {
                    // if (MessageBox.Show("Would you like to Close this Tab?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

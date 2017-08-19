@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomers));
             this.pl_filter = new System.Windows.Forms.Panel();
             this.pl_button = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsb_add = new System.Windows.Forms.ToolStripButton();
+            this.tsb_edit = new System.Windows.Forms.ToolStripButton();
+            this.tsb_view = new System.Windows.Forms.ToolStripButton();
             this.dg_customers = new System.Windows.Forms.DataGridView();
-            this.cRMDataSet_customers = new CRM.CRMDataSet_customers();
-            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customersTableAdapter = new CRM.CRMDataSet_customersTableAdapters.CustomersTableAdapter();
             this.idcustomersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,9 +46,14 @@
             this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dobDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cRMDataSet_customers = new CRM.CRMDataSet_customers();
+            this.customersTableAdapter = new CRM.CRMDataSet_customersTableAdapters.CustomersTableAdapter();
+            this.pl_button.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_customers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cRMDataSet_customers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cRMDataSet_customers)).BeginInit();
             this.SuspendLayout();
             // 
             // pl_filter
@@ -60,11 +67,53 @@
             // 
             // pl_button
             // 
+            this.pl_button.Controls.Add(this.toolStrip1);
             this.pl_button.Dock = System.Windows.Forms.DockStyle.Top;
             this.pl_button.Location = new System.Drawing.Point(0, 49);
             this.pl_button.Name = "pl_button";
             this.pl_button.Size = new System.Drawing.Size(782, 43);
             this.pl_button.TabIndex = 1;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsb_add,
+            this.tsb_edit,
+            this.tsb_view});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(782, 43);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // tsb_add
+            // 
+            this.tsb_add.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsb_add.Image = ((System.Drawing.Image)(resources.GetObject("tsb_add.Image")));
+            this.tsb_add.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_add.Name = "tsb_add";
+            this.tsb_add.Size = new System.Drawing.Size(33, 40);
+            this.tsb_add.Text = "Add";
+            this.tsb_add.Click += new System.EventHandler(this.tsb_add_Click);
+            // 
+            // tsb_edit
+            // 
+            this.tsb_edit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsb_edit.Image = ((System.Drawing.Image)(resources.GetObject("tsb_edit.Image")));
+            this.tsb_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_edit.Name = "tsb_edit";
+            this.tsb_edit.Size = new System.Drawing.Size(31, 40);
+            this.tsb_edit.Text = "Edit";
+            this.tsb_edit.Click += new System.EventHandler(this.tsb_edit_Click);
+            // 
+            // tsb_view
+            // 
+            this.tsb_view.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsb_view.Image = ((System.Drawing.Image)(resources.GetObject("tsb_view.Image")));
+            this.tsb_view.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_view.Name = "tsb_view";
+            this.tsb_view.Size = new System.Drawing.Size(36, 40);
+            this.tsb_view.Text = "View";
             // 
             // dg_customers
             // 
@@ -90,20 +139,6 @@
             this.dg_customers.Size = new System.Drawing.Size(782, 404);
             this.dg_customers.TabIndex = 2;
             this.dg_customers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_customers_CellContentClick);
-            // 
-            // cRMDataSet_customers
-            // 
-            this.cRMDataSet_customers.DataSetName = "CRMDataSet_customers";
-            this.cRMDataSet_customers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customersBindingSource
-            // 
-            this.customersBindingSource.DataMember = "Customers";
-            this.customersBindingSource.DataSource = this.cRMDataSet_customers;
-            // 
-            // customersTableAdapter
-            // 
-            this.customersTableAdapter.ClearBeforeFill = true;
             // 
             // idcustomersDataGridViewTextBoxColumn
             // 
@@ -161,6 +196,20 @@
             this.dobDataGridViewTextBoxColumn.HeaderText = "dob";
             this.dobDataGridViewTextBoxColumn.Name = "dobDataGridViewTextBoxColumn";
             // 
+            // customersBindingSource
+            // 
+            this.customersBindingSource.DataMember = "Customers";
+            this.customersBindingSource.DataSource = this.cRMDataSet_customers;
+            // 
+            // cRMDataSet_customers
+            // 
+            this.cRMDataSet_customers.DataSetName = "CRMDataSet_customers";
+            this.cRMDataSet_customers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // customersTableAdapter
+            // 
+            this.customersTableAdapter.ClearBeforeFill = true;
+            // 
             // FrmCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,9 +221,13 @@
             this.Name = "FrmCustomers";
             this.Text = "FrmCustomers";
             this.Load += new System.EventHandler(this.FrmCustomers_Load);
+            this.pl_button.ResumeLayout(false);
+            this.pl_button.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_customers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cRMDataSet_customers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cRMDataSet_customers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,5 +249,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn streetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dobDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsb_add;
+        private System.Windows.Forms.ToolStripButton tsb_edit;
+        private System.Windows.Forms.ToolStripButton tsb_view;
     }
 }

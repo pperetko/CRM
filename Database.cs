@@ -81,5 +81,25 @@ namespace CRM
         }
 
 
-    }
+        public void execute(string query, String[] arrayString) {
+
+            SqlDataAdapter dadapter = new SqlDataAdapter();
+            SqlCommand command = new SqlCommand(query, conn);
+            dadapter.SelectCommand = command;
+            string str;
+            for (int i = 0; i < arrayString.Length; i++)
+            {
+                str = arrayString[i];
+                command.Parameters.Add(new SqlParameter(i.ToString(), str));
+            }
+
+            command.ExecuteNonQuery();
+
+
+
+        }
+        
+
+
+        }
 }

@@ -81,6 +81,12 @@
     <Compile Include="FormMain_.Designer.cs">
       <DependentUpon>FormMain_.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCustomerAddModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCustomerAddModify.Designer.cs">
+      <DependentUpon>FrmCustomerAddModify.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,8 +95,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormMain_.aa-DJ.resx">
+      <DependentUpon>FormMain_.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain_.resx">
       <DependentUpon>FormMain_.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCustomerAddModify.resx">
+      <DependentUpon>FrmCustomerAddModify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomers.resx">
       <DependentUpon>FrmCustomers.cs</DependentUpon>

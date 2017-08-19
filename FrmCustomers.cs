@@ -28,5 +28,36 @@ namespace CRM
             this.customersTableAdapter.Fill(this.cRMDataSet_customers.Customers);
 
         }
-    }
+
+        private void tsb_add_Click(object sender, EventArgs e)
+        {
+            FrmCustomerAddModify form = new FrmCustomerAddModify();
+            form.ShowDialog(this);
+            if (form.DialogResult == DialogResult.OK) {
+                this.cRMDataSet_customers.Customers.AcceptChanges();
+                this.customersTableAdapter.Fill(this.cRMDataSet_customers.Customers);
+            }
+        }
+
+        private void tsb_edit_Click(object sender, EventArgs e)
+        {
+            FrmCustomerAddModify form = new FrmCustomerAddModify();
+            DataTableReader rd = this.cRMDataSet_customers.Customers.CreateDataReader();
+            while (rd.Read())
+            {
+                form.setid(int.Parse(rd["id_customers"].ToString()));
+            }
+            form.ShowDialog(this);
+            if (form.DialogResult == DialogResult.OK)
+            {
+                this.cRMDataSet_customers.Customers.AcceptChanges();
+                this.customersTableAdapter.Fill(this.cRMDataSet_customers.Customers);
+            }
+        }
+
+
+
+
+    
+}
 }
