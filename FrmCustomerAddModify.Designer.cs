@@ -33,6 +33,8 @@
             this.dt_dob = new System.Windows.Forms.DateTimePicker();
             this.lb_dob = new System.Windows.Forms.Label();
             this.gb_address = new System.Windows.Forms.GroupBox();
+            this.cb_nationality = new System.Windows.Forms.ComboBox();
+            this.lb_nationality = new System.Windows.Forms.Label();
             this.tb_no = new System.Windows.Forms.TextBox();
             this.lb_no = new System.Windows.Forms.Label();
             this.tb_city = new System.Windows.Forms.TextBox();
@@ -47,20 +49,28 @@
             this.lb_surname = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.lb_name = new System.Windows.Forms.Label();
-            this.tp_aditional = new System.Windows.Forms.TabPage();
+            this.tp_tasks = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
+            this.gb_ContactData = new System.Windows.Forms.GroupBox();
+            this.tb_phone1 = new System.Windows.Forms.TextBox();
+            this.lbTel1 = new System.Windows.Forms.Label();
+            this.tb_phone2 = new System.Windows.Forms.TextBox();
+            this.lbTel2 = new System.Windows.Forms.Label();
+            this.tb_email = new System.Windows.Forms.TextBox();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.tb_main.SuspendLayout();
             this.tp_main.SuspendLayout();
             this.gb_address.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.gb_ContactData.SuspendLayout();
             this.SuspendLayout();
             // 
             // tb_main
             // 
             this.tb_main.Controls.Add(this.tp_main);
-            this.tb_main.Controls.Add(this.tp_aditional);
+            this.tb_main.Controls.Add(this.tp_tasks);
             this.tb_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_main.Location = new System.Drawing.Point(0, 0);
             this.tb_main.Margin = new System.Windows.Forms.Padding(4);
@@ -71,6 +81,7 @@
             // 
             // tp_main
             // 
+            this.tp_main.Controls.Add(this.gb_ContactData);
             this.tp_main.Controls.Add(this.dt_dob);
             this.tp_main.Controls.Add(this.lb_dob);
             this.tp_main.Controls.Add(this.gb_address);
@@ -106,6 +117,8 @@
             // 
             // gb_address
             // 
+            this.gb_address.Controls.Add(this.cb_nationality);
+            this.gb_address.Controls.Add(this.lb_nationality);
             this.gb_address.Controls.Add(this.tb_no);
             this.gb_address.Controls.Add(this.lb_no);
             this.gb_address.Controls.Add(this.tb_city);
@@ -118,14 +131,33 @@
             this.gb_address.Controls.Add(this.lb_state);
             this.gb_address.Location = new System.Drawing.Point(12, 140);
             this.gb_address.Name = "gb_address";
-            this.gb_address.Size = new System.Drawing.Size(427, 216);
+            this.gb_address.Size = new System.Drawing.Size(427, 244);
             this.gb_address.TabIndex = 4;
             this.gb_address.TabStop = false;
             this.gb_address.Text = "Address";
             // 
+            // cb_nationality
+            // 
+            this.cb_nationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_nationality.FormattingEnabled = true;
+            this.cb_nationality.Location = new System.Drawing.Point(102, 59);
+            this.cb_nationality.Name = "cb_nationality";
+            this.cb_nationality.Size = new System.Drawing.Size(178, 25);
+            this.cb_nationality.TabIndex = 11;
+            // 
+            // lb_nationality
+            // 
+            this.lb_nationality.AutoSize = true;
+            this.lb_nationality.Location = new System.Drawing.Point(12, 63);
+            this.lb_nationality.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_nationality.Name = "lb_nationality";
+            this.lb_nationality.Size = new System.Drawing.Size(71, 17);
+            this.lb_nationality.TabIndex = 10;
+            this.lb_nationality.Text = "Nationality";
+            // 
             // tb_no
             // 
-            this.tb_no.Location = new System.Drawing.Point(64, 166);
+            this.tb_no.Location = new System.Drawing.Point(64, 198);
             this.tb_no.Name = "tb_no";
             this.tb_no.Size = new System.Drawing.Size(216, 24);
             this.tb_no.TabIndex = 9;
@@ -133,7 +165,7 @@
             // lb_no
             // 
             this.lb_no.AutoSize = true;
-            this.lb_no.Location = new System.Drawing.Point(12, 170);
+            this.lb_no.Location = new System.Drawing.Point(12, 202);
             this.lb_no.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_no.Name = "lb_no";
             this.lb_no.Size = new System.Drawing.Size(25, 17);
@@ -142,7 +174,7 @@
             // 
             // tb_city
             // 
-            this.tb_city.Location = new System.Drawing.Point(64, 99);
+            this.tb_city.Location = new System.Drawing.Point(64, 131);
             this.tb_city.Name = "tb_city";
             this.tb_city.Size = new System.Drawing.Size(216, 24);
             this.tb_city.TabIndex = 7;
@@ -150,7 +182,7 @@
             // lb_city
             // 
             this.lb_city.AutoSize = true;
-            this.lb_city.Location = new System.Drawing.Point(12, 103);
+            this.lb_city.Location = new System.Drawing.Point(12, 135);
             this.lb_city.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_city.Name = "lb_city";
             this.lb_city.Size = new System.Drawing.Size(32, 17);
@@ -159,7 +191,7 @@
             // 
             // tb_street
             // 
-            this.tb_street.Location = new System.Drawing.Point(64, 132);
+            this.tb_street.Location = new System.Drawing.Point(64, 164);
             this.tb_street.Name = "tb_street";
             this.tb_street.Size = new System.Drawing.Size(216, 24);
             this.tb_street.TabIndex = 8;
@@ -167,7 +199,7 @@
             // lb_street
             // 
             this.lb_street.AutoSize = true;
-            this.lb_street.Location = new System.Drawing.Point(12, 136);
+            this.lb_street.Location = new System.Drawing.Point(12, 168);
             this.lb_street.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_street.Name = "lb_street";
             this.lb_street.Size = new System.Drawing.Size(45, 17);
@@ -176,7 +208,7 @@
             // 
             // tb_code
             // 
-            this.tb_code.Location = new System.Drawing.Point(102, 65);
+            this.tb_code.Location = new System.Drawing.Point(102, 97);
             this.tb_code.Name = "tb_code";
             this.tb_code.Size = new System.Drawing.Size(178, 24);
             this.tb_code.TabIndex = 6;
@@ -184,7 +216,7 @@
             // lb_code
             // 
             this.lb_code.AutoSize = true;
-            this.lb_code.Location = new System.Drawing.Point(12, 68);
+            this.lb_code.Location = new System.Drawing.Point(12, 100);
             this.lb_code.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_code.Name = "lb_code";
             this.lb_code.Size = new System.Drawing.Size(78, 17);
@@ -193,6 +225,7 @@
             // 
             // cb_state
             // 
+            this.cb_state.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_state.FormattingEnabled = true;
             this.cb_state.Location = new System.Drawing.Point(64, 24);
             this.cb_state.Name = "cb_state";
@@ -202,7 +235,7 @@
             // lb_state
             // 
             this.lb_state.AutoSize = true;
-            this.lb_state.Location = new System.Drawing.Point(12, 32);
+            this.lb_state.Location = new System.Drawing.Point(12, 28);
             this.lb_state.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_state.Name = "lb_state";
             this.lb_state.Size = new System.Drawing.Size(40, 17);
@@ -243,16 +276,16 @@
             this.lb_name.TabIndex = 0;
             this.lb_name.Text = "Name";
             // 
-            // tp_aditional
+            // tp_tasks
             // 
-            this.tp_aditional.Location = new System.Drawing.Point(4, 26);
-            this.tp_aditional.Margin = new System.Windows.Forms.Padding(4);
-            this.tp_aditional.Name = "tp_aditional";
-            this.tp_aditional.Padding = new System.Windows.Forms.Padding(4);
-            this.tp_aditional.Size = new System.Drawing.Size(1037, 704);
-            this.tp_aditional.TabIndex = 1;
-            this.tp_aditional.Text = "Additional";
-            this.tp_aditional.UseVisualStyleBackColor = true;
+            this.tp_tasks.Location = new System.Drawing.Point(4, 26);
+            this.tp_tasks.Margin = new System.Windows.Forms.Padding(4);
+            this.tp_tasks.Name = "tp_tasks";
+            this.tp_tasks.Padding = new System.Windows.Forms.Padding(4);
+            this.tp_tasks.Size = new System.Drawing.Size(1037, 704);
+            this.tp_tasks.TabIndex = 1;
+            this.tp_tasks.Text = "Tasks";
+            this.tp_tasks.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -286,6 +319,72 @@
             this.btn_ok.UseVisualStyleBackColor = true;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
+            // gb_ContactData
+            // 
+            this.gb_ContactData.Controls.Add(this.tb_email);
+            this.gb_ContactData.Controls.Add(this.lbEmail);
+            this.gb_ContactData.Controls.Add(this.tb_phone2);
+            this.gb_ContactData.Controls.Add(this.lbTel2);
+            this.gb_ContactData.Controls.Add(this.tb_phone1);
+            this.gb_ContactData.Controls.Add(this.lbTel1);
+            this.gb_ContactData.Location = new System.Drawing.Point(12, 400);
+            this.gb_ContactData.Name = "gb_ContactData";
+            this.gb_ContactData.Size = new System.Drawing.Size(427, 155);
+            this.gb_ContactData.TabIndex = 6;
+            this.gb_ContactData.TabStop = false;
+            this.gb_ContactData.Text = "Contact data";
+            // 
+            // tb_phone1
+            // 
+            this.tb_phone1.Location = new System.Drawing.Point(64, 23);
+            this.tb_phone1.Name = "tb_phone1";
+            this.tb_phone1.Size = new System.Drawing.Size(216, 24);
+            this.tb_phone1.TabIndex = 12;
+            // 
+            // lbTel1
+            // 
+            this.lbTel1.AutoSize = true;
+            this.lbTel1.Location = new System.Drawing.Point(1, 26);
+            this.lbTel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTel1.Name = "lbTel1";
+            this.lbTel1.Size = new System.Drawing.Size(59, 17);
+            this.lbTel1.TabIndex = 13;
+            this.lbTel1.Text = "Phone 1";
+            // 
+            // tb_phone2
+            // 
+            this.tb_phone2.Location = new System.Drawing.Point(64, 57);
+            this.tb_phone2.Name = "tb_phone2";
+            this.tb_phone2.Size = new System.Drawing.Size(216, 24);
+            this.tb_phone2.TabIndex = 14;
+            // 
+            // lbTel2
+            // 
+            this.lbTel2.AutoSize = true;
+            this.lbTel2.Location = new System.Drawing.Point(1, 60);
+            this.lbTel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTel2.Name = "lbTel2";
+            this.lbTel2.Size = new System.Drawing.Size(59, 17);
+            this.lbTel2.TabIndex = 15;
+            this.lbTel2.Text = "Phone 2";
+            // 
+            // tb_email
+            // 
+            this.tb_email.Location = new System.Drawing.Point(64, 91);
+            this.tb_email.Name = "tb_email";
+            this.tb_email.Size = new System.Drawing.Size(216, 24);
+            this.tb_email.TabIndex = 16;
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Location = new System.Drawing.Point(1, 94);
+            this.lbEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(39, 17);
+            this.lbEmail.TabIndex = 17;
+            this.lbEmail.Text = "Email";
+            // 
             // FrmCustomerAddModify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -305,6 +404,8 @@
             this.gb_address.ResumeLayout(false);
             this.gb_address.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.gb_ContactData.ResumeLayout(false);
+            this.gb_ContactData.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,7 +414,7 @@
 
         private System.Windows.Forms.TabControl tb_main;
         private System.Windows.Forms.TabPage tp_main;
-        private System.Windows.Forms.TabPage tp_aditional;
+        private System.Windows.Forms.TabPage tp_tasks;
         private System.Windows.Forms.DateTimePicker dt_dob;
         private System.Windows.Forms.Label lb_dob;
         private System.Windows.Forms.GroupBox gb_address;
@@ -334,5 +435,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button btn_ok;
+        private System.Windows.Forms.ComboBox cb_nationality;
+        private System.Windows.Forms.Label lb_nationality;
+        private System.Windows.Forms.GroupBox gb_ContactData;
+        private System.Windows.Forms.TextBox tb_email;
+        private System.Windows.Forms.Label lbEmail;
+        private System.Windows.Forms.TextBox tb_phone2;
+        private System.Windows.Forms.Label lbTel2;
+        private System.Windows.Forms.TextBox tb_phone1;
+        private System.Windows.Forms.Label lbTel1;
     }
 }

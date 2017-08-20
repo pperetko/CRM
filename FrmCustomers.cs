@@ -42,12 +42,15 @@ namespace CRM
         private void tsb_edit_Click(object sender, EventArgs e)
         {
             FrmCustomerAddModify form = new FrmCustomerAddModify();
-            DataTableReader rd = this.cRMDataSet_customers.Customers.CreateDataReader();
-            while (rd.Read())
+           
+       
+            foreach (DataGridViewRow row in dg_customers.SelectedRows)
             {
-                form.setid(int.Parse(rd["id_customers"].ToString()));
+                form.setid(int.Parse(row.Cells[0].Value.ToString()));  
             }
-            form.ShowDialog(this);
+
+
+                form.ShowDialog(this);
             if (form.DialogResult == DialogResult.OK)
             {
                 this.cRMDataSet_customers.Customers.AcceptChanges();

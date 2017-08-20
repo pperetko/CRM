@@ -134,6 +134,7 @@
             this.dg_customers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dg_customers.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dg_customers.Location = new System.Drawing.Point(0, 92);
+            this.dg_customers.MultiSelect = false;
             this.dg_customers.Name = "dg_customers";
             this.dg_customers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dg_customers.Size = new System.Drawing.Size(782, 404);

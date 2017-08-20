@@ -24,13 +24,7 @@ namespace CRM
 
         }
 
-
-
-
-
-
-
-        private void load_menu()
+       private void load_menu()
         {
             Database db = new Database();
             if (db.connected == true)
@@ -78,27 +72,40 @@ namespace CRM
             Form myform;
             TabPage myTabPage;
             int id = int.Parse(e.Node.Tag.ToString());
-            switch (id)
+            if (checkTabExist(e.Node.Tag.ToString()) == false)
             {
-                case 1:
-                    myform = new FrmCustomers();
-                    myTabPage = new TabPage("Customers list");
-                
+                switch (id)
+                {
+                    case 1:
+                        myform = new FrmCustomers();
+                        myTabPage = new TabPage("Customers list");
 
-                    pc_main.TabPages.Add(myTabPage);
-                    myform.Visible = true;
-                    myform.TopLevel = false;
-                    myform.FormBorderStyle = FormBorderStyle.None;
-                    myform.Dock = DockStyle.Fill;
-                    myTabPage.Controls.Add(myform);
-                    myTabPage.Name = "tb_customers_list";
-                    break;
-                case 2:
 
-                    break;
-                default:
+                        pc_main.TabPages.Add(myTabPage);
+                        myform.Visible = true;
+                        myform.TopLevel = false;
+                        myform.FormBorderStyle = FormBorderStyle.None;
+                        myform.Dock = DockStyle.Fill;
+                        myTabPage.Controls.Add(myform);
+                        myTabPage.Name = "tb_customers_list";
+                        myTabPage.Tag = e.Node.Tag.ToString();
+                        break;
+                    case 1004:
+                        myform = new Filters();
+                        myTabPage = new TabPage("Filters");
+                        pc_main.TabPages.Add(myTabPage);
+                        myform.Visible = true;
+                        myform.TopLevel = false;
+                        myform.FormBorderStyle = FormBorderStyle.None;
+                        myform.Dock = DockStyle.Fill;
+                        myTabPage.Controls.Add(myform);
+                        myTabPage.Name = "tb_filters";
+                        myTabPage.Tag = e.Node.Tag.ToString();
+                        break;
+                    default:
 
-                    break;
+                        break;
+                }
             }
         }
 
@@ -134,5 +141,23 @@ namespace CRM
                 }
             }
         }
+
+
+
+        private bool checkTabExist(string id) {
+            for (int i = 0; i < pc_main.TabPages.Count; i++)
+            {
+                if (pc_main.TabPages[i].Tag.ToString() == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+
+
+
     }
 }
