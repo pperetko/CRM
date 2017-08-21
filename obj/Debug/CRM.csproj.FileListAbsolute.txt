@@ -12,3 +12,5 @@ G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\aa-DJ\CRM.resources.dll
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.exe
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.pdb
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csprojResolveAssemblyReference.cache
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.MyPageTab.resources
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FilterPanel.resources

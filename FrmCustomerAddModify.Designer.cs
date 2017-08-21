@@ -30,6 +30,13 @@
         {
             this.tb_main = new System.Windows.Forms.TabControl();
             this.tp_main = new System.Windows.Forms.TabPage();
+            this.gb_ContactData = new System.Windows.Forms.GroupBox();
+            this.tb_email = new System.Windows.Forms.TextBox();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.tb_phone2 = new System.Windows.Forms.TextBox();
+            this.lbTel2 = new System.Windows.Forms.Label();
+            this.tb_phone1 = new System.Windows.Forms.TextBox();
+            this.lbTel1 = new System.Windows.Forms.Label();
             this.dt_dob = new System.Windows.Forms.DateTimePicker();
             this.lb_dob = new System.Windows.Forms.Label();
             this.gb_address = new System.Windows.Forms.GroupBox();
@@ -53,18 +60,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
-            this.gb_ContactData = new System.Windows.Forms.GroupBox();
-            this.tb_phone1 = new System.Windows.Forms.TextBox();
-            this.lbTel1 = new System.Windows.Forms.Label();
-            this.tb_phone2 = new System.Windows.Forms.TextBox();
-            this.lbTel2 = new System.Windows.Forms.Label();
-            this.tb_email = new System.Windows.Forms.TextBox();
-            this.lbEmail = new System.Windows.Forms.Label();
+            this.fp_tasks = new CRM.FilterPanel();
             this.tb_main.SuspendLayout();
             this.tp_main.SuspendLayout();
-            this.gb_address.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.gb_ContactData.SuspendLayout();
+            this.gb_address.SuspendLayout();
+            this.tp_tasks.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tb_main
@@ -97,6 +99,72 @@
             this.tp_main.TabIndex = 0;
             this.tp_main.Text = "main";
             this.tp_main.UseVisualStyleBackColor = true;
+            // 
+            // gb_ContactData
+            // 
+            this.gb_ContactData.Controls.Add(this.tb_email);
+            this.gb_ContactData.Controls.Add(this.lbEmail);
+            this.gb_ContactData.Controls.Add(this.tb_phone2);
+            this.gb_ContactData.Controls.Add(this.lbTel2);
+            this.gb_ContactData.Controls.Add(this.tb_phone1);
+            this.gb_ContactData.Controls.Add(this.lbTel1);
+            this.gb_ContactData.Location = new System.Drawing.Point(12, 400);
+            this.gb_ContactData.Name = "gb_ContactData";
+            this.gb_ContactData.Size = new System.Drawing.Size(427, 155);
+            this.gb_ContactData.TabIndex = 6;
+            this.gb_ContactData.TabStop = false;
+            this.gb_ContactData.Text = "Contact data";
+            // 
+            // tb_email
+            // 
+            this.tb_email.Location = new System.Drawing.Point(64, 91);
+            this.tb_email.Name = "tb_email";
+            this.tb_email.Size = new System.Drawing.Size(216, 24);
+            this.tb_email.TabIndex = 16;
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Location = new System.Drawing.Point(1, 94);
+            this.lbEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(39, 17);
+            this.lbEmail.TabIndex = 17;
+            this.lbEmail.Text = "Email";
+            // 
+            // tb_phone2
+            // 
+            this.tb_phone2.Location = new System.Drawing.Point(64, 57);
+            this.tb_phone2.Name = "tb_phone2";
+            this.tb_phone2.Size = new System.Drawing.Size(216, 24);
+            this.tb_phone2.TabIndex = 14;
+            // 
+            // lbTel2
+            // 
+            this.lbTel2.AutoSize = true;
+            this.lbTel2.Location = new System.Drawing.Point(1, 60);
+            this.lbTel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTel2.Name = "lbTel2";
+            this.lbTel2.Size = new System.Drawing.Size(59, 17);
+            this.lbTel2.TabIndex = 15;
+            this.lbTel2.Text = "Phone 2";
+            // 
+            // tb_phone1
+            // 
+            this.tb_phone1.Location = new System.Drawing.Point(64, 23);
+            this.tb_phone1.Name = "tb_phone1";
+            this.tb_phone1.Size = new System.Drawing.Size(216, 24);
+            this.tb_phone1.TabIndex = 12;
+            // 
+            // lbTel1
+            // 
+            this.lbTel1.AutoSize = true;
+            this.lbTel1.Location = new System.Drawing.Point(1, 26);
+            this.lbTel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTel1.Name = "lbTel1";
+            this.lbTel1.Size = new System.Drawing.Size(59, 17);
+            this.lbTel1.TabIndex = 13;
+            this.lbTel1.Text = "Phone 1";
             // 
             // dt_dob
             // 
@@ -278,6 +346,7 @@
             // 
             // tp_tasks
             // 
+            this.tp_tasks.Controls.Add(this.fp_tasks);
             this.tp_tasks.Location = new System.Drawing.Point(4, 26);
             this.tp_tasks.Margin = new System.Windows.Forms.Padding(4);
             this.tp_tasks.Name = "tp_tasks";
@@ -319,71 +388,14 @@
             this.btn_ok.UseVisualStyleBackColor = true;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
-            // gb_ContactData
+            // fp_tasks
             // 
-            this.gb_ContactData.Controls.Add(this.tb_email);
-            this.gb_ContactData.Controls.Add(this.lbEmail);
-            this.gb_ContactData.Controls.Add(this.tb_phone2);
-            this.gb_ContactData.Controls.Add(this.lbTel2);
-            this.gb_ContactData.Controls.Add(this.tb_phone1);
-            this.gb_ContactData.Controls.Add(this.lbTel1);
-            this.gb_ContactData.Location = new System.Drawing.Point(12, 400);
-            this.gb_ContactData.Name = "gb_ContactData";
-            this.gb_ContactData.Size = new System.Drawing.Size(427, 155);
-            this.gb_ContactData.TabIndex = 6;
-            this.gb_ContactData.TabStop = false;
-            this.gb_ContactData.Text = "Contact data";
-            // 
-            // tb_phone1
-            // 
-            this.tb_phone1.Location = new System.Drawing.Point(64, 23);
-            this.tb_phone1.Name = "tb_phone1";
-            this.tb_phone1.Size = new System.Drawing.Size(216, 24);
-            this.tb_phone1.TabIndex = 12;
-            // 
-            // lbTel1
-            // 
-            this.lbTel1.AutoSize = true;
-            this.lbTel1.Location = new System.Drawing.Point(1, 26);
-            this.lbTel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbTel1.Name = "lbTel1";
-            this.lbTel1.Size = new System.Drawing.Size(59, 17);
-            this.lbTel1.TabIndex = 13;
-            this.lbTel1.Text = "Phone 1";
-            // 
-            // tb_phone2
-            // 
-            this.tb_phone2.Location = new System.Drawing.Point(64, 57);
-            this.tb_phone2.Name = "tb_phone2";
-            this.tb_phone2.Size = new System.Drawing.Size(216, 24);
-            this.tb_phone2.TabIndex = 14;
-            // 
-            // lbTel2
-            // 
-            this.lbTel2.AutoSize = true;
-            this.lbTel2.Location = new System.Drawing.Point(1, 60);
-            this.lbTel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbTel2.Name = "lbTel2";
-            this.lbTel2.Size = new System.Drawing.Size(59, 17);
-            this.lbTel2.TabIndex = 15;
-            this.lbTel2.Text = "Phone 2";
-            // 
-            // tb_email
-            // 
-            this.tb_email.Location = new System.Drawing.Point(64, 91);
-            this.tb_email.Name = "tb_email";
-            this.tb_email.Size = new System.Drawing.Size(216, 24);
-            this.tb_email.TabIndex = 16;
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(1, 94);
-            this.lbEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(39, 17);
-            this.lbEmail.TabIndex = 17;
-            this.lbEmail.Text = "Email";
+            this.fp_tasks.Dock = System.Windows.Forms.DockStyle.Top;
+            this.fp_tasks.Location = new System.Drawing.Point(4, 4);
+            this.fp_tasks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fp_tasks.Name = "fp_tasks";
+            this.fp_tasks.Size = new System.Drawing.Size(1029, 50);
+            this.fp_tasks.TabIndex = 0;
             // 
             // FrmCustomerAddModify
             // 
@@ -401,11 +413,12 @@
             this.tb_main.ResumeLayout(false);
             this.tp_main.ResumeLayout(false);
             this.tp_main.PerformLayout();
-            this.gb_address.ResumeLayout(false);
-            this.gb_address.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.gb_ContactData.ResumeLayout(false);
             this.gb_ContactData.PerformLayout();
+            this.gb_address.ResumeLayout(false);
+            this.gb_address.PerformLayout();
+            this.tp_tasks.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -444,5 +457,6 @@
         private System.Windows.Forms.Label lbTel2;
         private System.Windows.Forms.TextBox tb_phone1;
         private System.Windows.Forms.Label lbTel1;
+        private FilterPanel fp_tasks;
     }
 }

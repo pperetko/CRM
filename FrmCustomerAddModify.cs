@@ -16,6 +16,7 @@ namespace CRM
         {
             InitializeComponent();
             id = -1;
+            
         }
 
         public int id;
