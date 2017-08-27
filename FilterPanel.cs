@@ -10,24 +10,28 @@ using System.Windows.Forms;
 
 namespace CRM
 {
-    public partial class FilterPanel : UserControl
+    public partial class FilterPanel :  UserControl
     {
 
 
-       // public DateTimePicker dt_time_to { get; }
+       
       
 
     public FilterPanel()
         {
             InitializeComponent();
-            
+            pl_main.Resize += onResize;
+            pl_main.Resize += new System.EventHandler(this.onResize);
+
         }
 
-       // private  override void onResize(object sender, System.EventArgs e) {
+        protected   void onResize(object sender, EventArgs e) {
 
 
-      //  }
+            this.bt_refresh.Top = 7;
+
+        }
 
 
-}
+   }
 }

@@ -12,6 +12,9 @@ namespace CRM
 {
     public partial class FrmCustomers : Form
     {
+
+        public int id;
+
         public FrmCustomers()
         {
             InitializeComponent();
@@ -46,11 +49,12 @@ namespace CRM
        
             foreach (DataGridViewRow row in dg_customers.SelectedRows)
             {
-                form.setid(int.Parse(row.Cells[0].Value.ToString()));  
+                id = int.Parse(row.Cells[0].Value.ToString());
+                form.setid(id);  
             }
 
 
-                form.ShowDialog(this);
+            form.ShowDialog(this);
             if (form.DialogResult == DialogResult.OK)
             {
                 this.cRMDataSet_customers.Customers.AcceptChanges();

@@ -19,9 +19,6 @@ namespace CRM
 
         {
             InitializeComponent();
-            
-
-
         }
 
        private void load_menu()
