@@ -32,13 +32,13 @@ namespace CRM
 
                 string query_insert = "Insert into dbo.Tasks(title, descryption,id_customers,status) values(@0, @1,@2, @3)";
                 Database db = new Database();
-                db.execute(query_insert, new[] { tb_task_name.Text,tb_description.Text, id.ToString(), "N" });
+                db.execute(query_insert, new[] { tb_task_name.Text,tb_description.Text, id_customer.ToString(), "N" });
             }
             else
             {
-                string query_update = "Update dbo.Tasks set title=@0, descryption=@1";
+                string query_update = "Update dbo.Tasks set title=@0, descryption=@1 where id_tasks=@2";
                 Database db = new Database();
-                db.execute(query_update, new[] { tb_task_name.Text, tb_description.Text });
+                db.execute(query_update, new[] { tb_task_name.Text, tb_description.Text, id.ToString() });
 
             }
         }

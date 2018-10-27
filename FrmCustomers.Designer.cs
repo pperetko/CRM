@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomers));
             this.pl_filter = new System.Windows.Forms.Panel();
             this.pl_button = new System.Windows.Forms.Panel();
@@ -37,23 +36,18 @@
             this.tsb_edit = new System.Windows.Forms.ToolStripButton();
             this.tsb_view = new System.Windows.Forms.ToolStripButton();
             this.dg_customers = new System.Windows.Forms.DataGridView();
-            this.idcustomersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nationalityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dobDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cRMDataSet_customers = new CRM.CRMDataSet_customers();
-            this.customersTableAdapter = new CRM.CRMDataSet_customersTableAdapters.CustomersTableAdapter();
+            this.lv_customers = new System.Windows.Forms.ListView();
+            this.column_first_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_last_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_nationality = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_state = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_city = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_street = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_no = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_dob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pl_button.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_customers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cRMDataSet_customers)).BeginInit();
             this.SuspendLayout();
             // 
             // pl_filter
@@ -117,19 +111,7 @@
             // 
             // dg_customers
             // 
-            this.dg_customers.AutoGenerateColumns = false;
             this.dg_customers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_customers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idcustomersDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.prenameDataGridViewTextBoxColumn,
-            this.nationalityDataGridViewTextBoxColumn,
-            this.stateDataGridViewTextBoxColumn,
-            this.cityDataGridViewTextBoxColumn,
-            this.streetDataGridViewTextBoxColumn,
-            this.noDataGridViewTextBoxColumn,
-            this.dobDataGridViewTextBoxColumn});
-            this.dg_customers.DataSource = this.customersBindingSource;
             this.dg_customers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dg_customers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dg_customers.GridColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -139,83 +121,79 @@
             this.dg_customers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dg_customers.Size = new System.Drawing.Size(782, 404);
             this.dg_customers.TabIndex = 2;
-            this.dg_customers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_customers_CellContentClick);
             // 
-            // idcustomersDataGridViewTextBoxColumn
+            // lv_customers
             // 
-            this.idcustomersDataGridViewTextBoxColumn.DataPropertyName = "id_customers";
-            this.idcustomersDataGridViewTextBoxColumn.HeaderText = "id_customers";
-            this.idcustomersDataGridViewTextBoxColumn.Name = "idcustomersDataGridViewTextBoxColumn";
-            this.idcustomersDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idcustomersDataGridViewTextBoxColumn.Visible = false;
+            this.lv_customers.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lv_customers.AllowColumnReorder = true;
+            this.lv_customers.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.lv_customers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.column_first_name,
+            this.column_last_name,
+            this.column_nationality,
+            this.column_state,
+            this.column_city,
+            this.column_street,
+            this.column_no,
+            this.column_dob});
+            this.lv_customers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_customers.FullRowSelect = true;
+            this.lv_customers.GridLines = true;
+            this.lv_customers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lv_customers.Location = new System.Drawing.Point(0, 92);
+            this.lv_customers.Name = "lv_customers";
+            this.lv_customers.ShowGroups = false;
+            this.lv_customers.Size = new System.Drawing.Size(782, 404);
+            this.lv_customers.TabIndex = 3;
+            this.lv_customers.UseCompatibleStateImageBehavior = false;
+            this.lv_customers.View = System.Windows.Forms.View.Details;
+            this.lv_customers.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.lv_customers_DrawColumnHeader);
+            this.lv_customers.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lv_customers_DrawItem);
             // 
-            // nameDataGridViewTextBoxColumn
+            // column_first_name
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.column_first_name.Text = "First Name";
+            this.column_first_name.Width = 100;
             // 
-            // prenameDataGridViewTextBoxColumn
+            // column_last_name
             // 
-            this.prenameDataGridViewTextBoxColumn.DataPropertyName = "Prename";
-            this.prenameDataGridViewTextBoxColumn.HeaderText = "Prename";
-            this.prenameDataGridViewTextBoxColumn.Name = "prenameDataGridViewTextBoxColumn";
+            this.column_last_name.Text = "Last Name";
+            this.column_last_name.Width = 100;
             // 
-            // nationalityDataGridViewTextBoxColumn
+            // column_nationality
             // 
-            this.nationalityDataGridViewTextBoxColumn.DataPropertyName = "Nationality";
-            this.nationalityDataGridViewTextBoxColumn.HeaderText = "Nationality";
-            this.nationalityDataGridViewTextBoxColumn.Name = "nationalityDataGridViewTextBoxColumn";
+            this.column_nationality.Text = "Nationality";
             // 
-            // stateDataGridViewTextBoxColumn
+            // column_state
             // 
-            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.column_state.Text = "State";
+            this.column_state.Width = 100;
             // 
-            // cityDataGridViewTextBoxColumn
+            // column_city
             // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.column_city.Text = "City";
+            this.column_city.Width = 100;
             // 
-            // streetDataGridViewTextBoxColumn
+            // column_street
             // 
-            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
-            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
-            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
+            this.column_street.Text = "Street";
+            this.column_street.Width = 100;
             // 
-            // noDataGridViewTextBoxColumn
+            // column_no
             // 
-            this.noDataGridViewTextBoxColumn.DataPropertyName = "No";
-            this.noDataGridViewTextBoxColumn.HeaderText = "No";
-            this.noDataGridViewTextBoxColumn.Name = "noDataGridViewTextBoxColumn";
+            this.column_no.Text = "No";
             // 
-            // dobDataGridViewTextBoxColumn
+            // column_dob
             // 
-            this.dobDataGridViewTextBoxColumn.DataPropertyName = "dob";
-            this.dobDataGridViewTextBoxColumn.HeaderText = "dob";
-            this.dobDataGridViewTextBoxColumn.Name = "dobDataGridViewTextBoxColumn";
-            // 
-            // customersBindingSource
-            // 
-            this.customersBindingSource.DataMember = "Customers";
-            this.customersBindingSource.DataSource = this.cRMDataSet_customers;
-            // 
-            // cRMDataSet_customers
-            // 
-            this.cRMDataSet_customers.DataSetName = "CRMDataSet_customers";
-            this.cRMDataSet_customers.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customersTableAdapter
-            // 
-            this.customersTableAdapter.ClearBeforeFill = true;
+            this.column_dob.Text = "Date of birth";
+            this.column_dob.Width = 100;
             // 
             // FrmCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 496);
+            this.Controls.Add(this.lv_customers);
             this.Controls.Add(this.dg_customers);
             this.Controls.Add(this.pl_button);
             this.Controls.Add(this.pl_filter);
@@ -227,8 +205,6 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_customers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cRMDataSet_customers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,9 +214,8 @@
         private System.Windows.Forms.Panel pl_filter;
         private System.Windows.Forms.Panel pl_button;
         private System.Windows.Forms.DataGridView dg_customers;
-        private CRMDataSet_customers cRMDataSet_customers;
-        private System.Windows.Forms.BindingSource customersBindingSource;
-        private CRMDataSet_customersTableAdapters.CustomersTableAdapter customersTableAdapter;
+       
+       
         private System.Windows.Forms.DataGridViewTextBoxColumn idcustomersDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prenameDataGridViewTextBoxColumn;
@@ -254,5 +229,14 @@
         private System.Windows.Forms.ToolStripButton tsb_add;
         private System.Windows.Forms.ToolStripButton tsb_edit;
         private System.Windows.Forms.ToolStripButton tsb_view;
+        private System.Windows.Forms.ListView lv_customers;
+        private System.Windows.Forms.ColumnHeader column_last_name;
+        private System.Windows.Forms.ColumnHeader column_nationality;
+        private System.Windows.Forms.ColumnHeader column_state;
+        private System.Windows.Forms.ColumnHeader column_city;
+        private System.Windows.Forms.ColumnHeader column_street;
+        private System.Windows.Forms.ColumnHeader column_no;
+        private System.Windows.Forms.ColumnHeader column_dob;
+        public System.Windows.Forms.ColumnHeader column_first_name;
     }
 }

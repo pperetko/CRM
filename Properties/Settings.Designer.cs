@@ -12,7 +12,7 @@ namespace CRM.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,11 +26,32 @@ namespace CRM.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PERETKO-P\\SQL2014;Initial Catalog=CRM;Persist Security Info=True;User" +
-            " ID=ksiup;Password=ksiup")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=user-komputer\\sql2017;Initial Catalog=CRM;Persist Security Info=True;" +
+            "User ID=sa;Password=1qaz@WSX3edc")]
         public string CRMConnectionString {
             get {
                 return ((string)(this["CRMConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USER-KOMPUTER\\SQL2017;Initial Catalog=CRM;Integrated Security=True")]
+        public string CRMConnectionString1 {
+            get {
+                return ((string)(this["CRMConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USER-KOMPUTER\\SQL2017;Initial Catalog=CRM;Persist Security Info=True;" +
+            "User ID=sa;Password=1qaz@WSX3edc")]
+        public string CRMConnectionString2 {
+            get {
+                return ((string)(this["CRMConnectionString2"]));
             }
         }
     }

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CRM" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=USER-KOMPUTER\SQL2017;Initial Catalog=CRM;Persist Security Info=True;User ID=sa" SettingsObjectName="CRM.Properties.Settings" SettingsPropertyName="CRMConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.country" Member="countries">
+    <Type Name="country">
+      <Column Name="id_country" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="alpha_2" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="aplha_3" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="country_code" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="iso" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="region" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="sub_region" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="region_code" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="sub_region_code" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.logins" Member="logins">
+    <Type Name="login">
+      <Column Name="id_logins" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="login" Member="login1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pass" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bloced" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.menu" Member="menus">
+    <Type Name="menu">
+      <Column Name="id_menu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="menu" Member="menu1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="parent_id" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="activie" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="orders" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tasks" Member="tasks">
+    <Type Name="task">
+      <Column Name="id_tasks" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="descryption" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="date_created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="id_next_task" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="id_customers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="next_contact" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.customers" Member="customers">
+    <Type Name="customer">
+      <Column Name="id_customers" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="nationality" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="street" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="No" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -15,9 +15,10 @@ namespace CRM
         public FrmCustomerAddModify()
         {
             InitializeComponent();
-            id_customer = -1;
+         
             id_task = -1;
             pl_task_button.Visible = false;
+         //++   RefreshGridTasks();
         }
 
         public int id_customer;
@@ -61,7 +62,7 @@ namespace CRM
             {
                 Database db = new Database();
                 DataSet ds;
-                ds = db.invoke("select * from dbo.Customers where id_customers=@0;", new[] { id_customer.ToString() });
+                ds = db.invoke("select * from dbo.customers where id_customers=@0;", new[] { id_customer.ToString() });
                 DataTableReader rd = ds.CreateDataReader();
                 while (rd.Read())
                 {
@@ -127,6 +128,7 @@ namespace CRM
             FormAddEditTask form = new FormAddEditTask();
             form.id_customer = this.id_customer;
             form.ShowDialog(this);
+            RefreshGridTasks();
         }
 
         private void btn_Edit_Task_Click(object sender, EventArgs e)
@@ -142,6 +144,48 @@ namespace CRM
 
             form.id = id_task;
             form.ShowDialog(this);
+            RefreshGridTasks();
+        }
+
+
+
+        private void RefreshGridTasks()
+        {  //where id_customers=@0
+           //new[] { id_customer.ToString() }
+            string query = "Select dbo.Tasks  order by title ";
+            Database db = new Database();
+
+            DataSet ds = db.invoke_member(query, null, "tasks");
+            dataGridView_tasks.Columns.Add("title", "Title");
+            dataGridView_tasks.DataSource = ds;
+            dataGridView_tasks.DataMember = "tasks";
+
+
+
+        }
+
+        private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.customersBindingSource.EndEdit();
+        
+
+        }
+
+        private void FrmCustomerAddModify_Load(object sender, EventArgs e)
+        {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'cRMDS_customers.customers' . Możesz go przenieść lub usunąć.
+           // this.customersTableAdapter.Fill(this.cRMDS_customers.customers);
+          
+
+        }
+
+        private void customersBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            //this.Validate();
+            //this.customersBindingSource.EndEdit();
+           // this.tableAdapterManager.UpdateAll(this.cRMDS_customers);
+
         }
     }
 }

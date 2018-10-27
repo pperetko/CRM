@@ -1,11 +1,11 @@
-CREATE TABLE dbo.Customers (
+CREATE TABLE dbo.customers (
   id_customers int IDENTITY(1, 1) NOT NULL,
-  Name varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NOT NULL,
-  Prename varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NOT NULL,
-  Nationality varchar(3) COLLATE SQL_Polish_CP1250_CI_AS NULL,
-  State varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NULL,
-  City varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NULL,
-  Street varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NULL,
+  name varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NOT NULL,
+  prename varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NOT NULL,
+  nationality varchar(3) COLLATE SQL_Polish_CP1250_CI_AS NULL,
+  state varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NULL,
+  city varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NULL,
+  street varchar(100) COLLATE SQL_Polish_CP1250_CI_AS NULL,
   No varchar(50) COLLATE SQL_Polish_CP1250_CI_AS NULL,
   dob date NULL,
   CONSTRAINT PK_Customers PRIMARY KEY CLUSTERED (id_customers)

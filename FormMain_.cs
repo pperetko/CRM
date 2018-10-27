@@ -19,47 +19,40 @@ namespace CRM
 
         {
             InitializeComponent();
+            
         }
 
        private void load_menu()
         {
-            Database db = new Database();
-            if (db.connected == true)
+            DataClassesCRMDataContext db=new DataClassesCRMDataContext();
+            var data = from p in db.menus
+                where p.parent_id =="-1" && p.activie==true
+                       orderby p.orders
+                       select p ;
+            foreach (var item in data)
             {
-                DataSet ds;
-                ds = db.invoke_sql("select * from dbo.menu where parent_id is null;");
-                DataTableReader rd = ds.CreateDataReader();
-                while (rd.Read())
+                TreeNode node = tr_menu.Nodes.Add(item.menu1);
+                node.Tag = item.id_menu.ToString();
+
+                var Subdata = from a in db.menus
+                              where a.parent_id == item.id_menu.ToString() 
+                              select a;
+                foreach (var subitem in Subdata)
                 {
-                    TreeNode node = tr_menu.Nodes.Add(rd["menu"].ToString());
-                    node.Tag = rd["id_menu"].ToString();
-
-                    DataSet sub_ds;
-                    sub_ds = db.invoke("Select * from dbo.menu where parent_id=@0", new[] { rd["id_menu"].ToString() });
-                    DataTableReader sub_rd = sub_ds.CreateDataReader();
-
-                    while (sub_rd.Read())
-                    {
-                        TreeNode sub_node = node.Nodes.Add(sub_rd["menu"].ToString());
-                        sub_node.Tag = sub_rd["id_menu"].ToString();
-
-
-                    }
-
-                    node.ExpandAll();
+                    TreeNode sub_node = node.Nodes.Add(subitem.menu1);
+                    sub_node.Tag = subitem.id_menu.ToString();
 
                 }
-
+                node.ExpandAll();
 
             }
+               
 
-        }
+       }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
             load_menu();
-
-
         }
 
      
@@ -86,8 +79,9 @@ namespace CRM
                         myTabPage.Controls.Add(myform);
                         myTabPage.Name = "tb_customers_list";
                         myTabPage.Tag = e.Node.Tag.ToString();
+                        pc_main.SelectedTab = myTabPage;
                         break;
-                    case 1004:
+                    case 2:
                         myform = new Filters();
                         myTabPage = new TabPage("Filters");
                         pc_main.TabPages.Add(myTabPage);
@@ -98,21 +92,28 @@ namespace CRM
                         myTabPage.Controls.Add(myform);
                         myTabPage.Name = "tb_filters";
                         myTabPage.Tag = e.Node.Tag.ToString();
+                        pc_main.SelectedTab = myTabPage;
                         break;
                     default:
 
                         break;
                 }
             }
+            else {
+                myTabPage = GetTabPageActive(e.Node.Tag.ToString());
+                if (myTabPage != null) {
+                    pc_main.SelectedTab = myTabPage;
+                }
+            }
         }
 
         private void pc_main_DrawItem(object sender, DrawItemEventArgs e)
         {
-
-            e.Graphics.DrawString("x", e.Font, Brushes.Black, e.Bounds.Right-15, e.Bounds.Top + 4);
+            e.DrawBackground();                                                       //15                        //4                                   
+            e.Graphics.DrawString("x", e.Font, Brushes.Black, e.Bounds.Right-20, e.Bounds.Top + 4);
             e.Graphics.DrawString(pc_main.TabPages[e.Index].Text, e.Font, Brushes.Black, e.Bounds.Left + 12, e.Bounds.Top + 4);
             e.DrawFocusRectangle();
-
+            
         }
 
         private void pc_main_MouseDown(object sender, MouseEventArgs e)
@@ -121,7 +122,7 @@ namespace CRM
             {
                 Rectangle r = pc_main.GetTabRect(i);
                 //Getting the position of the "x" mark.
-                Rectangle closeButton = new Rectangle(r.Right - 15, r.Top + 4, 19, 7);
+                Rectangle closeButton = new Rectangle(r.Right - 25, r.Top + 10, 19, 7);
                 System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
                 System.Drawing.Graphics formGraphics = this.CreateGraphics();
                 formGraphics.FillRectangle(myBrush, closeButton);
@@ -154,7 +155,21 @@ namespace CRM
         }
 
 
+        private TabPage GetTabPageActive(string id)
+        {
+            for (int i = 0; i < pc_main.TabPages.Count; i++)
+            {
+                if (pc_main.TabPages[i].Tag.ToString() == id)
+                {
+                    return pc_main.TabPages[i];
+                }
+            }
+            return null;
+        }
 
 
+
+
+        
     }
 }

@@ -31,12 +31,29 @@ namespace CRM
         public FormLogin()
         {
             InitializeComponent();
-            
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            log_to_app = true;
+            string pass= "qulaola";
+
+            DataClassesCRMDataContext db = new DataClassesCRMDataContext();
+            var data = from p in db.logins
+                       where p.login1 == tb_login.Text.ToString() && 
+                             p.pass == Encrypting.EncryptString(tb_password.Text.ToString(),pass) &&
+                             p.bloced==false
+                       select p;
+
+
+            if (data.Count() > 0)
+            {
+                log_to_app = true;
+            } 
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 

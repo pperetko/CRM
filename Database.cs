@@ -68,6 +68,33 @@ namespace CRM
             return dset;
         }
 
+        public DataSet invoke_member(string query, String[] arrayString, string member)
+        {
+            SqlDataAdapter dadapter = new SqlDataAdapter();
+            SqlCommand command = new SqlCommand(query, conn);
+            dadapter.SelectCommand = command;
+            string str;
+            if (arrayString != null)
+            {
+                for (int i = 0; i < arrayString.Length; i++)
+                {
+                    str = arrayString[i];
+                    command.Parameters.Add(new SqlParameter(i.ToString(), str));
+                }
+            }
+            DataSet dset = new DataSet();
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                  // dset.                 //listacolumnas.Add(reader.GetString(0));
+                }
+            }
+
+            dadapter.Fill(dset, member);
+            return dset;
+        }
+
 
 
         public void execute_sql(string query) {

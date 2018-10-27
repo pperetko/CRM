@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CRM.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -55,6 +58,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,17 +71,21 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CRMDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CRMDataSet.xsd</DependentUpon>
+    <Compile Include="CRMDataSet_Tasks.cs">
+      <DependentUpon>CRMDataSet_Tasks.xsd</DependentUpon>
     </Compile>
-    <Compile Include="CRMDataSet_customers.Designer.cs">
+    <Compile Include="CRMDataSet_Tasks.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CRMDataSet_customers.xsd</DependentUpon>
+      <DependentUpon>CRMDataSet_Tasks.xsd</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="DataClassesCRM.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassesCRM.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="encrypt.cs" />
     <Compile Include="FilterPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,12 +128,6 @@
     <Compile Include="FrmCustomers.Designer.cs">
       <DependentUpon>FrmCustomers.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyPageTab.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="MyPageTab.Designer.cs">
-      <DependentUpon>MyPageTab.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FilterPanel.resx">
@@ -152,9 +154,6 @@
     <EmbeddedResource Include="FrmCustomers.resx">
       <DependentUpon>FrmCustomers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyPageTab.resx">
-      <DependentUpon>MyPageTab.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -164,27 +163,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="CRMDataSet.xsc">
-      <DependentUpon>CRMDataSet.xsd</DependentUpon>
+    <None Include="CRMDataSet_Tasks.xsc">
+      <DependentUpon>CRMDataSet_Tasks.xsd</DependentUpon>
     </None>
-    <None Include="CRMDataSet.xsd">
+    <None Include="CRMDataSet_Tasks.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CRMDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>CRMDataSet_Tasks.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="CRMDataSet.xss">
-      <DependentUpon>CRMDataSet.xsd</DependentUpon>
+    <None Include="CRMDataSet_Tasks.xss">
+      <DependentUpon>CRMDataSet_Tasks.xsd</DependentUpon>
     </None>
-    <None Include="CRMDataSet_customers.xsc">
-      <DependentUpon>CRMDataSet_customers.xsd</DependentUpon>
-    </None>
-    <None Include="CRMDataSet_customers.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CRMDataSet_customers.Designer.cs</LastGenOutput>
+    <None Include="DataClassesCRM.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassesCRM.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="CRMDataSet_customers.xss">
-      <DependentUpon>CRMDataSet_customers.xsd</DependentUpon>
+    <None Include="DataClassesCRM.dbml.layout">
+      <DependentUpon>DataClassesCRM.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -215,6 +211,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

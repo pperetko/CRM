@@ -60,7 +60,6 @@
             this.tr_menu.FullRowSelect = true;
             this.tr_menu.Name = "tr_menu";
             this.tr_menu.ShowLines = false;
-            this.tr_menu.ShowPlusMinus = false;
             this.tr_menu.ShowRootLines = false;
             this.tr_menu.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tr_menu_NodeMouseClick_1);
             // 
@@ -90,7 +89,6 @@
             this.HelpButton = true;
             this.KeyPreview = true;
             this.Name = "FormMain";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.sp_main.Panel1.ResumeLayout(false);
             this.sp_main.Panel2.ResumeLayout(false);

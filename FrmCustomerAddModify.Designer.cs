@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerAddModify));
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -61,10 +62,13 @@
             this.tb_name = new System.Windows.Forms.TextBox();
             this.lb_name = new System.Windows.Forms.Label();
             this.tp_tasks = new System.Windows.Forms.TabPage();
+            this.dataGridView_tasks = new System.Windows.Forms.DataGridView();
             this.pl_task_button = new System.Windows.Forms.Panel();
+            this.btn_Edit_Task = new System.Windows.Forms.Button();
             this.btn_Add_Task = new System.Windows.Forms.Button();
             this.dg_tasks = new System.Windows.Forms.DataGridView();
-            this.btn_Edit_Task = new System.Windows.Forms.Button();
+            
+            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.filterPanel1 = new CRM.FilterPanel();
             this.panel1.SuspendLayout();
             this.tb_main.SuspendLayout();
@@ -72,8 +76,11 @@
             this.gb_ContactData.SuspendLayout();
             this.gb_address.SuspendLayout();
             this.tp_tasks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_tasks)).BeginInit();
             this.pl_task_button.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_tasks)).BeginInit();
+            
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_ok
@@ -275,12 +282,19 @@
             // 
             // tp_tasks
             // 
+            this.tp_tasks.Controls.Add(this.dataGridView_tasks);
             this.tp_tasks.Controls.Add(this.pl_task_button);
-            this.tp_tasks.Controls.Add(this.filterPanel1);
             this.tp_tasks.Controls.Add(this.dg_tasks);
+            this.tp_tasks.Controls.Add(this.filterPanel1);
             resources.ApplyResources(this.tp_tasks, "tp_tasks");
             this.tp_tasks.Name = "tp_tasks";
             this.tp_tasks.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView_tasks
+            // 
+            this.dataGridView_tasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridView_tasks, "dataGridView_tasks");
+            this.dataGridView_tasks.Name = "dataGridView_tasks";
             // 
             // pl_task_button
             // 
@@ -288,6 +302,13 @@
             this.pl_task_button.Controls.Add(this.btn_Add_Task);
             resources.ApplyResources(this.pl_task_button, "pl_task_button");
             this.pl_task_button.Name = "pl_task_button";
+            // 
+            // btn_Edit_Task
+            // 
+            resources.ApplyResources(this.btn_Edit_Task, "btn_Edit_Task");
+            this.btn_Edit_Task.Name = "btn_Edit_Task";
+            this.btn_Edit_Task.UseVisualStyleBackColor = true;
+            this.btn_Edit_Task.Click += new System.EventHandler(this.btn_Edit_Task_Click);
             // 
             // btn_Add_Task
             // 
@@ -306,12 +327,8 @@
             this.dg_tasks.Name = "dg_tasks";
             this.dg_tasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
-            // btn_Edit_Task
-            // 
-            resources.ApplyResources(this.btn_Edit_Task, "btn_Edit_Task");
-            this.btn_Edit_Task.Name = "btn_Edit_Task";
-            this.btn_Edit_Task.UseVisualStyleBackColor = true;
-            this.btn_Edit_Task.Click += new System.EventHandler(this.btn_Edit_Task_Click);
+       
+            
             // 
             // filterPanel1
             // 
@@ -326,6 +343,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmCustomerAddModify";
             this.Activated += new System.EventHandler(this.FrmCustomerAddModify_Activated);
+            this.Load += new System.EventHandler(this.FrmCustomerAddModify_Load);
             this.panel1.ResumeLayout(false);
             this.tb_main.ResumeLayout(false);
             this.tp_main.ResumeLayout(false);
@@ -335,8 +353,11 @@
             this.gb_address.ResumeLayout(false);
             this.gb_address.PerformLayout();
             this.tp_tasks.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_tasks)).EndInit();
             this.pl_task_button.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dg_tasks)).EndInit();
+            
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -380,5 +401,9 @@
         private FilterPanel filterPanel1;
         private System.Windows.Forms.DataGridView dg_tasks;
         private System.Windows.Forms.Button btn_Edit_Task;
+        private System.Windows.Forms.DataGridView dataGridView_tasks;
+      
+        private System.Windows.Forms.BindingSource customersBindingSource;
+      
     }
 }
