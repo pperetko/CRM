@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CRM
 {
     public partial class FrmCustomerAddModify : Form
@@ -18,7 +19,7 @@ namespace CRM
          
             id_task = -1;
             pl_task_button.Visible = false;
-         //++   RefreshGridTasks();
+         
         }
 
         public int id_customer;
@@ -27,22 +28,43 @@ namespace CRM
         private void btn_ok_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
                 if (id_customer == -1)
                 {
-
-                    string query_insert = "Insert into dbo.Customers(Name, Prename, Nationality, State , City, Street, No, dob, StateCode, phone1,phone2,email) values(@0, @1,@2, @3,@4,@5,@6,@7,@8,@9,@10,@11)";
-                    Database db = new Database();
-                    db.execute(query_insert, new[] { tb_name.Text, tb_surname.Text,cb_nationality.Text, cb_state.Text, tb_city.Text, tb_street.Text,
-                        tb_no.Text, dt_dob.Value.Date.ToString(), tb_code.Text, tb_phone1.Text,tb_phone2.Text,tb_email.Text });
+                  customer cust = new customer();
+                  cust.first_name = tb_surname.Text;
+                  cust.last_name = tb_name.Text;
+                  cust.nationality = cb_nationality.Text;
+                  cust.state = cb_state.Text;
+                  cust.city = tb_city.Text;
+                  cust.street = tb_street.Text;
+                  cust.No = tb_no.Text;
+                  cust.dob = dt_dob.Value;
+                  dc.customers.InsertOnSubmit(cust);
+                  dc.SubmitChanges(); 
+               
                 }
                 else
                 {
-                string query_update = "Update dbo.Customers set name=@0, prename=@1, Nationality=@2, State=@3, City=@4, Street=@5, No=@6, Dob=@7,StateCode=@8, phone1=@9, phone2=@10, email=@11 where id_customers=@12";
-                Database db = new Database();
-                db.execute(query_update, new[] { tb_name.Text, tb_surname.Text, cb_nationality.Text, cb_state.Text, tb_city.Text, tb_street.Text,
-                        tb_no.Text, dt_dob.Value.Date.ToString(), tb_code.Text,tb_phone1.Text, tb_phone2.Text, tb_email.Text, id_customer.ToString() });
+                
+               
+                var cust = dc.customers.FirstOrDefault(d => d.id_customers == id_customer);
+                if (cust != null)
+                {
+                    cust.first_name = tb_surname.Text;
+                    cust.last_name = tb_name.Text;
+                    cust.nationality = cb_nationality.Text;
+                    cust.state = cb_state.Text;
+                    cust.city = tb_city.Text;
+                    cust.street = tb_street.Text;
+                    cust.No = tb_no.Text;
+                    cust.dob = dt_dob.Value;
 
-            }
+                }
+                    dc.SubmitChanges();              
+
+                }
 
             
 
@@ -60,21 +82,22 @@ namespace CRM
         {
             if (id_customer != -1)
             {
-                Database db = new Database();
-                DataSet ds;
-                ds = db.invoke("select * from dbo.customers where id_customers=@0;", new[] { id_customer.ToString() });
-                DataTableReader rd = ds.CreateDataReader();
-                while (rd.Read())
-                {
-                    tb_name.Text = rd["name"].ToString();
-                    tb_surname.Text = rd["prename"].ToString();
-                    tb_city.Text = rd["city"].ToString();
-                    tb_code.Text = rd["StateCode"].ToString();
-                    tb_no.Text = rd["no"].ToString();
-                    tb_street.Text = rd["Street"].ToString();
-                    dt_dob.Text= rd["dob"].ToString();
-                }
-                pl_task_button.Visible = true;
+                DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+                var cust = dc.customers.FirstOrDefault(d => d.id_customers == id_customer);
+
+              
+
+                tb_surname.Text = CRMHelper.NullToString(cust.first_name);
+                tb_name.Text= CRMHelper.NullToString(cust.last_name);
+                cb_nationality.Text= CRMHelper.NullToString(cust.nationality);
+
+                cb_state.Text = CRMHelper.NullToString(cust.state);
+                tb_city.Text = CRMHelper.NullToString(cust.city);
+                tb_street.Text = CRMHelper.NullToString(cust.street);
+                tb_no.Text = CRMHelper.NullToString(cust.No);
+                dt_dob.Value = cust.dob.Value;
+
+
             }
         }
 
@@ -87,32 +110,32 @@ namespace CRM
 
 
 
-        private void setStateCombo() {
-            Database db = new Database();
-            DataSet ds;
-            ds = db.invoke_sql("select * from dbo.country order by name;");
-            DataTableReader rd = ds.CreateDataReader();
-           
-
-            while (rd.Read())
+        private void setStateCombo()
+        {
+          
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+            var data = from p in dc.countries
+                       orderby p.name
+                       select p;
+            foreach (var item in data)
             {
-                cb_state.Items.Add(rd["name"]);
-            }
+                cb_state.Items.Add(item.name);
 
-       }
+            }
+        }
 
 
 
         private void setNationalityCombo() {
-            Database db = new Database();
-            DataSet ds;
-            ds = db.invoke_sql("select * from dbo.country order by name;");
-            DataTableReader rd = ds.CreateDataReader();
-
-
-            while (rd.Read())
-            {
-                cb_nationality.Items.Add(rd["aplha_3"]);
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+            var data = from p in dc.countries
+                       orderby p.name
+                       select p;
+            foreach (var item in data)
+            {   if (item.aplha_3 != null)
+                {
+                    cb_state.Items.Add(item.aplha_3);
+                }
             }
 
 
@@ -152,13 +175,13 @@ namespace CRM
         private void RefreshGridTasks()
         {  //where id_customers=@0
            //new[] { id_customer.ToString() }
-            string query = "Select dbo.Tasks  order by title ";
-            Database db = new Database();
+            //string query = "Select dbo.Tasks  order by title ";
+            //Database db = new Database();
 
-            DataSet ds = db.invoke_member(query, null, "tasks");
-            dataGridView_tasks.Columns.Add("title", "Title");
-            dataGridView_tasks.DataSource = ds;
-            dataGridView_tasks.DataMember = "tasks";
+            //DataSet ds = db.invoke_member(query, null, "tasks");
+            //dataGridView_tasks.Columns.Add("title", "Title");
+            //dataGridView_tasks.DataSource = ds;
+            //dataGridView_tasks.DataMember = "tasks";
 
 
 

@@ -18,8 +18,6 @@ namespace CRM
         public FrmCustomers()
         {
             InitializeComponent();
-          //  lv_customers.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-         
         }
 
       
@@ -32,33 +30,33 @@ namespace CRM
         private void tsb_add_Click(object sender, EventArgs e)
         {
             FrmCustomerAddModify form = new FrmCustomerAddModify();
+            form.id_customer = -1;
             form.ShowDialog(this);
             if (form.DialogResult == DialogResult.OK) {
-             
+                LoadCustomers();
             }
         }
 
         private void tsb_edit_Click(object sender, EventArgs e)
         {
             FrmCustomerAddModify form = new FrmCustomerAddModify();
-           
-       
-            foreach (DataGridViewRow row in dg_customers.SelectedRows)
-            {
-                id = int.Parse(row.Cells[0].Value.ToString());
-                form.setid(id);  
-            }
 
-
-            form.ShowDialog(this);
-            if (form.DialogResult == DialogResult.OK)
+            ListViewItem lvi = lv_customers.SelectedItems[0];
+            if (lvi != null)
             {
-            
+                form.setid(Convert.ToInt32(lvi.Tag.ToString()));
+                form.ShowDialog(this);
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    RefreshSelectedRow();
+                }
             }
         }
 
         private void LoadCustomers()
         {
+            lv_customers.BeginUpdate();
+            lv_customers.Items.Clear();
             DataClassesCRMDataContext db = new DataClassesCRMDataContext();
             var data = from p in db.customers
 
@@ -81,6 +79,7 @@ namespace CRM
 
 
             }
+            lv_customers.EndUpdate();
 
         }
 
@@ -133,6 +132,30 @@ namespace CRM
            // string text = lv_customers.Columns[e.ItemIndex].Text;
            // e.Graphics.DrawString(text, lv_customers.Font,
             //          Brushes.Aquamarine, e.Bounds);
+        }
+
+        private void lv_customers_DoubleClick(object sender, EventArgs e)
+        {
+            tsb_edit_Click(sender, e);
+        }
+
+
+        private void RefreshSelectedRow() {
+            ListViewItem lvi = lv_customers.SelectedItems[0];
+            if (lvi != null) {
+                DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+                var cust = dc.customers.FirstOrDefault(d => d.id_customers == Convert.ToInt32(lvi.Tag.ToString()));
+                if (cust != null) {
+                    lvi.Text = cust.first_name;
+                    lvi.SubItems[1].Text= cust.last_name;
+                    lvi.SubItems[2].Text=cust.nationality;
+                    lvi.SubItems[3].Text=cust.state;
+                    lvi.SubItems[4].Text= cust.city;
+                    lvi.SubItems[5].Text=cust.street;
+                    lvi.SubItems[6].Text= cust.No;
+                    lvi.SubItems[7].Text=cust.dob.ToString();
+                }
+            }
         }
     }
 }

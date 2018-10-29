@@ -149,6 +149,7 @@
             this.lv_customers.View = System.Windows.Forms.View.Details;
             this.lv_customers.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.lv_customers_DrawColumnHeader);
             this.lv_customers.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lv_customers_DrawItem);
+            this.lv_customers.DoubleClick += new System.EventHandler(this.lv_customers_DoubleClick);
             // 
             // column_first_name
             // 
