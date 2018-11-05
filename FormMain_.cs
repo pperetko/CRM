@@ -35,7 +35,7 @@ namespace CRM
                 node.Tag = item.id_menu.ToString();
 
                 var Subdata = from a in db.menus
-                              where a.parent_id == item.id_menu.ToString() 
+                              where a.parent_id == item.id_menu.ToString() && a.parent_id != "-1"
                               select a;
                 foreach (var subitem in Subdata)
                 {
@@ -167,9 +167,9 @@ namespace CRM
             return null;
         }
 
+        private void tr_menu_AfterSelect(object sender, TreeViewEventArgs e)
+        {
 
-
-
-        
+        }
     }
 }

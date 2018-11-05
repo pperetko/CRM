@@ -61,6 +61,7 @@
             this.tr_menu.Name = "tr_menu";
             this.tr_menu.ShowLines = false;
             this.tr_menu.ShowRootLines = false;
+            this.tr_menu.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tr_menu_AfterSelect);
             this.tr_menu.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tr_menu_NodeMouseClick_1);
             // 
             // pc_main

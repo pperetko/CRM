@@ -990,6 +990,18 @@ namespace CRM
 		
 		private System.Nullable<System.DateTime> _dob;
 		
+		private string _email;
+		
+		private string _phone;
+		
+		private string _phone2;
+		
+		private string _status;
+		
+		private string _job;
+		
+		private string _descryption;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1012,6 +1024,18 @@ namespace CRM
     partial void OnNoChanged();
     partial void OndobChanging(System.Nullable<System.DateTime> value);
     partial void OndobChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void OnphoneChanging(string value);
+    partial void OnphoneChanged();
+    partial void Onphone2Changing(string value);
+    partial void Onphone2Changed();
+    partial void OnstatusChanging(string value);
+    partial void OnstatusChanged();
+    partial void OnjobChanging(string value);
+    partial void OnjobChanged();
+    partial void OndescryptionChanging(string value);
+    partial void OndescryptionChanged();
     #endregion
 		
 		public customer()
@@ -1195,6 +1219,126 @@ namespace CRM
 					this._dob = value;
 					this.SendPropertyChanged("dob");
 					this.OndobChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(50)")]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phone", DbType="VarChar(20)")]
+		public string phone
+		{
+			get
+			{
+				return this._phone;
+			}
+			set
+			{
+				if ((this._phone != value))
+				{
+					this.OnphoneChanging(value);
+					this.SendPropertyChanging();
+					this._phone = value;
+					this.SendPropertyChanged("phone");
+					this.OnphoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phone2", DbType="VarChar(20)")]
+		public string phone2
+		{
+			get
+			{
+				return this._phone2;
+			}
+			set
+			{
+				if ((this._phone2 != value))
+				{
+					this.Onphone2Changing(value);
+					this.SendPropertyChanging();
+					this._phone2 = value;
+					this.SendPropertyChanged("phone2");
+					this.Onphone2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="VarChar(2)")]
+		public string status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_job", DbType="VarChar(100)")]
+		public string job
+		{
+			get
+			{
+				return this._job;
+			}
+			set
+			{
+				if ((this._job != value))
+				{
+					this.OnjobChanging(value);
+					this.SendPropertyChanging();
+					this._job = value;
+					this.SendPropertyChanged("job");
+					this.OnjobChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descryption", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string descryption
+		{
+			get
+			{
+				return this._descryption;
+			}
+			set
+			{
+				if ((this._descryption != value))
+				{
+					this.OndescryptionChanging(value);
+					this.SendPropertyChanging();
+					this._descryption = value;
+					this.SendPropertyChanged("descryption");
+					this.OndescryptionChanged();
 				}
 			}
 		}

@@ -33,27 +33,48 @@ namespace CRM
             InitializeComponent();
         }
 
-        private void btn_ok_Click(object sender, EventArgs e)
-        {
-            string pass= "qulaola";
+
+        private void loginToApp() {
+           string pass = "qulaola";
 
             DataClassesCRMDataContext db = new DataClassesCRMDataContext();
             var data = from p in db.logins
-                       where p.login1 == tb_login.Text.ToString() && 
-                             p.pass == Encrypting.EncryptString(tb_password.Text.ToString(),pass) &&
-                             p.bloced==false
+                       where p.login1 == tb_login.Text.ToString() &&
+                             p.pass == Encrypting.EncryptString(tb_password.Text.ToString(), pass) &&
+                             p.bloced == false
                        select p;
 
 
             if (data.Count() > 0)
             {
                 log_to_app = true;
-            } 
+            }
+            Close();
+
+        }
+
+
+        private void btn_ok_Click(object sender, EventArgs e)
+        {
+            loginToApp();
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+          
+        }
+
+        private void tb_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginToApp();
+            }
         }
     }
 

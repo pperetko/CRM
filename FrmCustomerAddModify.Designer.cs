@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerAddModify));
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -67,8 +66,13 @@
             this.btn_Edit_Task = new System.Windows.Forms.Button();
             this.btn_Add_Task = new System.Windows.Forms.Button();
             this.dg_tasks = new System.Windows.Forms.DataGridView();
-            
-            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pb_avatar = new System.Windows.Forms.PictureBox();
+            this.ll_avatar1 = new System.Windows.Forms.LinkLabel();
+            this.ll_avatar2 = new System.Windows.Forms.LinkLabel();
+            this.ll_avatar3 = new System.Windows.Forms.LinkLabel();
+            this.gb_operational_data = new System.Windows.Forms.GroupBox();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.cb_status = new System.Windows.Forms.ComboBox();
             this.filterPanel1 = new CRM.FilterPanel();
             this.panel1.SuspendLayout();
             this.tb_main.SuspendLayout();
@@ -79,8 +83,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_tasks)).BeginInit();
             this.pl_task_button.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_tasks)).BeginInit();
-            
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).BeginInit();
+            this.gb_operational_data.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_ok
@@ -114,6 +118,11 @@
             // 
             // tp_main
             // 
+            this.tp_main.Controls.Add(this.gb_operational_data);
+            this.tp_main.Controls.Add(this.ll_avatar3);
+            this.tp_main.Controls.Add(this.ll_avatar2);
+            this.tp_main.Controls.Add(this.ll_avatar1);
+            this.tp_main.Controls.Add(this.pb_avatar);
             this.tp_main.Controls.Add(this.gb_ContactData);
             this.tp_main.Controls.Add(this.dt_dob);
             this.tp_main.Controls.Add(this.lb_dob);
@@ -125,6 +134,7 @@
             resources.ApplyResources(this.tp_main, "tp_main");
             this.tp_main.Name = "tp_main";
             this.tp_main.UseVisualStyleBackColor = true;
+            this.tp_main.Click += new System.EventHandler(this.tp_main_Click);
             // 
             // gb_ContactData
             // 
@@ -327,8 +337,51 @@
             this.dg_tasks.Name = "dg_tasks";
             this.dg_tasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
-       
-            
+            // pb_avatar
+            // 
+            this.pb_avatar.BackColor = System.Drawing.Color.LightSkyBlue;
+            resources.ApplyResources(this.pb_avatar, "pb_avatar");
+            this.pb_avatar.Name = "pb_avatar";
+            this.pb_avatar.TabStop = false;
+            // 
+            // ll_avatar1
+            // 
+            resources.ApplyResources(this.ll_avatar1, "ll_avatar1");
+            this.ll_avatar1.Name = "ll_avatar1";
+            this.ll_avatar1.TabStop = true;
+            this.ll_avatar1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_avatar1_LinkClicked);
+            // 
+            // ll_avatar2
+            // 
+            resources.ApplyResources(this.ll_avatar2, "ll_avatar2");
+            this.ll_avatar2.Name = "ll_avatar2";
+            this.ll_avatar2.TabStop = true;
+            // 
+            // ll_avatar3
+            // 
+            resources.ApplyResources(this.ll_avatar3, "ll_avatar3");
+            this.ll_avatar3.Name = "ll_avatar3";
+            this.ll_avatar3.TabStop = true;
+            // 
+            // gb_operational_data
+            // 
+            this.gb_operational_data.Controls.Add(this.cb_status);
+            this.gb_operational_data.Controls.Add(this.lbl_status);
+            resources.ApplyResources(this.gb_operational_data, "gb_operational_data");
+            this.gb_operational_data.Name = "gb_operational_data";
+            this.gb_operational_data.TabStop = false;
+            // 
+            // lbl_status
+            // 
+            resources.ApplyResources(this.lbl_status, "lbl_status");
+            this.lbl_status.Name = "lbl_status";
+            // 
+            // cb_status
+            // 
+            this.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_status.FormattingEnabled = true;
+            resources.ApplyResources(this.cb_status, "cb_status");
+            this.cb_status.Name = "cb_status";
             // 
             // filterPanel1
             // 
@@ -356,8 +409,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_tasks)).EndInit();
             this.pl_task_button.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dg_tasks)).EndInit();
-            
-            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_avatar)).EndInit();
+            this.gb_operational_data.ResumeLayout(false);
+            this.gb_operational_data.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -402,8 +456,12 @@
         private System.Windows.Forms.DataGridView dg_tasks;
         private System.Windows.Forms.Button btn_Edit_Task;
         private System.Windows.Forms.DataGridView dataGridView_tasks;
-      
-        private System.Windows.Forms.BindingSource customersBindingSource;
-      
+        private System.Windows.Forms.LinkLabel ll_avatar2;
+        private System.Windows.Forms.LinkLabel ll_avatar1;
+        private System.Windows.Forms.PictureBox pb_avatar;
+        private System.Windows.Forms.GroupBox gb_operational_data;
+        private System.Windows.Forms.ComboBox cb_status;
+        private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.LinkLabel ll_avatar3;
     }
 }

@@ -54,8 +54,9 @@
             // 
             this.pl_filter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pl_filter.Location = new System.Drawing.Point(0, 0);
+            this.pl_filter.Margin = new System.Windows.Forms.Padding(5);
             this.pl_filter.Name = "pl_filter";
-            this.pl_filter.Padding = new System.Windows.Forms.Padding(3);
+            this.pl_filter.Padding = new System.Windows.Forms.Padding(5);
             this.pl_filter.Size = new System.Drawing.Size(782, 49);
             this.pl_filter.TabIndex = 0;
             // 
@@ -141,6 +142,7 @@
             this.lv_customers.GridLines = true;
             this.lv_customers.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lv_customers.Location = new System.Drawing.Point(0, 92);
+            this.lv_customers.Margin = new System.Windows.Forms.Padding(5);
             this.lv_customers.Name = "lv_customers";
             this.lv_customers.ShowGroups = false;
             this.lv_customers.Size = new System.Drawing.Size(782, 404);
@@ -199,6 +201,7 @@
             this.Controls.Add(this.pl_button);
             this.Controls.Add(this.pl_filter);
             this.Name = "FrmCustomers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCustomers";
             this.Load += new System.EventHandler(this.FrmCustomers_Load);
             this.pl_button.ResumeLayout(false);
@@ -211,8 +214,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pl_filter;
         private System.Windows.Forms.Panel pl_button;
         private System.Windows.Forms.DataGridView dg_customers;
        
@@ -239,5 +240,6 @@
         private System.Windows.Forms.ColumnHeader column_no;
         private System.Windows.Forms.ColumnHeader column_dob;
         public System.Windows.Forms.ColumnHeader column_first_name;
+        protected internal System.Windows.Forms.Panel pl_filter;
     }
 }

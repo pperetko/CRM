@@ -41,6 +41,9 @@ namespace CRM
                   cust.street = tb_street.Text;
                   cust.No = tb_no.Text;
                   cust.dob = dt_dob.Value;
+                  cust.phone = tb_phone1.Text;
+                  cust.phone2 = tb_phone2.Text;
+                  cust.email = tb_email.Text;
                   dc.customers.InsertOnSubmit(cust);
                   dc.SubmitChanges(); 
                
@@ -60,7 +63,9 @@ namespace CRM
                     cust.street = tb_street.Text;
                     cust.No = tb_no.Text;
                     cust.dob = dt_dob.Value;
-
+                    cust.phone = tb_phone1.Text;
+                    cust.phone2 = tb_phone2.Text;
+                    cust.email = tb_email.Text;
                 }
                     dc.SubmitChanges();              
 
@@ -96,6 +101,10 @@ namespace CRM
                 tb_street.Text = CRMHelper.NullToString(cust.street);
                 tb_no.Text = CRMHelper.NullToString(cust.No);
                 dt_dob.Value = cust.dob.Value;
+                tb_phone1.Text = CRMHelper.NullToString(cust.phone);
+                tb_phone2.Text = CRMHelper.NullToString(cust.phone2);
+                tb_email.Text = CRMHelper.NullToString(cust.email);
+
 
 
             }
@@ -173,42 +182,59 @@ namespace CRM
 
 
         private void RefreshGridTasks()
-        {  //where id_customers=@0
-           //new[] { id_customer.ToString() }
-            //string query = "Select dbo.Tasks  order by title ";
-            //Database db = new Database();
-
-            //DataSet ds = db.invoke_member(query, null, "tasks");
-            //dataGridView_tasks.Columns.Add("title", "Title");
-            //dataGridView_tasks.DataSource = ds;
-            //dataGridView_tasks.DataMember = "tasks";
-
+        {  
 
 
         }
 
         private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.customersBindingSource.EndEdit();
-        
+            
 
         }
 
         private void FrmCustomerAddModify_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'cRMDS_customers.customers' . Możesz go przenieść lub usunąć.
-           // this.customersTableAdapter.Fill(this.cRMDS_customers.customers);
           
 
         }
 
         private void customersBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
         {
-            //this.Validate();
-            //this.customersBindingSource.EndEdit();
-           // this.tableAdapterManager.UpdateAll(this.cRMDS_customers);
+         
 
+        }
+
+        private void tp_main_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ll_avatar1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog openFileDialog_Awatar1 = new OpenFileDialog
+            {
+                InitialDirectory = @"C:\",
+                Title = "Browse IMG Files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "Jpg files (*.jpg)|*.jpg",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog_Awatar1.ShowDialog() == DialogResult.OK)
+            {
+                pb_avatar.ImageLocation = openFileDialog_Awatar1.FileName;
+                //Dokończyć. Jeżeli folder jest ustawiony to skopiować awatar do folderu
+
+            }
         }
     }
 }

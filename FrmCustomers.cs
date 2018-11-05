@@ -75,10 +75,7 @@ namespace CRM
                 lvi.SubItems.Add(item.dob.ToString());
                 lvi.Tag = item.id_customers;
                 lv_customers.Items.Add(lvi);
-
-
-
-            }
+             }
             lv_customers.EndUpdate();
 
         }
