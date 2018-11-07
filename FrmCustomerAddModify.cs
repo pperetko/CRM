@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace CRM
@@ -45,8 +46,8 @@ namespace CRM
                   cust.phone2 = tb_phone2.Text;
                   cust.email = tb_email.Text;
                   dc.customers.InsertOnSubmit(cust);
-                  dc.SubmitChanges(); 
-               
+                  dc.SubmitChanges();
+                  id_customer = cust.id_customers;
                 }
                 else
                 {
@@ -70,8 +71,9 @@ namespace CRM
                     dc.SubmitChanges();              
 
                 }
+            SaveAvatars(id_customer);
 
-            
+
 
         }
 
@@ -90,11 +92,11 @@ namespace CRM
                 DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
                 var cust = dc.customers.FirstOrDefault(d => d.id_customers == id_customer);
 
-              
+
 
                 tb_surname.Text = CRMHelper.NullToString(cust.first_name);
-                tb_name.Text= CRMHelper.NullToString(cust.last_name);
-                cb_nationality.Text= CRMHelper.NullToString(cust.nationality);
+                tb_name.Text = CRMHelper.NullToString(cust.last_name);
+                cb_nationality.Text = CRMHelper.NullToString(cust.nationality);
 
                 cb_state.Text = CRMHelper.NullToString(cust.state);
                 tb_city.Text = CRMHelper.NullToString(cust.city);
@@ -105,8 +107,19 @@ namespace CRM
                 tb_phone2.Text = CRMHelper.NullToString(cust.phone2);
                 tb_email.Text = CRMHelper.NullToString(cust.email);
 
-
-
+                if (File.Exists(@"g:\firma\projekty\img\Avatar1_" + id_customer.ToString() + ".jpg"))
+                {
+                    imglist.Images.Add("Avatar1", Image.FromFile(@"g:\firma\projekty\img\" + "Avatar1_" + id_customer.ToString() + ".jpg"));
+                    pb_avatar.Image = imglist.Images["Avatar1"];
+                }
+                if (File.Exists(@"g:\firma\projekty\img\Avatar2_" + id_customer.ToString() + ".jpg"))
+                {
+                    imglist.Images.Add("Avatar2", Image.FromFile(@"g:\firma\projekty\img\" + "Avatar2_" + id_customer.ToString() + ".jpg"));
+                }
+                if (File.Exists(@"g:\firma\projekty\img\Avatar3_" + id_customer.ToString() + ".jpg"))
+                {
+                    imglist.Images.Add("Avatar3", Image.FromFile(@"g:\firma\projekty\img\" + "Avatar3_" + id_customer.ToString() + ".jpg"));
+                }
             }
         }
 
@@ -187,30 +200,18 @@ namespace CRM
 
         }
 
-        private void customersBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            
 
+
+          private void ll_avatar1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (imglist.Images["Avatar1"] != null)
+            {
+                pb_avatar.Image = imglist.Images["Avatar1"];
+            }
+           
         }
 
-        private void FrmCustomerAddModify_Load(object sender, EventArgs e)
-        {
-          
-
-        }
-
-        private void customersBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-         
-
-        }
-
-        private void tp_main_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ll_avatar1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Lb_avatar1_plus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OpenFileDialog openFileDialog_Awatar1 = new OpenFileDialog
             {
@@ -231,9 +232,122 @@ namespace CRM
 
             if (openFileDialog_Awatar1.ShowDialog() == DialogResult.OK)
             {
-                pb_avatar.ImageLocation = openFileDialog_Awatar1.FileName;
-                //Dokończyć. Jeżeli folder jest ustawiony to skopiować awatar do folderu
+                //DateTime start;
+                //start = DateTime.Now;
 
+
+                imglist.Images.RemoveByKey("Avatar1");
+                imglist.Images.Add("Avatar1", Image.FromFile(openFileDialog_Awatar1.FileName));
+                pb_avatar.Image = imglist.Images["Avatar1"];
+                //  File.Copy(openFileDialog_Awatar1.FileName, @"g:\firma\projekty\img\"+ );
+
+            }
+
+        }
+
+        private void Lb_avatar2_plus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog openFileDialog_Awatar2 = new OpenFileDialog
+            {
+                InitialDirectory = @"C:\",
+                Title = "Browse IMG Files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "Jpg files (*.jpg)|*.jpg",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog_Awatar2.ShowDialog() == DialogResult.OK)
+            {
+
+
+                imglist.Images.RemoveByKey("Avatar2");
+                imglist.Images.Add("Avatar2", Image.FromFile(openFileDialog_Awatar2.FileName));
+                pb_avatar.Image = imglist.Images["Avatar2"];
+                //  File.Copy(openFileDialog_Awatar1.FileName, @"g:\firma\projekty\img\"+ ); 
+            }
+
+        }
+
+        private void ll_avatar2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (imglist.Images["Avatar2"] != null)
+            {
+                pb_avatar.Image = imglist.Images["Avatar2"];
+            }
+        }
+
+        private void Lb_avatar3_plus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog openFileDialog_Awatar3 = new OpenFileDialog
+            {
+                InitialDirectory = @"C:\",
+                Title = "Browse IMG Files",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "Jpg files (*.jpg)|*.jpg",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog_Awatar3.ShowDialog() == DialogResult.OK)
+            {
+
+
+                imglist.Images.RemoveByKey("Avatar3");
+                imglist.Images.Add("Avatar3", Image.FromFile(openFileDialog_Awatar3.FileName));
+                pb_avatar.Image = imglist.Images["Avatar3"];
+               
+            }
+        }
+
+        private void ll_avatar3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (imglist.Images["Avatar3"] != null)
+            {
+                pb_avatar.Image = imglist.Images["Avatar3"];
+            }
+
+        }
+
+
+        private void SaveAvatars(int id) {
+            if (File.Exists(@"g:\firma\projekty\img\Avatar1_" + id.ToString()+".jpg" )) {
+
+                File.Delete(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg",true);
+            }
+            if (File.Exists(@"g:\firma\projekty\img\Avatar2_" + id.ToString() + ".jpg"))
+            {
+                File.Delete(@"g:\firma\projekty\img\Avatar2_" + id.ToString() + ".jpg");
+            }
+            if (File.Exists(@"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg"))
+            {
+                File.Delete(@"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg");
+            }
+            if (imglist.Images["Avatar1"] != null)
+            {
+                imglist.Images["Avatar1"].Save(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg");
+            }
+            if (imglist.Images["Avatar2"] != null)
+            {
+                imglist.Images["Avatar2"].Save(@"g:\firma\projekty\img\" + "Avatar2_" + id.ToString() + ".jpg");
+            }
+            if (imglist.Images["Avatar3"] != null)
+            {
+                imglist.Images["Avatar3"].Save(@"g:\firma\projekty\img\" + "Avatar3_" + id.ToString() + ".jpg");
             }
         }
     }

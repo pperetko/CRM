@@ -204,6 +204,96 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="Lb_avatar3_plus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lb_avatar3_plus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lb_avatar3_plus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>289, 299</value>
+  </data>
+  <data name="Lb_avatar3_plus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 17</value>
+  </data>
+  <data name="Lb_avatar3_plus.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="Lb_avatar3_plus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar3_plus.Name" xml:space="preserve">
+    <value>Lb_avatar3_plus</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar3_plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar3_plus.Parent" xml:space="preserve">
+    <value>tp_main</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar3_plus.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Lb_avatar2_plus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lb_avatar2_plus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lb_avatar2_plus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 299</value>
+  </data>
+  <data name="Lb_avatar2_plus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 17</value>
+  </data>
+  <data name="Lb_avatar2_plus.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="Lb_avatar2_plus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar2_plus.Name" xml:space="preserve">
+    <value>Lb_avatar2_plus</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar2_plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar2_plus.Parent" xml:space="preserve">
+    <value>tp_main</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar2_plus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Lb_avatar1_plus.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Lb_avatar1_plus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Lb_avatar1_plus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 299</value>
+  </data>
+  <data name="Lb_avatar1_plus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 17</value>
+  </data>
+  <data name="Lb_avatar1_plus.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="Lb_avatar1_plus.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar1_plus.Name" xml:space="preserve">
+    <value>Lb_avatar1_plus</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar1_plus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar1_plus.Parent" xml:space="preserve">
+    <value>tp_main</value>
+  </data>
+  <data name="&gt;&gt;Lb_avatar1_plus.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;cb_status.Name" xml:space="preserve">
     <value>cb_status</value>
   </data>
@@ -250,7 +340,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;gb_operational_data.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="ll_avatar3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -259,7 +349,7 @@
     <value>NoControl</value>
   </data>
   <data name="ll_avatar3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 422</value>
+    <value>232, 299</value>
   </data>
   <data name="ll_avatar3.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
@@ -280,7 +370,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;ll_avatar3.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="ll_avatar2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -289,7 +379,7 @@
     <value>NoControl</value>
   </data>
   <data name="ll_avatar2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 422</value>
+    <value>152, 299</value>
   </data>
   <data name="ll_avatar2.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
@@ -310,7 +400,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;ll_avatar2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="ll_avatar1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,7 +409,7 @@
     <value>NoControl</value>
   </data>
   <data name="ll_avatar1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 422</value>
+    <value>73, 299</value>
   </data>
   <data name="ll_avatar1.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
@@ -340,16 +430,19 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;ll_avatar1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="pb_avatar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="pb_avatar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 133</value>
+    <value>76, 137</value>
+  </data>
+  <data name="pb_avatar.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>150, 150</value>
   </data>
   <data name="pb_avatar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 277</value>
+    <value>150, 150</value>
   </data>
   <data name="pb_avatar.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -367,7 +460,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;pb_avatar.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;tb_email.Name" xml:space="preserve">
     <value>tb_email</value>
@@ -463,7 +556,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;gb_ContactData.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="dt_dob.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 103</value>
@@ -484,7 +577,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;dt_dob.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="lb_dob.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -517,7 +610,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;lb_dob.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;cb_nationality.Name" xml:space="preserve">
     <value>cb_nationality</value>
@@ -685,7 +778,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;gb_address.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="tb_surname.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 65</value>
@@ -706,7 +799,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;tb_surname.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="lb_surname.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -739,7 +832,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;lb_surname.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="tb_name.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 26</value>
@@ -760,7 +853,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;tb_name.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="lb_name.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -793,7 +886,7 @@
     <value>tp_main</value>
   </data>
   <data name="&gt;&gt;lb_name.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="tp_main.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -932,6 +1025,57 @@
   </data>
   <data name="&gt;&gt;tb_main.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cb_status.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 28</value>
+  </data>
+  <data name="cb_status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 25</value>
+  </data>
+  <data name="cb_status.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cb_status.Name" xml:space="preserve">
+    <value>cb_status</value>
+  </data>
+  <data name="&gt;&gt;cb_status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cb_status.Parent" xml:space="preserve">
+    <value>gb_operational_data</value>
+  </data>
+  <data name="&gt;&gt;cb_status.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lbl_status.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_status.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbl_status.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 31</value>
+  </data>
+  <data name="lbl_status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="lbl_status.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lbl_status.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="&gt;&gt;lbl_status.Name" xml:space="preserve">
+    <value>lbl_status</value>
+  </data>
+  <data name="&gt;&gt;lbl_status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_status.Parent" xml:space="preserve">
+    <value>gb_operational_data</value>
+  </data>
+  <data name="&gt;&gt;lbl_status.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="tb_email.Location" type="System.Drawing.Point, System.Drawing">
     <value>64, 91</value>
@@ -1575,56 +1719,11 @@
   <data name="&gt;&gt;dg_tasks.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lbl_status.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lbl_status.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lbl_status.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 31</value>
-  </data>
-  <data name="lbl_status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
-  </data>
-  <data name="lbl_status.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="lbl_status.Text" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="&gt;&gt;lbl_status.Name" xml:space="preserve">
-    <value>lbl_status</value>
-  </data>
-  <data name="&gt;&gt;lbl_status.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_status.Parent" xml:space="preserve">
-    <value>gb_operational_data</value>
-  </data>
-  <data name="&gt;&gt;lbl_status.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cb_status.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 28</value>
-  </data>
-  <data name="cb_status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 25</value>
-  </data>
-  <data name="cb_status.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;cb_status.Name" xml:space="preserve">
-    <value>cb_status</value>
-  </data>
-  <data name="&gt;&gt;cb_status.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cb_status.Parent" xml:space="preserve">
-    <value>gb_operational_data</value>
-  </data>
-  <data name="&gt;&gt;cb_status.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <metadata name="imglist.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="imglist.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>150, 150</value>
   </data>
   <data name="filterPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1673,6 +1772,12 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Customer</value>
+  </data>
+  <data name="&gt;&gt;imglist.Name" xml:space="preserve">
+    <value>imglist</value>
+  </data>
+  <data name="&gt;&gt;imglist.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmCustomerAddModify</value>
