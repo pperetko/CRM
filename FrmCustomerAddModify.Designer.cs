@@ -35,6 +35,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tb_main = new System.Windows.Forms.TabControl();
             this.tp_main = new System.Windows.Forms.TabPage();
+            this.Lb_avatar3_plus = new System.Windows.Forms.LinkLabel();
+            this.Lb_avatar2_plus = new System.Windows.Forms.LinkLabel();
+            this.Lb_avatar1_plus = new System.Windows.Forms.LinkLabel();
             this.gb_operational_data = new System.Windows.Forms.GroupBox();
             this.cb_status = new System.Windows.Forms.ComboBox();
             this.lbl_status = new System.Windows.Forms.Label();
@@ -74,11 +77,8 @@
             this.btn_Edit_Task = new System.Windows.Forms.Button();
             this.btn_Add_Task = new System.Windows.Forms.Button();
             this.dg_tasks = new System.Windows.Forms.DataGridView();
-            this.imglist = new System.Windows.Forms.ImageList(this.components);
-            this.Lb_avatar1_plus = new System.Windows.Forms.LinkLabel();
-            this.Lb_avatar2_plus = new System.Windows.Forms.LinkLabel();
             this.filterPanel1 = new CRM.FilterPanel();
-            this.Lb_avatar3_plus = new System.Windows.Forms.LinkLabel();
+            this.imglist = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.tb_main.SuspendLayout();
             this.tp_main.SuspendLayout();
@@ -142,7 +142,31 @@
             resources.ApplyResources(this.tp_main, "tp_main");
             this.tp_main.Name = "tp_main";
             this.tp_main.UseVisualStyleBackColor = true;
-            
+            // 
+            // Lb_avatar3_plus
+            // 
+            resources.ApplyResources(this.Lb_avatar3_plus, "Lb_avatar3_plus");
+            this.Lb_avatar3_plus.LinkColor = System.Drawing.Color.Red;
+            this.Lb_avatar3_plus.Name = "Lb_avatar3_plus";
+            this.Lb_avatar3_plus.TabStop = true;
+            this.Lb_avatar3_plus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lb_avatar3_plus_LinkClicked);
+            // 
+            // Lb_avatar2_plus
+            // 
+            this.Lb_avatar2_plus.ActiveLinkColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.Lb_avatar2_plus, "Lb_avatar2_plus");
+            this.Lb_avatar2_plus.LinkColor = System.Drawing.Color.Red;
+            this.Lb_avatar2_plus.Name = "Lb_avatar2_plus";
+            this.Lb_avatar2_plus.TabStop = true;
+            this.Lb_avatar2_plus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lb_avatar2_plus_LinkClicked);
+            // 
+            // Lb_avatar1_plus
+            // 
+            resources.ApplyResources(this.Lb_avatar1_plus, "Lb_avatar1_plus");
+            this.Lb_avatar1_plus.LinkColor = System.Drawing.Color.Red;
+            this.Lb_avatar1_plus.Name = "Lb_avatar1_plus";
+            this.Lb_avatar1_plus.TabStop = true;
+            this.Lb_avatar1_plus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lb_avatar1_plus_LinkClicked);
             // 
             // gb_operational_data
             // 
@@ -393,41 +417,16 @@
             this.dg_tasks.Name = "dg_tasks";
             this.dg_tasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
-            // imglist
-            // 
-            this.imglist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            resources.ApplyResources(this.imglist, "imglist");
-            this.imglist.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // Lb_avatar1_plus
-            // 
-            resources.ApplyResources(this.Lb_avatar1_plus, "Lb_avatar1_plus");
-            this.Lb_avatar1_plus.LinkColor = System.Drawing.Color.Red;
-            this.Lb_avatar1_plus.Name = "Lb_avatar1_plus";
-            this.Lb_avatar1_plus.TabStop = true;
-            this.Lb_avatar1_plus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lb_avatar1_plus_LinkClicked);
-            // 
-            // Lb_avatar2_plus
-            // 
-            this.Lb_avatar2_plus.ActiveLinkColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.Lb_avatar2_plus, "Lb_avatar2_plus");
-            this.Lb_avatar2_plus.LinkColor = System.Drawing.Color.Red;
-            this.Lb_avatar2_plus.Name = "Lb_avatar2_plus";
-            this.Lb_avatar2_plus.TabStop = true;
-            this.Lb_avatar2_plus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lb_avatar2_plus_LinkClicked);
-            // 
             // filterPanel1
             // 
             resources.ApplyResources(this.filterPanel1, "filterPanel1");
             this.filterPanel1.Name = "filterPanel1";
             // 
-            // Lb_avatar3_plus
+            // imglist
             // 
-            resources.ApplyResources(this.Lb_avatar3_plus, "Lb_avatar3_plus");
-            this.Lb_avatar3_plus.LinkColor = System.Drawing.Color.Red;
-            this.Lb_avatar3_plus.Name = "Lb_avatar3_plus";
-            this.Lb_avatar3_plus.TabStop = true;
-            this.Lb_avatar3_plus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lb_avatar3_plus_LinkClicked);
+            this.imglist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            resources.ApplyResources(this.imglist, "imglist");
+            this.imglist.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // FrmCustomerAddModify
             // 
@@ -437,7 +436,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FrmCustomerAddModify";
             this.Activated += new System.EventHandler(this.FrmCustomerAddModify_Activated);
-            
+            this.Shown += new System.EventHandler(this.FrmCustomerAddModify_Shown);
             this.panel1.ResumeLayout(false);
             this.tb_main.ResumeLayout(false);
             this.tp_main.ResumeLayout(false);

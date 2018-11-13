@@ -20,7 +20,9 @@ namespace CRM
          
             id_task = -1;
             pl_task_button.Visible = false;
-         
+            
+
+
         }
 
         public int id_customer;
@@ -107,27 +109,33 @@ namespace CRM
                 tb_phone2.Text = CRMHelper.NullToString(cust.phone2);
                 tb_email.Text = CRMHelper.NullToString(cust.email);
 
+                imglist.Images.Clear();
+
                 if (File.Exists(@"g:\firma\projekty\img\Avatar1_" + id_customer.ToString() + ".jpg"))
                 {
-                    imglist.Images.Add("Avatar1", Image.FromFile(@"g:\firma\projekty\img\" + "Avatar1_" + id_customer.ToString() + ".jpg"));
+                    var image = Image.FromFile(@"g:\firma\projekty\img\" + "Avatar1_" + id_customer.ToString() + ".jpg");
+                    imglist.Images.Add("Avatar1", image);
                     pb_avatar.Image = imglist.Images["Avatar1"];
+                    image.Dispose();
                 }
                 if (File.Exists(@"g:\firma\projekty\img\Avatar2_" + id_customer.ToString() + ".jpg"))
                 {
-                    imglist.Images.Add("Avatar2", Image.FromFile(@"g:\firma\projekty\img\" + "Avatar2_" + id_customer.ToString() + ".jpg"));
+                    var image = Image.FromFile(@"g:\firma\projekty\img\" + "Avatar2_" + id_customer.ToString() + ".jpg");
+                    imglist.Images.Add("Avatar2", image);
+                    image.Dispose();
                 }
                 if (File.Exists(@"g:\firma\projekty\img\Avatar3_" + id_customer.ToString() + ".jpg"))
                 {
-                    imglist.Images.Add("Avatar3", Image.FromFile(@"g:\firma\projekty\img\" + "Avatar3_" + id_customer.ToString() + ".jpg"));
+                    var image = Image.FromFile(@"g:\firma\projekty\img\" + "Avatar3_" + id_customer.ToString() + ".jpg");
+                    imglist.Images.Add("Avatar3", image);
+                    image.Dispose();
                 }
             }
         }
 
         private void FrmCustomerAddModify_Activated(object sender, EventArgs e)
         {
-            setStateCombo();
-            setNationalityCombo();
-            setEditingData();
+           
         }
 
 
@@ -237,10 +245,12 @@ namespace CRM
 
 
                 imglist.Images.RemoveByKey("Avatar1");
+                
                 imglist.Images.Add("Avatar1", Image.FromFile(openFileDialog_Awatar1.FileName));
+                pb_avatar.Image = null;
                 pb_avatar.Image = imglist.Images["Avatar1"];
                 //  File.Copy(openFileDialog_Awatar1.FileName, @"g:\firma\projekty\img\"+ );
-
+                openFileDialog_Awatar1.Dispose();
             }
 
         }
@@ -324,10 +334,28 @@ namespace CRM
         }
 
 
-        private void SaveAvatars(int id) {
-            if (File.Exists(@"g:\firma\projekty\img\Avatar1_" + id.ToString()+".jpg" )) {
+        private void SaveAvatars(int id)
+        {
 
-                File.Delete(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg",true);
+
+            if (imglist.Images["Avatar1"] != null)
+            {
+                imglist.Images["Avatar1"].Save(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg");
+            }
+            if (imglist.Images["Avatar2"] != null)
+            {
+                imglist.Images["Avatar2"].Save(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg");
+            }
+            if (imglist.Images["Avatar3"] != null)
+            {
+                imglist.Images["Avatar3"].Save(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg");
+            }
+            pb_avatar.Image = null;
+            imglist.Images.Clear();
+            
+            if (File.Exists(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg"))
+            {
+                File.Delete(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg");
             }
             if (File.Exists(@"g:\firma\projekty\img\Avatar2_" + id.ToString() + ".jpg"))
             {
@@ -337,18 +365,29 @@ namespace CRM
             {
                 File.Delete(@"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg");
             }
-            if (imglist.Images["Avatar1"] != null)
+            if (File.Exists(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg"))
             {
-                imglist.Images["Avatar1"].Save(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg");
+                File.Move(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg", @"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg");
+                File.Delete(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg");
             }
-            if (imglist.Images["Avatar2"] != null)
+            if (File.Exists(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg"))
             {
-                imglist.Images["Avatar2"].Save(@"g:\firma\projekty\img\" + "Avatar2_" + id.ToString() + ".jpg");
+                File.Move(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg", @"g:\firma\projekty\img\Avatar2_" + id.ToString() + ".jpg");
+                File.Delete(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg");
             }
-            if (imglist.Images["Avatar3"] != null)
+            if (File.Exists(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg"))
             {
-                imglist.Images["Avatar3"].Save(@"g:\firma\projekty\img\" + "Avatar3_" + id.ToString() + ".jpg");
+                File.Move(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg", @"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg");
+                File.Delete(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg");
             }
+
+        }
+
+        private void FrmCustomerAddModify_Shown(object sender, EventArgs e)
+        {
+            setStateCombo();
+            setNationalityCombo();
+            setEditingData();
         }
     }
 }
