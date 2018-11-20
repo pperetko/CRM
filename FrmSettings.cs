@@ -1,0 +1,95 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CRM
+{
+    public partial class FrmSettings : Form
+    {
+        public FrmSettings()
+        {
+            InitializeComponent();
+            id = -1;
+            FillStatusList();
+        }
+
+        private int id;
+
+        private void btn_add_status_Click(object sender, EventArgs e)
+        {
+            if (btn_add_status.Text == @"Add")
+            {
+                btn_add_status.Text = @"Accept";
+                btn_edit_status.Text = @"Cancel";
+                btn_edit_status.Tag = 1;
+                edt_status.Text = @"";
+                if (edt_status.CanFocus)
+                {
+                    edt_status.Select();
+                }
+            }
+            else
+            {
+                if (btn_edit_status.Tag.ToString() == @"1")
+                { //INSERT
+                    if (check_status() == true)
+                    {
+                        btn_add_status.Text = @"Add";
+                        DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+                        status stat = new status();
+                        stat.name = edt_status.Text;
+                        dc.status.InsertOnSubmit(stat);
+                        dc.SubmitChanges();
+                        id = stat.id_status;
+                    }
+                }
+                if (btn_edit_status.Tag.ToString() == @"2") //Update
+                {
+                    btn_add_status.Text = @"Add";
+
+                }
+            }
+            
+        }
+
+        private bool check_status() {
+            bool res = true;
+            if (edt_status.Text.Length == 0) {
+                res = false;
+                CRMHelper.Information(@"Information",@"Fill name field!");
+                if (edt_status.CanFocus) {
+                    edt_status.Select();
+                }
+            }
+            return res;
+
+        }
+
+        private void btn_edit_status_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void FillStatusList() {
+
+
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+            var data = from p in dc.status
+                       orderby p.name
+                       select p;
+            foreach (var item in data)
+            {
+                cb_status.Items.Add(item.name);
+                
+            }
+
+        }
+    }
+}

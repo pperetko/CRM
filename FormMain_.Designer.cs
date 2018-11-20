@@ -47,16 +47,18 @@
             // 
             // sp_main.Panel1
             // 
+            resources.ApplyResources(this.sp_main.Panel1, "sp_main.Panel1");
             this.sp_main.Panel1.Controls.Add(this.tr_menu);
             // 
             // sp_main.Panel2
             // 
+            resources.ApplyResources(this.sp_main.Panel2, "sp_main.Panel2");
             this.sp_main.Panel2.Controls.Add(this.pc_main);
             // 
             // tr_menu
             // 
-            this.tr_menu.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             resources.ApplyResources(this.tr_menu, "tr_menu");
+            this.tr_menu.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tr_menu.FullRowSelect = true;
             this.tr_menu.Name = "tr_menu";
             this.tr_menu.ShowLines = false;
@@ -82,14 +84,15 @@
             // 
             // FormMain
             // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.sp_main);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.HelpButton = true;
             this.KeyPreview = true;
             this.Name = "FormMain";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.sp_main.Panel1.ResumeLayout(false);
             this.sp_main.Panel2.ResumeLayout(false);

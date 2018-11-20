@@ -435,7 +435,6 @@
             this.Controls.Add(this.tb_main);
             this.Controls.Add(this.panel1);
             this.Name = "FrmCustomerAddModify";
-            this.Activated += new System.EventHandler(this.FrmCustomerAddModify_Activated);
             this.Shown += new System.EventHandler(this.FrmCustomerAddModify_Shown);
             this.panel1.ResumeLayout(false);
             this.tb_main.ResumeLayout(false);

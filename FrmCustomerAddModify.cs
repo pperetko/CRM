@@ -133,11 +133,7 @@ namespace CRM
             }
         }
 
-        private void FrmCustomerAddModify_Activated(object sender, EventArgs e)
-        {
-           
-        }
-
+       
 
 
         private void setStateCombo()
@@ -240,17 +236,11 @@ namespace CRM
 
             if (openFileDialog_Awatar1.ShowDialog() == DialogResult.OK)
             {
-                //DateTime start;
-                //start = DateTime.Now;
-
-
                 imglist.Images.RemoveByKey("Avatar1");
-                
                 imglist.Images.Add("Avatar1", Image.FromFile(openFileDialog_Awatar1.FileName));
                 pb_avatar.Image = null;
                 pb_avatar.Image = imglist.Images["Avatar1"];
-                //  File.Copy(openFileDialog_Awatar1.FileName, @"g:\firma\projekty\img\"+ );
-                openFileDialog_Awatar1.Dispose();
+               
             }
 
         }
@@ -281,7 +271,6 @@ namespace CRM
                 imglist.Images.RemoveByKey("Avatar2");
                 imglist.Images.Add("Avatar2", Image.FromFile(openFileDialog_Awatar2.FileName));
                 pb_avatar.Image = imglist.Images["Avatar2"];
-                //  File.Copy(openFileDialog_Awatar1.FileName, @"g:\firma\projekty\img\"+ ); 
             }
 
         }

@@ -35,7 +35,7 @@ namespace CRM
                 node.Tag = item.id_menu.ToString();
 
                 var Subdata = from a in db.menus
-                              where a.parent_id == item.id_menu.ToString() && a.parent_id != "-1"
+                              where a.parent_id == item.id_menu.ToString() && a.parent_id != "-1" && a.activie==true
                               select a;
                 foreach (var subitem in Subdata)
                 {
@@ -91,6 +91,19 @@ namespace CRM
                         myform.Dock = DockStyle.Fill;
                         myTabPage.Controls.Add(myform);
                         myTabPage.Name = "tb_filters";
+                        myTabPage.Tag = e.Node.Tag.ToString();
+                        pc_main.SelectedTab = myTabPage;
+                        break;
+                    case 12:
+                        myform = new FrmSettings();
+                        myTabPage = new TabPage("Settings");
+                        pc_main.TabPages.Add(myTabPage);
+                        myform.Visible = true;
+                        myform.TopLevel = false;
+                        myform.FormBorderStyle = FormBorderStyle.None;
+                        myform.Dock = DockStyle.Fill;
+                        myTabPage.Controls.Add(myform);
+                        myTabPage.Name = "tb_settings";
                         myTabPage.Tag = e.Node.Tag.ToString();
                         pc_main.SelectedTab = myTabPage;
                         break;

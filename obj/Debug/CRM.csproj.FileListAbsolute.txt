@@ -40,3 +40,7 @@ E:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\pl-PL\CRM.resources.dll
 E:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csprojResolveAssemblyReference.cache
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csprojAssemblyReference.cache
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csproj.CoreCompileInputs.cache
+G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\pl\CRM.resources.dll
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FrmSettings.resources
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FormMain.pl.resources
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\pl\CRM.resources.dll

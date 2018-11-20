@@ -128,6 +128,12 @@
     <Compile Include="FrmCustomers.Designer.cs">
       <DependentUpon>FrmCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +149,9 @@
     <EmbeddedResource Include="FormMain_.aa-DJ.resx">
       <DependentUpon>FormMain_.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMain_.pl.resx">
+      <DependentUpon>FormMain_.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain_.resx">
       <DependentUpon>FormMain_.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomers.resx">
       <DependentUpon>FrmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

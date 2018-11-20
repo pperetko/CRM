@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Windows.Forms;
 
 
 namespace CRM
@@ -19,6 +19,12 @@ namespace CRM
             }
             return Value.ToString();
         }
+
+
+        public static void Information(string header, string body){
+            MessageBox.Show(body,header);
+        } 
+
 
 
     }
