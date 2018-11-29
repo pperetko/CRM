@@ -47,6 +47,12 @@ namespace CRM
                   cust.phone = tb_phone1.Text;
                   cust.phone2 = tb_phone2.Text;
                   cust.email = tb_email.Text;
+                  cust.post_code = tb_code.Text;
+                  cust.descryption = tb_description.Text;
+                if (cb_status.SelectedIndex != -1) {
+                    cust.status =Convert.ToInt32( cb_status.GetID());
+                }
+
                   dc.customers.InsertOnSubmit(cust);
                   dc.SubmitChanges();
                   id_customer = cust.id_customers;
@@ -69,6 +75,12 @@ namespace CRM
                     cust.phone = tb_phone1.Text;
                     cust.phone2 = tb_phone2.Text;
                     cust.email = tb_email.Text;
+                    cust.post_code = tb_code.Text;
+                    cust.descryption = tb_description.Text;
+                    if (cb_status.SelectedIndex != -1)
+                    {
+                        cust.status = Convert.ToInt32(cb_status.GetID());
+                    }
                 }
                     dc.SubmitChanges();              
 
@@ -108,6 +120,13 @@ namespace CRM
                 tb_phone1.Text = CRMHelper.NullToString(cust.phone);
                 tb_phone2.Text = CRMHelper.NullToString(cust.phone2);
                 tb_email.Text = CRMHelper.NullToString(cust.email);
+                tb_code.Text = CRMHelper.NullToString(cust.post_code);
+                tb_description.Text = CRMHelper.NullToString(cust.descryption); 
+                if (cust.status != null) {
+                    cb_status.SetID(Convert.ToInt64(cust.status));
+
+                }
+
 
                 imglist.Images.Clear();
 
@@ -376,8 +395,11 @@ namespace CRM
         {
             setStateCombo();
             setNationalityCombo();
-            setEditingData();
             setStatusCombo();
+
+            //This method have to in end
+            setEditingData();
+            
         }
 
 

@@ -23,6 +23,9 @@ namespace WindowsFormsControlLibraryCRM
         IList<long> idList;
 
 
+        
+
+
 
         public void AddItem(object item,long id) {
             base.Items.Add(item);
@@ -90,6 +93,21 @@ namespace WindowsFormsControlLibraryCRM
             idList.Clear();
 
         }
-       
+
+
+
+
+        public void SetID(long id) {
+            object item;
+            item = GetItemWithId(id);
+            if (item != null) {
+                this.SelectedItem = item;
+
+            }
+
+        }
+
+        
+
     }
 }
