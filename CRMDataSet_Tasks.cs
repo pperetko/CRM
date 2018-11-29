@@ -1,3 +1,7 @@
 ﻿namespace CRM
 {
 }
+
+namespace CRM
+{
+}

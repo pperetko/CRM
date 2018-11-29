@@ -39,7 +39,6 @@
             this.Lb_avatar2_plus = new System.Windows.Forms.LinkLabel();
             this.Lb_avatar1_plus = new System.Windows.Forms.LinkLabel();
             this.gb_operational_data = new System.Windows.Forms.GroupBox();
-            this.cb_status = new System.Windows.Forms.ComboBox();
             this.lbl_status = new System.Windows.Forms.Label();
             this.ll_avatar3 = new System.Windows.Forms.LinkLabel();
             this.ll_avatar2 = new System.Windows.Forms.LinkLabel();
@@ -79,6 +78,7 @@
             this.dg_tasks = new System.Windows.Forms.DataGridView();
             this.filterPanel1 = new CRM.FilterPanel();
             this.imglist = new System.Windows.Forms.ImageList(this.components);
+            this.cb_status = new WindowsFormsControlLibraryCRM.CRMComboBox();
             this.panel1.SuspendLayout();
             this.tb_main.SuspendLayout();
             this.tp_main.SuspendLayout();
@@ -175,13 +175,6 @@
             resources.ApplyResources(this.gb_operational_data, "gb_operational_data");
             this.gb_operational_data.Name = "gb_operational_data";
             this.gb_operational_data.TabStop = false;
-            // 
-            // cb_status
-            // 
-            this.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_status.FormattingEnabled = true;
-            resources.ApplyResources(this.cb_status, "cb_status");
-            this.cb_status.Name = "cb_status";
             // 
             // lbl_status
             // 
@@ -428,6 +421,13 @@
             resources.ApplyResources(this.imglist, "imglist");
             this.imglist.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // cb_status
+            // 
+            this.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_status.FormattingEnabled = true;
+            resources.ApplyResources(this.cb_status, "cb_status");
+            this.cb_status.Name = "cb_status";
+            // 
             // FrmCustomerAddModify
             // 
             resources.ApplyResources(this, "$this");
@@ -499,12 +499,12 @@
         private System.Windows.Forms.LinkLabel ll_avatar1;
         private System.Windows.Forms.PictureBox pb_avatar;
         private System.Windows.Forms.GroupBox gb_operational_data;
-        private System.Windows.Forms.ComboBox cb_status;
         private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.LinkLabel ll_avatar3;
         private System.Windows.Forms.ImageList imglist;
         private System.Windows.Forms.LinkLabel Lb_avatar1_plus;
         private System.Windows.Forms.LinkLabel Lb_avatar2_plus;
         private System.Windows.Forms.LinkLabel Lb_avatar3_plus;
+        private WindowsFormsControlLibraryCRM.CRMComboBox cb_status;
     }
 }

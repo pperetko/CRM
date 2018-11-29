@@ -377,6 +377,28 @@ namespace CRM
             setStateCombo();
             setNationalityCombo();
             setEditingData();
+            setStatusCombo();
         }
+
+
+        private void setStatusCombo() {
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+            var data = from p in dc.status
+                       orderby p.name
+                       select p;
+            foreach (var item in data)
+            {
+                if (item.name != null)
+                {
+                    cb_status.AddItem(item.name, item.id_status);
+                }
+            }
+
+
+
+
+        }
+
+
     }
 }

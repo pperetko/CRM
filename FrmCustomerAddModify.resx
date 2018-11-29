@@ -298,16 +298,16 @@
     <value>71, 28</value>
   </data>
   <data name="cb_status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 25</value>
+    <value>224, 25</value>
   </data>
   <data name="cb_status.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;cb_status.Name" xml:space="preserve">
     <value>cb_status</value>
   </data>
   <data name="&gt;&gt;cb_status.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>WindowsFormsControlLibraryCRM.CRMComboBox, WindowsFormsControlLibraryCRM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cb_status.Parent" xml:space="preserve">
     <value>gb_operational_data</value>

@@ -44,3 +44,6 @@ G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\pl\CRM.resources.dll
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FrmSettings.resources
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FormMain.pl.resources
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\pl\CRM.resources.dll
+G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\WindowsFormsControlLibraryCRM.dll
+G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\WindowsFormsControlLibraryCRM.pdb
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csproj.CopyComplete
