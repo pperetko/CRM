@@ -20,6 +20,8 @@
 *.sdf
 *.pyc
 *.xml
+*.exe
+*.dll
 ipch/
 obj/
 bin/
@@ -27,3 +29,10 @@ bin/
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
+obj/Debug/
+Components/TestComponents/WindowsFormsTestComponents/WindowsFormsTestComponents/bin/
+Components/TestComponents/WindowsFormsTestComponents/WindowsFormsTestComponents/obj/
+Components/WindowsFormsControlLibraryCRM/WindowsFormsControlLibraryCRM/bin/
+Components/WindowsFormsControlLibraryCRM/WindowsFormsControlLibraryCRM/obj/
+encrypt/Encode/Encode/bin/
+encrypt/Encode/Encode/obj/
