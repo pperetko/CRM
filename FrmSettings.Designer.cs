@@ -74,6 +74,7 @@
             // 
             // edt_status
             // 
+            this.edt_status.Enabled = false;
             this.edt_status.Location = new System.Drawing.Point(51, 35);
             this.edt_status.Margin = new System.Windows.Forms.Padding(46, 3, 3, 3);
             this.edt_status.Name = "edt_status";

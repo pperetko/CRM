@@ -29,6 +29,7 @@ namespace CRM
                 btn_edit_status.Text = @"Cancel";
                 btn_edit_status.Tag = 1;
                 edt_status.Text = @"";
+                edt_status.Enabled = true;
                 if (edt_status.CanFocus)
                 {
                     edt_status.Select();
@@ -41,6 +42,7 @@ namespace CRM
                     if (check_status() == true)
                     {
                         btn_add_status.Text = @"Add";
+                        edt_status.Enabled = false;
                         DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
                         status stat = new status();
                         stat.name = edt_status.Text;
@@ -52,6 +54,7 @@ namespace CRM
                 if (btn_edit_status.Tag.ToString() == @"2") //Update
                 {
                     btn_add_status.Text = @"Add";
+
 
                 }
             }
@@ -73,6 +76,23 @@ namespace CRM
 
         private void btn_edit_status_Click(object sender, EventArgs e)
         {
+            if (btn_edit_status.Text == @"Cancel"){
+                btn_add_status.Text = @"Add";
+                btn_edit_status.Text = @"Edit";
+                edt_status.Enabled = false;
+            }
+            if (btn_edit_status.Text == @"Edit")
+            {
+                btn_add_status.Text = @"Accept";
+                btn_edit_status.Text = @"Cancel";
+                btn_edit_status.Tag = 2;
+                edt_status.Text = @"";
+                edt_status.Enabled = true;
+                if (edt_status.CanFocus)
+                {
+                    edt_status.Select();
+                }
+            }
 
         }
 
