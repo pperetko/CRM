@@ -33,21 +33,30 @@ namespace CRM
     partial void Insertcountry(country instance);
     partial void Updatecountry(country instance);
     partial void Deletecountry(country instance);
+    partial void Inserttask(task instance);
+    partial void Updatetask(task instance);
+    partial void Deletetask(task instance);
+    partial void Insertcustomer(customer instance);
+    partial void Updatecustomer(customer instance);
+    partial void Deletecustomer(customer instance);
     partial void Insertlogin(login instance);
     partial void Updatelogin(login instance);
     partial void Deletelogin(login instance);
     partial void Insertmenu(menu instance);
     partial void Updatemenu(menu instance);
     partial void Deletemenu(menu instance);
-    partial void Inserttask(task instance);
-    partial void Updatetask(task instance);
-    partial void Deletetask(task instance);
+    partial void Insertsetting(setting instance);
+    partial void Updatesetting(setting instance);
+    partial void Deletesetting(setting instance);
     partial void Insertstatus(status instance);
     partial void Updatestatus(status instance);
     partial void Deletestatus(status instance);
-    partial void Insertcustomer(customer instance);
-    partial void Updatecustomer(customer instance);
-    partial void Deletecustomer(customer instance);
+    partial void Insertcategories_type(categories_type instance);
+    partial void Updatecategories_type(categories_type instance);
+    partial void Deletecategories_type(categories_type instance);
+    partial void Insertcategory(category instance);
+    partial void Updatecategory(category instance);
+    partial void Deletecategory(category instance);
     #endregion
 		
 		public DataClassesCRMDataContext() : 
@@ -88,6 +97,22 @@ namespace CRM
 			}
 		}
 		
+		public System.Data.Linq.Table<task> tasks
+		{
+			get
+			{
+				return this.GetTable<task>();
+			}
+		}
+		
+		public System.Data.Linq.Table<customer> customers
+		{
+			get
+			{
+				return this.GetTable<customer>();
+			}
+		}
+		
 		public System.Data.Linq.Table<login> logins
 		{
 			get
@@ -104,11 +129,11 @@ namespace CRM
 			}
 		}
 		
-		public System.Data.Linq.Table<task> tasks
+		public System.Data.Linq.Table<setting> settings
 		{
 			get
 			{
-				return this.GetTable<task>();
+				return this.GetTable<setting>();
 			}
 		}
 		
@@ -120,11 +145,19 @@ namespace CRM
 			}
 		}
 		
-		public System.Data.Linq.Table<customer> customers
+		public System.Data.Linq.Table<categories_type> categories_types
 		{
 			get
 			{
-				return this.GetTable<customer>();
+				return this.GetTable<categories_type>();
+			}
+		}
+		
+		public System.Data.Linq.Table<category> categories
+		{
+			get
+			{
+				return this.GetTable<category>();
 			}
 		}
 	}
@@ -407,346 +440,6 @@ namespace CRM
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.logins")]
-	public partial class login : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_logins;
-		
-		private string _first_name;
-		
-		private string _name;
-		
-		private string _login1;
-		
-		private string _pass;
-		
-		private System.Nullable<bool> _bloced;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_loginsChanging(int value);
-    partial void Onid_loginsChanged();
-    partial void Onfirst_nameChanging(string value);
-    partial void Onfirst_nameChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void Onlogin1Changing(string value);
-    partial void Onlogin1Changed();
-    partial void OnpassChanging(string value);
-    partial void OnpassChanged();
-    partial void OnblocedChanging(System.Nullable<bool> value);
-    partial void OnblocedChanged();
-    #endregion
-		
-		public login()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_logins", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_logins
-		{
-			get
-			{
-				return this._id_logins;
-			}
-			set
-			{
-				if ((this._id_logins != value))
-				{
-					this.Onid_loginsChanging(value);
-					this.SendPropertyChanging();
-					this._id_logins = value;
-					this.SendPropertyChanged("id_logins");
-					this.Onid_loginsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string first_name
-		{
-			get
-			{
-				return this._first_name;
-			}
-			set
-			{
-				if ((this._first_name != value))
-				{
-					this.Onfirst_nameChanging(value);
-					this.SendPropertyChanging();
-					this._first_name = value;
-					this.SendPropertyChanged("first_name");
-					this.Onfirst_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100)")]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="login", Storage="_login1", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string login1
-		{
-			get
-			{
-				return this._login1;
-			}
-			set
-			{
-				if ((this._login1 != value))
-				{
-					this.Onlogin1Changing(value);
-					this.SendPropertyChanging();
-					this._login1 = value;
-					this.SendPropertyChanged("login1");
-					this.Onlogin1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string pass
-		{
-			get
-			{
-				return this._pass;
-			}
-			set
-			{
-				if ((this._pass != value))
-				{
-					this.OnpassChanging(value);
-					this.SendPropertyChanging();
-					this._pass = value;
-					this.SendPropertyChanged("pass");
-					this.OnpassChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bloced", DbType="Bit")]
-		public System.Nullable<bool> bloced
-		{
-			get
-			{
-				return this._bloced;
-			}
-			set
-			{
-				if ((this._bloced != value))
-				{
-					this.OnblocedChanging(value);
-					this.SendPropertyChanging();
-					this._bloced = value;
-					this.SendPropertyChanged("bloced");
-					this.OnblocedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.menu")]
-	public partial class menu : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_menu;
-		
-		private string _menu1;
-		
-		private string _parent_id;
-		
-		private System.Nullable<bool> _activie;
-		
-		private System.Nullable<int> _orders;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_menuChanging(int value);
-    partial void Onid_menuChanged();
-    partial void Onmenu1Changing(string value);
-    partial void Onmenu1Changed();
-    partial void Onparent_idChanging(string value);
-    partial void Onparent_idChanged();
-    partial void OnactivieChanging(System.Nullable<bool> value);
-    partial void OnactivieChanged();
-    partial void OnordersChanging(System.Nullable<int> value);
-    partial void OnordersChanged();
-    #endregion
-		
-		public menu()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_menu", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_menu
-		{
-			get
-			{
-				return this._id_menu;
-			}
-			set
-			{
-				if ((this._id_menu != value))
-				{
-					this.Onid_menuChanging(value);
-					this.SendPropertyChanging();
-					this._id_menu = value;
-					this.SendPropertyChanged("id_menu");
-					this.Onid_menuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="menu", Storage="_menu1", DbType="VarChar(200)")]
-		public string menu1
-		{
-			get
-			{
-				return this._menu1;
-			}
-			set
-			{
-				if ((this._menu1 != value))
-				{
-					this.Onmenu1Changing(value);
-					this.SendPropertyChanging();
-					this._menu1 = value;
-					this.SendPropertyChanged("menu1");
-					this.Onmenu1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_parent_id", DbType="NChar(10)")]
-		public string parent_id
-		{
-			get
-			{
-				return this._parent_id;
-			}
-			set
-			{
-				if ((this._parent_id != value))
-				{
-					this.Onparent_idChanging(value);
-					this.SendPropertyChanging();
-					this._parent_id = value;
-					this.SendPropertyChanged("parent_id");
-					this.Onparent_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activie", DbType="Bit")]
-		public System.Nullable<bool> activie
-		{
-			get
-			{
-				return this._activie;
-			}
-			set
-			{
-				if ((this._activie != value))
-				{
-					this.OnactivieChanging(value);
-					this.SendPropertyChanging();
-					this._activie = value;
-					this.SendPropertyChanged("activie");
-					this.OnactivieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orders", DbType="Int")]
-		public System.Nullable<int> orders
-		{
-			get
-			{
-				return this._orders;
-			}
-			set
-			{
-				if ((this._orders != value))
-				{
-					this.OnordersChanging(value);
-					this.SendPropertyChanging();
-					this._orders = value;
-					this.SendPropertyChanged("orders");
-					this.OnordersChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tasks")]
 	public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -952,92 +645,6 @@ namespace CRM
 					this._next_contact = value;
 					this.SendPropertyChanged("next_contact");
 					this.Onnext_contactChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.status")]
-	public partial class status : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_status;
-		
-		private string _name;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_statusChanging(int value);
-    partial void Onid_statusChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    #endregion
-		
-		public status()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_status", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_status
-		{
-			get
-			{
-				return this._id_status;
-			}
-			set
-			{
-				if ((this._id_status != value))
-				{
-					this.Onid_statusChanging(value);
-					this.SendPropertyChanging();
-					this._id_status = value;
-					this.SendPropertyChanged("id_status");
-					this.Onid_statusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
 				}
 			}
 		}
@@ -1460,6 +1067,810 @@ namespace CRM
 					this._post_code = value;
 					this.SendPropertyChanged("post_code");
 					this.Onpost_codeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.logins")]
+	public partial class login : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_logins;
+		
+		private string _first_name;
+		
+		private string _name;
+		
+		private string _login1;
+		
+		private string _pass;
+		
+		private System.Nullable<bool> _bloced;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_loginsChanging(int value);
+    partial void Onid_loginsChanged();
+    partial void Onfirst_nameChanging(string value);
+    partial void Onfirst_nameChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void Onlogin1Changing(string value);
+    partial void Onlogin1Changed();
+    partial void OnpassChanging(string value);
+    partial void OnpassChanged();
+    partial void OnblocedChanging(System.Nullable<bool> value);
+    partial void OnblocedChanged();
+    #endregion
+		
+		public login()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_logins", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_logins
+		{
+			get
+			{
+				return this._id_logins;
+			}
+			set
+			{
+				if ((this._id_logins != value))
+				{
+					this.Onid_loginsChanging(value);
+					this.SendPropertyChanging();
+					this._id_logins = value;
+					this.SendPropertyChanged("id_logins");
+					this.Onid_loginsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string first_name
+		{
+			get
+			{
+				return this._first_name;
+			}
+			set
+			{
+				if ((this._first_name != value))
+				{
+					this.Onfirst_nameChanging(value);
+					this.SendPropertyChanging();
+					this._first_name = value;
+					this.SendPropertyChanged("first_name");
+					this.Onfirst_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="login", Storage="_login1", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string login1
+		{
+			get
+			{
+				return this._login1;
+			}
+			set
+			{
+				if ((this._login1 != value))
+				{
+					this.Onlogin1Changing(value);
+					this.SendPropertyChanging();
+					this._login1 = value;
+					this.SendPropertyChanged("login1");
+					this.Onlogin1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string pass
+		{
+			get
+			{
+				return this._pass;
+			}
+			set
+			{
+				if ((this._pass != value))
+				{
+					this.OnpassChanging(value);
+					this.SendPropertyChanging();
+					this._pass = value;
+					this.SendPropertyChanged("pass");
+					this.OnpassChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bloced", DbType="Bit")]
+		public System.Nullable<bool> bloced
+		{
+			get
+			{
+				return this._bloced;
+			}
+			set
+			{
+				if ((this._bloced != value))
+				{
+					this.OnblocedChanging(value);
+					this.SendPropertyChanging();
+					this._bloced = value;
+					this.SendPropertyChanged("bloced");
+					this.OnblocedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.menu")]
+	public partial class menu : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_menu;
+		
+		private string _menu1;
+		
+		private string _parent_id;
+		
+		private System.Nullable<bool> _activie;
+		
+		private System.Nullable<int> _orders;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_menuChanging(int value);
+    partial void Onid_menuChanged();
+    partial void Onmenu1Changing(string value);
+    partial void Onmenu1Changed();
+    partial void Onparent_idChanging(string value);
+    partial void Onparent_idChanged();
+    partial void OnactivieChanging(System.Nullable<bool> value);
+    partial void OnactivieChanged();
+    partial void OnordersChanging(System.Nullable<int> value);
+    partial void OnordersChanged();
+    #endregion
+		
+		public menu()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_menu", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_menu
+		{
+			get
+			{
+				return this._id_menu;
+			}
+			set
+			{
+				if ((this._id_menu != value))
+				{
+					this.Onid_menuChanging(value);
+					this.SendPropertyChanging();
+					this._id_menu = value;
+					this.SendPropertyChanged("id_menu");
+					this.Onid_menuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="menu", Storage="_menu1", DbType="VarChar(200)")]
+		public string menu1
+		{
+			get
+			{
+				return this._menu1;
+			}
+			set
+			{
+				if ((this._menu1 != value))
+				{
+					this.Onmenu1Changing(value);
+					this.SendPropertyChanging();
+					this._menu1 = value;
+					this.SendPropertyChanged("menu1");
+					this.Onmenu1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_parent_id", DbType="NChar(10)")]
+		public string parent_id
+		{
+			get
+			{
+				return this._parent_id;
+			}
+			set
+			{
+				if ((this._parent_id != value))
+				{
+					this.Onparent_idChanging(value);
+					this.SendPropertyChanging();
+					this._parent_id = value;
+					this.SendPropertyChanged("parent_id");
+					this.Onparent_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activie", DbType="Bit")]
+		public System.Nullable<bool> activie
+		{
+			get
+			{
+				return this._activie;
+			}
+			set
+			{
+				if ((this._activie != value))
+				{
+					this.OnactivieChanging(value);
+					this.SendPropertyChanging();
+					this._activie = value;
+					this.SendPropertyChanged("activie");
+					this.OnactivieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_orders", DbType="Int")]
+		public System.Nullable<int> orders
+		{
+			get
+			{
+				return this._orders;
+			}
+			set
+			{
+				if ((this._orders != value))
+				{
+					this.OnordersChanging(value);
+					this.SendPropertyChanging();
+					this._orders = value;
+					this.SendPropertyChanged("orders");
+					this.OnordersChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.settings")]
+	public partial class setting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _id;
+		
+		private string _avatar_path;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(short value);
+    partial void OnidChanged();
+    partial void Onavatar_pathChanging(string value);
+    partial void Onavatar_pathChanged();
+    #endregion
+		
+		public setting()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public short id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_avatar_path", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string avatar_path
+		{
+			get
+			{
+				return this._avatar_path;
+			}
+			set
+			{
+				if ((this._avatar_path != value))
+				{
+					this.Onavatar_pathChanging(value);
+					this.SendPropertyChanging();
+					this._avatar_path = value;
+					this.SendPropertyChanged("avatar_path");
+					this.Onavatar_pathChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.status")]
+	public partial class status : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_status;
+		
+		private string _name;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_statusChanging(int value);
+    partial void Onid_statusChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    #endregion
+		
+		public status()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_status", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_status
+		{
+			get
+			{
+				return this._id_status;
+			}
+			set
+			{
+				if ((this._id_status != value))
+				{
+					this.Onid_statusChanging(value);
+					this.SendPropertyChanging();
+					this._id_status = value;
+					this.SendPropertyChanged("id_status");
+					this.Onid_statusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.categories_types")]
+	public partial class categories_type : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_categories_types;
+		
+		private string _name;
+		
+		private int _alias;
+		
+		private System.Nullable<bool> _show_on_list;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_categories_typesChanging(int value);
+    partial void Onid_categories_typesChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnaliasChanging(int value);
+    partial void OnaliasChanged();
+    partial void Onshow_on_listChanging(System.Nullable<bool> value);
+    partial void Onshow_on_listChanged();
+    #endregion
+		
+		public categories_type()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categories_types", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_categories_types
+		{
+			get
+			{
+				return this._id_categories_types;
+			}
+			set
+			{
+				if ((this._id_categories_types != value))
+				{
+					this.Onid_categories_typesChanging(value);
+					this.SendPropertyChanging();
+					this._id_categories_types = value;
+					this.SendPropertyChanged("id_categories_types");
+					this.Onid_categories_typesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alias", DbType="Int NOT NULL")]
+		public int alias
+		{
+			get
+			{
+				return this._alias;
+			}
+			set
+			{
+				if ((this._alias != value))
+				{
+					this.OnaliasChanging(value);
+					this.SendPropertyChanging();
+					this._alias = value;
+					this.SendPropertyChanged("alias");
+					this.OnaliasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_show_on_list", DbType="Bit")]
+		public System.Nullable<bool> show_on_list
+		{
+			get
+			{
+				return this._show_on_list;
+			}
+			set
+			{
+				if ((this._show_on_list != value))
+				{
+					this.Onshow_on_listChanging(value);
+					this.SendPropertyChanging();
+					this._show_on_list = value;
+					this.SendPropertyChanged("show_on_list");
+					this.Onshow_on_listChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.categories")]
+	public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_categories;
+		
+		private string _name;
+		
+		private bool _show_on_list;
+		
+		private System.Nullable<bool> _fixed;
+		
+		private System.Nullable<int> _id_field;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_categoriesChanging(int value);
+    partial void Onid_categoriesChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void Onshow_on_listChanging(bool value);
+    partial void Onshow_on_listChanged();
+    partial void OnfixedChanging(System.Nullable<bool> value);
+    partial void OnfixedChanged();
+    partial void Onid_fieldChanging(System.Nullable<int> value);
+    partial void Onid_fieldChanged();
+    #endregion
+		
+		public category()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categories", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_categories
+		{
+			get
+			{
+				return this._id_categories;
+			}
+			set
+			{
+				if ((this._id_categories != value))
+				{
+					this.Onid_categoriesChanging(value);
+					this.SendPropertyChanging();
+					this._id_categories = value;
+					this.SendPropertyChanged("id_categories");
+					this.Onid_categoriesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_show_on_list", DbType="Bit NOT NULL")]
+		public bool show_on_list
+		{
+			get
+			{
+				return this._show_on_list;
+			}
+			set
+			{
+				if ((this._show_on_list != value))
+				{
+					this.Onshow_on_listChanging(value);
+					this.SendPropertyChanging();
+					this._show_on_list = value;
+					this.SendPropertyChanged("show_on_list");
+					this.Onshow_on_listChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="fixed", Storage="_fixed", DbType="Bit")]
+		public System.Nullable<bool> @fixed
+		{
+			get
+			{
+				return this._fixed;
+			}
+			set
+			{
+				if ((this._fixed != value))
+				{
+					this.OnfixedChanging(value);
+					this.SendPropertyChanging();
+					this._fixed = value;
+					this.SendPropertyChanged("@fixed");
+					this.OnfixedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_field", DbType="Int")]
+		public System.Nullable<int> id_field
+		{
+			get
+			{
+				return this._id_field;
+			}
+			set
+			{
+				if ((this._id_field != value))
+				{
+					this.Onid_fieldChanging(value);
+					this.SendPropertyChanging();
+					this._id_field = value;
+					this.SendPropertyChanged("id_field");
+					this.Onid_fieldChanged();
 				}
 			}
 		}

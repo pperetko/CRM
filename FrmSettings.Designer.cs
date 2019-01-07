@@ -35,6 +35,10 @@
             this.btn_add_status = new System.Windows.Forms.Button();
             this.btn_edit_status = new System.Windows.Forms.Button();
             this.btn_delete_status = new System.Windows.Forms.Button();
+            this.Lbl_avatar = new System.Windows.Forms.Label();
+            this.tb_avatar_path = new System.Windows.Forms.TextBox();
+            this.btn_avatar = new System.Windows.Forms.Button();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.fl_panel_status.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +88,7 @@
             // 
             // btn_add_status
             // 
+            this.btn_add_status.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_add_status.Location = new System.Drawing.Point(60, 61);
             this.btn_add_status.Margin = new System.Windows.Forms.Padding(55, 3, 3, 3);
             this.btn_add_status.Name = "btn_add_status";
@@ -95,6 +100,7 @@
             // 
             // btn_edit_status
             // 
+            this.btn_edit_status.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_edit_status.Location = new System.Drawing.Point(118, 61);
             this.btn_edit_status.Name = "btn_edit_status";
             this.btn_edit_status.Size = new System.Drawing.Size(52, 23);
@@ -105,6 +111,7 @@
             // 
             // btn_delete_status
             // 
+            this.btn_delete_status.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_delete_status.Location = new System.Drawing.Point(176, 61);
             this.btn_delete_status.Name = "btn_delete_status";
             this.btn_delete_status.Size = new System.Drawing.Size(52, 23);
@@ -112,18 +119,52 @@
             this.btn_delete_status.Text = "Delete";
             this.btn_delete_status.UseVisualStyleBackColor = true;
             // 
+            // Lbl_avatar
+            // 
+            this.Lbl_avatar.AutoSize = true;
+            this.Lbl_avatar.Location = new System.Drawing.Point(13, 125);
+            this.Lbl_avatar.Name = "Lbl_avatar";
+            this.Lbl_avatar.Size = new System.Drawing.Size(70, 13);
+            this.Lbl_avatar.TabIndex = 1;
+            this.Lbl_avatar.Text = "Avatar folder ";
+            // 
+            // tb_avatar_path
+            // 
+            this.tb_avatar_path.Location = new System.Drawing.Point(83, 122);
+            this.tb_avatar_path.Name = "tb_avatar_path";
+            this.tb_avatar_path.Size = new System.Drawing.Size(444, 20);
+            this.tb_avatar_path.TabIndex = 2;
+            // 
+            // btn_avatar
+            // 
+            this.btn_avatar.Location = new System.Drawing.Point(533, 120);
+            this.btn_avatar.Name = "btn_avatar";
+            this.btn_avatar.Size = new System.Drawing.Size(31, 23);
+            this.btn_avatar.TabIndex = 3;
+            this.btn_avatar.Text = "....";
+            this.btn_avatar.UseVisualStyleBackColor = true;
+            this.btn_avatar.Click += new System.EventHandler(this.btn_avatar_Click);
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
+            this.Controls.Add(this.btn_avatar);
+            this.Controls.Add(this.tb_avatar_path);
+            this.Controls.Add(this.Lbl_avatar);
             this.Controls.Add(this.fl_panel_status);
+            this.KeyPreview = true;
             this.Name = "FrmSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.FrmSettings_Load);
+            this.Leave += new System.EventHandler(this.FrmSettings_Leave);
             this.fl_panel_status.ResumeLayout(false);
             this.fl_panel_status.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -136,5 +177,9 @@
         private System.Windows.Forms.Button btn_add_status;
         private System.Windows.Forms.Button btn_edit_status;
         private System.Windows.Forms.Button btn_delete_status;
+        private System.Windows.Forms.Label Lbl_avatar;
+        private System.Windows.Forms.TextBox tb_avatar_path;
+        private System.Windows.Forms.Button btn_avatar;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }

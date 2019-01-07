@@ -39,6 +39,8 @@
             this.Lb_avatar2_plus = new System.Windows.Forms.LinkLabel();
             this.Lb_avatar1_plus = new System.Windows.Forms.LinkLabel();
             this.gb_operational_data = new System.Windows.Forms.GroupBox();
+            this.tb_description = new System.Windows.Forms.TextBox();
+            this.lbl_description = new System.Windows.Forms.Label();
             this.cb_status = new WindowsFormsControlLibraryCRM.CRMComboBox();
             this.lbl_status = new System.Windows.Forms.Label();
             this.ll_avatar3 = new System.Windows.Forms.LinkLabel();
@@ -77,10 +79,8 @@
             this.btn_Edit_Task = new System.Windows.Forms.Button();
             this.btn_Add_Task = new System.Windows.Forms.Button();
             this.dg_tasks = new System.Windows.Forms.DataGridView();
-            this.imglist = new System.Windows.Forms.ImageList(this.components);
-            this.lbl_description = new System.Windows.Forms.Label();
-            this.tb_description = new System.Windows.Forms.TextBox();
             this.filterPanel1 = new CRM.FilterPanel();
+            this.imglist = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.tb_main.SuspendLayout();
             this.tp_main.SuspendLayout();
@@ -179,6 +179,16 @@
             resources.ApplyResources(this.gb_operational_data, "gb_operational_data");
             this.gb_operational_data.Name = "gb_operational_data";
             this.gb_operational_data.TabStop = false;
+            // 
+            // tb_description
+            // 
+            resources.ApplyResources(this.tb_description, "tb_description");
+            this.tb_description.Name = "tb_description";
+            // 
+            // lbl_description
+            // 
+            resources.ApplyResources(this.lbl_description, "lbl_description");
+            this.lbl_description.Name = "lbl_description";
             // 
             // cb_status
             // 
@@ -421,26 +431,16 @@
             this.dg_tasks.Name = "dg_tasks";
             this.dg_tasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
+            // filterPanel1
+            // 
+            resources.ApplyResources(this.filterPanel1, "filterPanel1");
+            this.filterPanel1.Name = "filterPanel1";
+            // 
             // imglist
             // 
             this.imglist.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             resources.ApplyResources(this.imglist, "imglist");
             this.imglist.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // lbl_description
-            // 
-            resources.ApplyResources(this.lbl_description, "lbl_description");
-            this.lbl_description.Name = "lbl_description";
-            // 
-            // tb_description
-            // 
-            resources.ApplyResources(this.tb_description, "tb_description");
-            this.tb_description.Name = "tb_description";
-            // 
-            // filterPanel1
-            // 
-            resources.ApplyResources(this.filterPanel1, "filterPanel1");
-            this.filterPanel1.Name = "filterPanel1";
             // 
             // FrmCustomerAddModify
             // 

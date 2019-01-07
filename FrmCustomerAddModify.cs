@@ -17,50 +17,61 @@ namespace CRM
         public FrmCustomerAddModify()
         {
             InitializeComponent();
-         
+
             id_task = -1;
             pl_task_button.Visible = false;
-            
-
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+            var set = dc.settings.FirstOrDefault(d => d.id == 1);
+            if (set != null)
+            {
+                img_path = set.avatar_path;
+            }
+            else {
+               img_path= @"";
+               Lb_avatar1_plus.Enabled = false;
+               Lb_avatar2_plus.Enabled = false;
+               Lb_avatar3_plus.Enabled = false;
+            }
 
         }
 
         public int id_customer;
         public int id_task;
+        private string img_path;
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            
+
             DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
-                if (id_customer == -1)
-                {
-                  customer cust = new customer();
-                  cust.first_name = tb_surname.Text;
-                  cust.last_name = tb_name.Text;
-                  cust.nationality = cb_nationality.Text;
-                  cust.state = cb_state.Text;
-                  cust.city = tb_city.Text;
-                  cust.street = tb_street.Text;
-                  cust.No = tb_no.Text;
-                  cust.dob = dt_dob.Value;
-                  cust.phone = tb_phone1.Text;
-                  cust.phone2 = tb_phone2.Text;
-                  cust.email = tb_email.Text;
-                  cust.post_code = tb_code.Text;
-                  cust.descryption = tb_description.Text;
+            if (id_customer == -1)
+            {
+                customer cust = new customer();
+                cust.first_name = tb_surname.Text;
+                cust.last_name = tb_name.Text;
+                cust.nationality = cb_nationality.Text;
+                cust.state = cb_state.Text;
+                cust.city = tb_city.Text;
+                cust.street = tb_street.Text;
+                cust.No = tb_no.Text;
+                cust.dob = dt_dob.Value;
+                cust.phone = tb_phone1.Text;
+                cust.phone2 = tb_phone2.Text;
+                cust.email = tb_email.Text;
+                cust.post_code = tb_code.Text;
+                cust.descryption = tb_description.Text;
                 if (cb_status.SelectedIndex != -1) {
-                    cust.status =Convert.ToInt32( cb_status.GetID());
+                    cust.status = Convert.ToInt32(cb_status.GetID());
                 }
 
-                  dc.customers.InsertOnSubmit(cust);
-                  dc.SubmitChanges();
-                  id_customer = cust.id_customers;
-                }
-                else
-                {
-                
-               
+                dc.customers.InsertOnSubmit(cust);
+                dc.SubmitChanges();
+                id_customer = cust.id_customers;
+            }
+            else
+            {
+
+
                 var cust = dc.customers.FirstOrDefault(d => d.id_customers == id_customer);
                 if (cust != null)
                 {
@@ -82,9 +93,9 @@ namespace CRM
                         cust.status = Convert.ToInt32(cb_status.GetID());
                     }
                 }
-                    dc.SubmitChanges();              
+                dc.SubmitChanges();
 
-                }
+            }
             SaveAvatars(id_customer);
 
 
@@ -121,7 +132,7 @@ namespace CRM
                 tb_phone2.Text = CRMHelper.NullToString(cust.phone2);
                 tb_email.Text = CRMHelper.NullToString(cust.email);
                 tb_code.Text = CRMHelper.NullToString(cust.post_code);
-                tb_description.Text = CRMHelper.NullToString(cust.descryption); 
+                tb_description.Text = CRMHelper.NullToString(cust.descryption);
                 if (cust.status != null) {
                     cb_status.SetID(Convert.ToInt64(cust.status));
 
@@ -129,35 +140,35 @@ namespace CRM
 
 
                 imglist.Images.Clear();
-
-                if (File.Exists(@"g:\firma\projekty\img\Avatar1_" + id_customer.ToString() + ".jpg"))
+                //img_path @"g:\firma\projekty\img\
+                if (File.Exists(img_path + "Avatar1_"  + id_customer.ToString() + ".jpg"))
                 {
-                    var image = Image.FromFile(@"g:\firma\projekty\img\" + "Avatar1_" + id_customer.ToString() + ".jpg");
+                    var image = Image.FromFile(img_path + "Avatar1_" + id_customer.ToString() + ".jpg");
                     imglist.Images.Add("Avatar1", image);
                     pb_avatar.Image = imglist.Images["Avatar1"];
                     image.Dispose();
                 }
-                if (File.Exists(@"g:\firma\projekty\img\Avatar2_" + id_customer.ToString() + ".jpg"))
+                if (File.Exists(img_path +"Avatar2_" + id_customer.ToString() + ".jpg"))
                 {
-                    var image = Image.FromFile(@"g:\firma\projekty\img\" + "Avatar2_" + id_customer.ToString() + ".jpg");
+                    var image = Image.FromFile(img_path + "Avatar2_" + id_customer.ToString() + ".jpg");
                     imglist.Images.Add("Avatar2", image);
                     image.Dispose();
                 }
-                if (File.Exists(@"g:\firma\projekty\img\Avatar3_" + id_customer.ToString() + ".jpg"))
+                if (File.Exists(img_path+"Avatar3_" + id_customer.ToString() + ".jpg"))
                 {
-                    var image = Image.FromFile(@"g:\firma\projekty\img\" + "Avatar3_" + id_customer.ToString() + ".jpg");
+                    var image = Image.FromFile(img_path + "Avatar3_" + id_customer.ToString() + ".jpg");
                     imglist.Images.Add("Avatar3", image);
                     image.Dispose();
                 }
             }
         }
 
-       
+
 
 
         private void setStateCombo()
         {
-          
+
             DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
             var data = from p in dc.countries
                        orderby p.name
@@ -177,7 +188,7 @@ namespace CRM
                        orderby p.name
                        select p;
             foreach (var item in data)
-            {   if (item.aplha_3 != null)
+            { if (item.aplha_3 != null)
                 {
                     cb_state.Items.Add(item.aplha_3);
                 }
@@ -202,12 +213,12 @@ namespace CRM
         private void btn_Edit_Task_Click(object sender, EventArgs e)
         {
             FormAddEditTask form = new FormAddEditTask();
-            form.id_customer= this.id_customer;
+            form.id_customer = this.id_customer;
 
             foreach (DataGridViewRow row in dg_tasks.SelectedRows)
             {
                 id_task = int.Parse(row.Cells[0].Value.ToString());
-                
+
             }
 
             form.id = id_task;
@@ -218,20 +229,20 @@ namespace CRM
 
 
         private void RefreshGridTasks()
-        {  
+        {
 
 
         }
 
 
 
-          private void ll_avatar1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ll_avatar1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (imglist.Images["Avatar1"] != null)
             {
                 pb_avatar.Image = imglist.Images["Avatar1"];
             }
-           
+
         }
 
         private void Lb_avatar1_plus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -259,7 +270,7 @@ namespace CRM
                 imglist.Images.Add("Avatar1", Image.FromFile(openFileDialog_Awatar1.FileName));
                 pb_avatar.Image = null;
                 pb_avatar.Image = imglist.Images["Avatar1"];
-               
+
             }
 
         }
@@ -328,7 +339,7 @@ namespace CRM
                 imglist.Images.RemoveByKey("Avatar3");
                 imglist.Images.Add("Avatar3", Image.FromFile(openFileDialog_Awatar3.FileName));
                 pb_avatar.Image = imglist.Images["Avatar3"];
-               
+
             }
         }
 
@@ -348,45 +359,45 @@ namespace CRM
 
             if (imglist.Images["Avatar1"] != null)
             {
-                imglist.Images["Avatar1"].Save(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg");
+                imglist.Images["Avatar1"].Save(img_path+"Avatar1_1" + id.ToString() + ".jpg");
             }
             if (imglist.Images["Avatar2"] != null)
             {
-                imglist.Images["Avatar2"].Save(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg");
+                imglist.Images["Avatar2"].Save(img_path+"Avatar1_2" + id.ToString() + ".jpg");
             }
             if (imglist.Images["Avatar3"] != null)
             {
-                imglist.Images["Avatar3"].Save(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg");
+                imglist.Images["Avatar3"].Save(img_path+"Avatar1_3" + id.ToString() + ".jpg");
             }
             pb_avatar.Image = null;
             imglist.Images.Clear();
-            
-            if (File.Exists(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg"))
+
+            if (File.Exists(img_path+"Avatar1_" + id.ToString() + ".jpg"))
             {
-                File.Delete(@"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg");
+                File.Delete(img_path+"Avatar1_" + id.ToString() + ".jpg");
             }
-            if (File.Exists(@"g:\firma\projekty\img\Avatar2_" + id.ToString() + ".jpg"))
+            if (File.Exists(img_path+"Avatar2_" + id.ToString() + ".jpg"))
             {
-                File.Delete(@"g:\firma\projekty\img\Avatar2_" + id.ToString() + ".jpg");
+                File.Delete(img_path+"Avatar2_" + id.ToString() + ".jpg");
             }
-            if (File.Exists(@"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg"))
+            if (File.Exists(img_path+"Avatar3_" + id.ToString() + ".jpg"))
             {
-                File.Delete(@"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg");
+                File.Delete(img_path+"Avatar3_" + id.ToString() + ".jpg");
             }
-            if (File.Exists(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg"))
+            if (File.Exists(img_path+"Avatar1_1" + id.ToString() + ".jpg"))
             {
-                File.Move(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg", @"g:\firma\projekty\img\Avatar1_" + id.ToString() + ".jpg");
-                File.Delete(@"g:\firma\projekty\img\Avatar1_1" + id.ToString() + ".jpg");
+                File.Move(img_path+"Avatar1_1" + id.ToString() + ".jpg", img_path+"Avatar1_" + id.ToString() + ".jpg");
+                File.Delete(img_path+"Avatar1_1" + id.ToString() + ".jpg");
             }
-            if (File.Exists(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg"))
+            if (File.Exists(img_path+"Avatar1_2" + id.ToString() + ".jpg"))
             {
-                File.Move(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg", @"g:\firma\projekty\img\Avatar2_" + id.ToString() + ".jpg");
-                File.Delete(@"g:\firma\projekty\img\Avatar1_2" + id.ToString() + ".jpg");
+                File.Move(img_path+"Avatar1_2" + id.ToString() + ".jpg", img_path+"Avatar2_" + id.ToString() + ".jpg");
+                File.Delete(img_path+"Avatar1_2" + id.ToString() + ".jpg");
             }
-            if (File.Exists(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg"))
+            if (File.Exists(img_path + "Avatar1_3" + id.ToString() + ".jpg"))
             {
-                File.Move(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg", @"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg");
-                File.Delete(@"g:\firma\projekty\img\Avatar1_3" + id.ToString() + ".jpg");
+                File.Move(img_path + "Avatar1_3" + id.ToString() + ".jpg", @"g:\firma\projekty\img\Avatar3_" + id.ToString() + ".jpg");
+                File.Delete(img_path + "Avatar1_3" + id.ToString() + ".jpg");
             }
 
         }
@@ -399,7 +410,7 @@ namespace CRM
 
             //This method have to in end
             setEditingData();
-            
+
         }
 
 
@@ -422,5 +433,17 @@ namespace CRM
         }
 
 
-    }
+        //------------Panel filter--------------------------------
+
+        private void SetFilterPanel()
+        {
+
+
+
+        }
+
+}
+
+
+   
 }

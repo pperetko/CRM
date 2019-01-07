@@ -17,6 +17,7 @@ namespace CRM
             InitializeComponent();
             id = -1;
             FillStatusList();
+            tb_avatar_path.Text = @"";
         }
 
         private int id;
@@ -58,15 +59,18 @@ namespace CRM
 
                 }
             }
-            
+
         }
 
-        private bool check_status() {
+        private bool check_status()
+        {
             bool res = true;
-            if (edt_status.Text.Length == 0) {
+            if (edt_status.Text.Length == 0)
+            {
                 res = false;
-                CRMHelper.Information(@"Information",@"Fill name field!");
-                if (edt_status.CanFocus) {
+                CRMHelper.Information(@"Information", @"Fill name field!");
+                if (edt_status.CanFocus)
+                {
                     edt_status.Select();
                 }
             }
@@ -76,7 +80,8 @@ namespace CRM
 
         private void btn_edit_status_Click(object sender, EventArgs e)
         {
-            if (btn_edit_status.Text == @"Cancel"){
+            if (btn_edit_status.Text == @"Cancel")
+            {
                 btn_add_status.Text = @"Add";
                 btn_edit_status.Text = @"Edit";
                 edt_status.Enabled = false;
@@ -97,7 +102,8 @@ namespace CRM
         }
 
 
-        private void FillStatusList() {
+        private void FillStatusList()
+        {
 
 
             DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
@@ -107,9 +113,46 @@ namespace CRM
             foreach (var item in data)
             {
                 cb_status.Items.Add(item.name);
-                
+
             }
 
+        }
+
+     
+
+        private void FrmSettings_Load(object sender, EventArgs e)
+        {
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+            var set = dc.settings.FirstOrDefault(d => d.id == 1);
+            if (set != null)
+            {
+                tb_avatar_path.Text =  set.avatar_path;
+            }
+            
+        }
+
+     
+
+        private void FrmSettings_Leave(object sender, EventArgs e)
+        {
+            DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+            var set = dc.settings.FirstOrDefault(d => d.id == 1);
+            if (set != null)
+            {
+                string path = tb_avatar_path.Text;
+                char[] charsToTrim1 = { '\\' };
+                path.TrimEnd(charsToTrim1);
+                set.avatar_path = path + "\\";
+            }
+            dc.SubmitChanges();
+        }
+
+        private void btn_avatar_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                tb_avatar_path.Text = folderBrowserDialog.SelectedPath;
+            }
         }
     }
 }

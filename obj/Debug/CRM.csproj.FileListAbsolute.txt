@@ -47,3 +47,5 @@ G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\pl\CRM.resources.dll
 G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\WindowsFormsControlLibraryCRM.dll
 G:\firma\projekty\CRM_WF\CRM\CRM\bin\Debug\WindowsFormsControlLibraryCRM.pdb
 G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.csproj.CopyComplete
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.Filters.resources
+G:\firma\projekty\CRM_WF\CRM\CRM\obj\Debug\CRM.FormCategoriesAdd.resources

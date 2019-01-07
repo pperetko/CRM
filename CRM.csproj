@@ -108,6 +108,12 @@
     <Compile Include="FormAddEditTask.Designer.cs">
       <DependentUpon>FormAddEditTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCategoriesAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCategoriesAdd.Designer.cs">
+      <DependentUpon>FormCategoriesAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,8 +150,14 @@
     <EmbeddedResource Include="FilterPanel.resx">
       <DependentUpon>FilterPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Filters.resx">
+      <DependentUpon>Filters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddEditTask.resx">
       <DependentUpon>FormAddEditTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCategoriesAdd.resx">
+      <DependentUpon>FormCategoriesAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
