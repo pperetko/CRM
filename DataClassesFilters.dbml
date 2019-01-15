@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CRM" Class="DataClassesFiltersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=USER-KOMPUTER\SQL2017;Initial Catalog=CRM;Persist Security Info=True;User ID=sa" SettingsObjectName="CRM.Properties.Settings" SettingsPropertyName="CRMConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.category" Member="categories">
+    <Type Name="category">
+      <Column Name="id_category" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="id_categories_types" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="show_on_list" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="categories_type_category" Member="categories_type" ThisKey="id_categories_types" OtherKey="id_categories_types" Type="categories_type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.categories_types" Member="categories_types">
+    <Type Name="categories_type">
+      <Column Name="id_categories_types" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="alias" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="show_on_list" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="categories_type_category" Member="categories" ThisKey="id_categories_types" OtherKey="id_categories_types" Type="category" />
+    </Type>
+  </Table>
+</Database>

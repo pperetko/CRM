@@ -35,11 +35,14 @@
             this.btn_tab_edit = new System.Windows.Forms.Button();
             this.btn_add_tab = new System.Windows.Forms.Button();
             this.ts_categories = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lv_categories = new System.Windows.Forms.ListView();
+            this.column_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_cat_delete = new System.Windows.Forms.Button();
+            this.btn_cat_edit = new System.Windows.Forms.Button();
             this.btn_cat_add = new System.Windows.Forms.Button();
             this.ts_filters = new System.Windows.Forms.TabPage();
+            this.column_show_on_list = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tc_main.SuspendLayout();
             this.ts_tab.SuspendLayout();
             this.ts_categories.SuspendLayout();
@@ -79,6 +82,7 @@
             this.lv_tabs.Size = new System.Drawing.Size(341, 485);
             this.lv_tabs.TabIndex = 3;
             this.lv_tabs.UseCompatibleStateImageBehavior = false;
+            this.lv_tabs.View = System.Windows.Forms.View.Details;
             // 
             // btn_tab_del
             // 
@@ -110,9 +114,9 @@
             // 
             // ts_categories
             // 
-            this.ts_categories.Controls.Add(this.listView1);
-            this.ts_categories.Controls.Add(this.button1);
-            this.ts_categories.Controls.Add(this.button2);
+            this.ts_categories.Controls.Add(this.lv_categories);
+            this.ts_categories.Controls.Add(this.btn_cat_delete);
+            this.ts_categories.Controls.Add(this.btn_cat_edit);
             this.ts_categories.Controls.Add(this.btn_cat_add);
             this.ts_categories.Location = new System.Drawing.Point(4, 22);
             this.ts_categories.Name = "ts_categories";
@@ -122,31 +126,52 @@
             this.ts_categories.Text = "Categories";
             this.ts_categories.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // lv_categories
             // 
-            this.listView1.Location = new System.Drawing.Point(17, 45);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(341, 485);
-            this.listView1.TabIndex = 7;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lv_categories.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.column_name,
+            this.column_type,
+            this.column_show_on_list});
+            this.lv_categories.FullRowSelect = true;
+            this.lv_categories.GridLines = true;
+            this.lv_categories.HideSelection = false;
+            this.lv_categories.Location = new System.Drawing.Point(17, 45);
+            this.lv_categories.MultiSelect = false;
+            this.lv_categories.Name = "lv_categories";
+            this.lv_categories.Size = new System.Drawing.Size(341, 485);
+            this.lv_categories.TabIndex = 7;
+            this.lv_categories.UseCompatibleStateImageBehavior = false;
+            this.lv_categories.View = System.Windows.Forms.View.Details;
             // 
-            // button1
+            // column_name
             // 
-            this.button1.Location = new System.Drawing.Point(127, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
+            this.column_name.Text = "Name";
+            this.column_name.Width = 189;
             // 
-            // button2
+            // column_type
             // 
-            this.button2.Location = new System.Drawing.Point(72, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(49, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Edit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.column_type.Text = "Type";
+            this.column_type.Width = 123;
+            // 
+            // btn_cat_delete
+            // 
+            this.btn_cat_delete.Location = new System.Drawing.Point(127, 16);
+            this.btn_cat_delete.Name = "btn_cat_delete";
+            this.btn_cat_delete.Size = new System.Drawing.Size(49, 23);
+            this.btn_cat_delete.TabIndex = 6;
+            this.btn_cat_delete.Text = "Delete";
+            this.btn_cat_delete.UseVisualStyleBackColor = true;
+            this.btn_cat_delete.Click += new System.EventHandler(this.btn_cat_delete_Click);
+            // 
+            // btn_cat_edit
+            // 
+            this.btn_cat_edit.Location = new System.Drawing.Point(72, 16);
+            this.btn_cat_edit.Name = "btn_cat_edit";
+            this.btn_cat_edit.Size = new System.Drawing.Size(49, 23);
+            this.btn_cat_edit.TabIndex = 5;
+            this.btn_cat_edit.Text = "Edit";
+            this.btn_cat_edit.UseVisualStyleBackColor = true;
+            this.btn_cat_edit.Click += new System.EventHandler(this.btn_cat_edit_Click);
             // 
             // btn_cat_add
             // 
@@ -167,6 +192,10 @@
             this.ts_filters.TabIndex = 1;
             this.ts_filters.Text = "Filters of positions";
             this.ts_filters.UseVisualStyleBackColor = true;
+            // 
+            // column_show_on_list
+            // 
+            this.column_show_on_list.Text = "Show On List";
             // 
             // Filters
             // 
@@ -194,9 +223,12 @@
         private System.Windows.Forms.Button btn_tab_del;
         private System.Windows.Forms.Button btn_tab_edit;
         private System.Windows.Forms.Button btn_add_tab;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListView lv_categories;
+        private System.Windows.Forms.Button btn_cat_delete;
+        private System.Windows.Forms.Button btn_cat_edit;
         private System.Windows.Forms.Button btn_cat_add;
+        private System.Windows.Forms.ColumnHeader column_name;
+        private System.Windows.Forms.ColumnHeader column_type;
+        private System.Windows.Forms.ColumnHeader column_show_on_list;
     }
 }

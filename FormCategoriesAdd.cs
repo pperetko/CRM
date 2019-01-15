@@ -40,11 +40,11 @@
             SetCategoriesValues();
             if (id != -1)
             {
-                DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
-                var cat = dc.categories.FirstOrDefault(d => d.id_categories == id);
-                tb_cat_name.Text = CRMHelper.NullToString(cat.name);
-                cb_cat_type.SetID(Convert.ToInt64(cat.id_field));
-                cbx_cat_show_on_list.Checked = cat.show_on_list;
+                DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
+                var cat = dc.categories.FirstOrDefault(d => d.id_category == id);
+                 tb_cat_name.Text = CRMHelper.NullToString(cat.name);
+                 cb_cat_type.SetID(Convert.ToInt64(cat.id_categories_types));
+                 cbx_cat_show_on_list.Checked = cat.show_on_list.Value;
 
             }
         }
@@ -54,7 +54,7 @@
         /// </summary>
         private void SetCategoriesValues()
         {
-            DataClassesCRMDataContext db = new DataClassesCRMDataContext();
+            DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
             var data = from p in db.categories_types
                        where p.show_on_list == true
                        orderby p.id_categories_types
@@ -132,21 +132,20 @@
             this.DialogResult = DialogResult.OK;
             if (ValidateFields() == true)
             {
-                DataClassesCRMDataContext dc = new DataClassesCRMDataContext();
+                DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
                 if ((change == true) && (id != -1))
                 {
-                    var cat = dc.categories.FirstOrDefault(d => d.id_categories == id);
+                    var cat = dc.categories.FirstOrDefault(d => d.id_category == id);
                     if (cat != null)
                     {
                         cat.name = tb_cat_name.Text;
                         if (cb_cat_type.SelectedIndex != -1)
                         {
-                            cat.id_field = Convert.ToInt32(cb_cat_type.GetID());
+                            cat.id_categories_types = Convert.ToInt32(cb_cat_type.GetID());
                         }
                         cat.show_on_list = cbx_cat_show_on_list.Checked;
                     }
                     dc.SubmitChanges();
-
                 }
 
                 else if (id == -1)
@@ -155,12 +154,12 @@
                     cat.name = tb_cat_name.Text;
                     if (cb_cat_type.SelectedIndex != -1)
                     {
-                        cat.id_field = Convert.ToInt32(cb_cat_type.GetID());
+                        cat.id_categories_types = Convert.ToInt32(cb_cat_type.GetID());
                     }
                     cat.show_on_list = cbx_cat_show_on_list.Checked;
                     dc.categories.InsertOnSubmit(cat);
                     dc.SubmitChanges();
-                    id = cat.id_categories;
+                    id = cat.id_category;
 
                 }
             }

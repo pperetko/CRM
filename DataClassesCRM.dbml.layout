@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.25, 8.875" name="DataClassesCRM">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.875" name="DataClassesCRM">
   <DataContextMoniker Name="/DataClassesCRMDataContext" />
   <nestedChildShapes>
     <classShape Id="ba902947-dca4-4aed-a2ad-513d61a344dd" absoluteBounds="0.75, 0.75, 2, 2.7324039713541666">
@@ -42,18 +42,6 @@
       <DataClassMoniker Name="/DataClassesCRMDataContext/status" />
       <nestedChildShapes>
         <elementListCompartment Id="c16cf08d-7138-4953-8ee3-dd674dde8081" absoluteBounds="6.765, 6.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="50788d0d-fb32-4eda-a27b-ab3c1454bc41" absoluteBounds="9.375, 5.125, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/DataClassesCRMDataContext/categories_type" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6bc78114-8459-4069-9772-dda3773501b0" absoluteBounds="9.39, 5.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="a1b5cf3e-efe4-4216-b1d9-349a4c0075f7" absoluteBounds="10, 2.25, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/DataClassesCRMDataContext/category" />
-      <nestedChildShapes>
-        <elementListCompartment Id="8123559c-c810-4c67-8e63-8de897c1bce6" absoluteBounds="10.015, 2.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

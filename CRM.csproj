@@ -84,10 +84,18 @@
       <DependentUpon>CRMDataSet_Tasks.xsd</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="DataClassesCRM.cs">
+      <DependentUpon>DataClassesCRM.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DataClassesCRM.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClassesCRM.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DataClassesFilters.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassesFilters.dbml</DependentUpon>
     </Compile>
     <Compile Include="encrypt.cs" />
     <Compile Include="FilterPanel.cs">
@@ -211,6 +219,14 @@
     </None>
     <None Include="DataClassesCRM.dbml.layout">
       <DependentUpon>DataClassesCRM.dbml</DependentUpon>
+    </None>
+    <None Include="DataClassesFilters.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClassesFilters.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataClassesFilters.dbml.layout">
+      <DependentUpon>DataClassesFilters.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
