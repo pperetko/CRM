@@ -36,6 +36,9 @@ namespace CRM
     partial void Insertcategories_type(categories_type instance);
     partial void Updatecategories_type(categories_type instance);
     partial void Deletecategories_type(categories_type instance);
+    partial void Inserttab_filter(tab_filter instance);
+    partial void Updatetab_filter(tab_filter instance);
+    partial void Deletetab_filter(tab_filter instance);
     #endregion
 		
 		public DataClassesFiltersDataContext() : 
@@ -81,6 +84,14 @@ namespace CRM
 			get
 			{
 				return this.GetTable<categories_type>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tab_filter> tab_filters
+		{
+			get
+			{
+				return this.GetTable<tab_filter>();
 			}
 		}
 	}
@@ -419,6 +430,116 @@ namespace CRM
 		{
 			this.SendPropertyChanging();
 			entity.categories_type = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tab_filters")]
+	public partial class tab_filter : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_tabs_filters;
+		
+		private string _name;
+		
+		private System.Nullable<bool> _fix;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_tabs_filtersChanging(int value);
+    partial void Onid_tabs_filtersChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnfixChanging(System.Nullable<bool> value);
+    partial void OnfixChanged();
+    #endregion
+		
+		public tab_filter()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_tabs_filters", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_tabs_filters
+		{
+			get
+			{
+				return this._id_tabs_filters;
+			}
+			set
+			{
+				if ((this._id_tabs_filters != value))
+				{
+					this.Onid_tabs_filtersChanging(value);
+					this.SendPropertyChanging();
+					this._id_tabs_filters = value;
+					this.SendPropertyChanged("id_tabs_filters");
+					this.Onid_tabs_filtersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fix", DbType="Bit")]
+		public System.Nullable<bool> fix
+		{
+			get
+			{
+				return this._fix;
+			}
+			set
+			{
+				if ((this._fix != value))
+				{
+					this.OnfixChanging(value);
+					this.SendPropertyChanging();
+					this._fix = value;
+					this.SendPropertyChanged("fix");
+					this.OnfixChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

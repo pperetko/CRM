@@ -18,4 +18,11 @@
       <Association Name="categories_type_category" Member="categories" ThisKey="id_categories_types" OtherKey="id_categories_types" Type="category" />
     </Type>
   </Table>
+  <Table Name="dbo.tab_filters" Member="tab_filters">
+    <Type Name="tab_filter">
+      <Column Name="id_tabs_filters" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="fix" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

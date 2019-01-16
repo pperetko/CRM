@@ -134,6 +134,12 @@
     <Compile Include="FormMain_.Designer.cs">
       <DependentUpon>FormMain_.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTabAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTabAdd.Designer.cs">
+      <DependentUpon>FormTabAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCustomerAddModify.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain_.resx">
       <DependentUpon>FormMain_.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTabAdd.resx">
+      <DependentUpon>FormTabAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomerAddModify.pl-PL.resx">
       <DependentUpon>FrmCustomerAddModify.cs</DependentUpon>

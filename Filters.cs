@@ -18,14 +18,7 @@
             show_category(-1);
         }
 
-        /// <summary>
-        /// The btn_add_tab_Click
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_add_tab_Click(object sender, EventArgs e)
-        {
-        }
+       
 
         /// <summary>
         /// The btn_cat_add_Click
@@ -140,5 +133,19 @@
                 }
             }
         }
+
+
+        /// <summary>
+        /// The btn_add_tab_Click
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/></param>
+        /// <param name="e">The e<see cref="EventArgs"/></param>
+        private void btn_add_tab_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
     }
 }
