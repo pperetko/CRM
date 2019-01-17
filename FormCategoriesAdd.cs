@@ -38,6 +38,7 @@
         private void FormCategoriesAdd_Load(object sender, EventArgs e)
         {
             SetCategoriesValues();
+            SetTabsValues();
             if (id != -1)
             {
                 DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
@@ -45,7 +46,7 @@
                  tb_cat_name.Text = CRMHelper.NullToString(cat.name);
                  cb_cat_type.SetID(Convert.ToInt64(cat.id_categories_types));
                  cbx_cat_show_on_list.Checked = cat.show_on_list.Value;
-
+                 cb_cat_tabs.SetID(Convert.ToInt64(cat.id_tab_filters));
             }
         }
 
@@ -67,6 +68,31 @@
             }
         }
 
+
+        private void SetTabsValues() {
+            DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
+            var data = from p in db.tab_filters
+                       
+                       orderby p.name
+                       select p;
+            foreach (var item in data)
+            {
+
+                cb_cat_tabs.AddItem(item.name, item.id_tab_filters);
+
+            }
+
+            if (cb_cat_tabs.Items.Count == 0)
+            {
+                cb_cat_tabs.Enabled = false;
+            }
+            else {
+                cb_cat_tabs.Enabled = true;
+            }
+
+        }
+
+
         /// <summary>
         /// The ValidateFields
         /// </summary>
@@ -77,6 +103,10 @@
             if (tb_cat_name.Text.ToString() == @"")
             {
                 CRMHelper.Information(@"Error!", @"This field cant be empty!");
+                if (tb_cat_name.CanFocus == true) {
+                    tb_cat_name.Select();
+                }
+
                 res = false;
             }
 
@@ -85,10 +115,28 @@
                 if (cb_cat_type.Text.ToString() == @"")
                 {
                     CRMHelper.Information(@"Error!", @"This field cant be empty!");
+                    if (cb_cat_type.CanFocus == true) {
+                        cb_cat_type.Select();
+                    }
                     res = false;
                 }
 
             }
+            if (res == true)
+            {
+                if (cb_cat_tabs.Text.ToString() == @"")
+                {
+                    CRMHelper.Information(@"Error!", @"This field cant be empty!");
+                    if (cb_cat_tabs.CanFocus == true) {
+                        cb_cat_tabs.Select();
+                    }
+                    res = false;
+                }
+
+            }
+            
+
+
             return res;
         }
 
@@ -143,6 +191,12 @@
                         {
                             cat.id_categories_types = Convert.ToInt32(cb_cat_type.GetID());
                         }
+
+                        if (cb_cat_tabs.SelectedIndex != -1) {
+                           cat.id_tab_filters = Convert.ToInt32(cb_cat_tabs.GetID());
+                        }
+
+
                         cat.show_on_list = cbx_cat_show_on_list.Checked;
                     }
                     dc.SubmitChanges();
@@ -155,6 +209,10 @@
                     if (cb_cat_type.SelectedIndex != -1)
                     {
                         cat.id_categories_types = Convert.ToInt32(cb_cat_type.GetID());
+                    }
+                    if (cb_cat_tabs.SelectedIndex != -1)
+                    {
+                        cat.id_tab_filters = Convert.ToInt32(cb_cat_tabs.GetID());
                     }
                     cat.show_on_list = cbx_cat_show_on_list.Checked;
                     dc.categories.InsertOnSubmit(cat);

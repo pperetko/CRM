@@ -122,6 +122,12 @@
     <Compile Include="FormCategoriesAdd.Designer.cs">
       <DependentUpon>FormCategoriesAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCategoriesSubAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCategoriesSubAdd.Designer.cs">
+      <DependentUpon>FormCategoriesSubAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCategoriesAdd.resx">
       <DependentUpon>FormCategoriesAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCategoriesSubAdd.resx">
+      <DependentUpon>FormCategoriesSubAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

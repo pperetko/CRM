@@ -36,3 +36,5 @@ Components/WindowsFormsControlLibraryCRM/WindowsFormsControlLibraryCRM/bin/
 Components/WindowsFormsControlLibraryCRM/WindowsFormsControlLibraryCRM/obj/
 encrypt/Encode/Encode/bin/
 encrypt/Encode/Encode/obj/
+encrypt\Encode\Encode\obj\Debug\Encode.exe
+obj\Debug\Crm.exe

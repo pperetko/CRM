@@ -35,6 +35,8 @@
             this.cbx_cat_show_on_list = new System.Windows.Forms.CheckBox();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.lbl_tabs = new System.Windows.Forms.Label();
+            this.cb_cat_tabs = new WindowsFormsControlLibraryCRM.CRMComboBox();
             this.SuspendLayout();
             // 
             // lbl_name
@@ -58,7 +60,7 @@
             // lbl_type
             // 
             this.lbl_type.AutoSize = true;
-            this.lbl_type.Location = new System.Drawing.Point(23, 61);
+            this.lbl_type.Location = new System.Drawing.Point(23, 83);
             this.lbl_type.Name = "lbl_type";
             this.lbl_type.Size = new System.Drawing.Size(31, 13);
             this.lbl_type.TabIndex = 2;
@@ -68,16 +70,16 @@
             // 
             this.cb_cat_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_cat_type.FormattingEnabled = true;
-            this.cb_cat_type.Location = new System.Drawing.Point(64, 58);
+            this.cb_cat_type.Location = new System.Drawing.Point(64, 80);
             this.cb_cat_type.Name = "cb_cat_type";
-            this.cb_cat_type.Size = new System.Drawing.Size(150, 21);
+            this.cb_cat_type.Size = new System.Drawing.Size(318, 21);
             this.cb_cat_type.TabIndex = 3;
             this.cb_cat_type.SelectedIndexChanged += new System.EventHandler(this.cb_cat_type_SelectedIndexChanged);
             // 
             // cbx_cat_show_on_list
             // 
             this.cbx_cat_show_on_list.AutoSize = true;
-            this.cbx_cat_show_on_list.Location = new System.Drawing.Point(64, 97);
+            this.cbx_cat_show_on_list.Location = new System.Drawing.Point(64, 107);
             this.cbx_cat_show_on_list.Name = "cbx_cat_show_on_list";
             this.cbx_cat_show_on_list.Size = new System.Drawing.Size(83, 17);
             this.cbx_cat_show_on_list.TabIndex = 4;
@@ -105,11 +107,31 @@
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
             // 
+            // lbl_tabs
+            // 
+            this.lbl_tabs.AutoSize = true;
+            this.lbl_tabs.Location = new System.Drawing.Point(3, 57);
+            this.lbl_tabs.Name = "lbl_tabs";
+            this.lbl_tabs.Size = new System.Drawing.Size(55, 13);
+            this.lbl_tabs.TabIndex = 7;
+            this.lbl_tabs.Text = "Tab name";
+            // 
+            // cb_cat_tabs
+            // 
+            this.cb_cat_tabs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_cat_tabs.FormattingEnabled = true;
+            this.cb_cat_tabs.Location = new System.Drawing.Point(64, 53);
+            this.cb_cat_tabs.Name = "cb_cat_tabs";
+            this.cb_cat_tabs.Size = new System.Drawing.Size(318, 21);
+            this.cb_cat_tabs.TabIndex = 2;
+            // 
             // FormCategoriesAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 184);
+            this.Controls.Add(this.cb_cat_tabs);
+            this.Controls.Add(this.lbl_tabs);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.cbx_cat_show_on_list);
@@ -136,5 +158,7 @@
         private System.Windows.Forms.CheckBox cbx_cat_show_on_list;
         private System.Windows.Forms.Button btn_ok;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label lbl_tabs;
+        private WindowsFormsControlLibraryCRM.CRMComboBox cb_cat_tabs;
     }
 }

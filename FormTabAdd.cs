@@ -31,7 +31,7 @@ namespace CRM
             if (id != -1)
             {
                 DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
-                var tab = dc.tab_filters.FirstOrDefault(d => d.id_tabs_filters == id);
+                var tab = dc.tab_filters.FirstOrDefault(d => d.id_tab_filters == id);
                 tb_cat_name.Text = CRMHelper.NullToString(tab.name);
                 cb_tab_fixed.Checked = tab.fix.Value;
 
@@ -61,7 +61,28 @@ namespace CRM
             this.DialogResult = DialogResult.OK;
             if (ValidateFields() == true)
             {
+                DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
+                if ((change == true) && (id != -1))
+                {
+                    var tab = dc.tab_filters.FirstOrDefault(d => d.id_tab_filters == id);
+                    if (tab != null)
+                    {
+                        tab.name = tb_cat_name.Text;
+                        tab.fix = cb_tab_fixed.Checked;
+                    }
+                    dc.SubmitChanges();
+                }
 
+                else if (id == -1)
+                {
+                    tab_filter tab = new tab_filter();
+                    tab.name = tb_cat_name.Text;
+                    tab.fix = cb_tab_fixed.Checked;
+                    dc.tab_filters.InsertOnSubmit(tab);
+                    dc.SubmitChanges();
+                    id = tab.id_tab_filters;
+
+                }
             }
 
 
