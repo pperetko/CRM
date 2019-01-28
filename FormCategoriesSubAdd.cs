@@ -21,8 +21,23 @@ namespace CRM
 
         public int id;
 
+
+        private bool ValidateFields() {
+            bool res = true;
+
+            if (tb_cat_sub_name.Text == @"") {
+                res = false;
+                CRMHelper.Information(@"Error", @"This field cant be empty!");
+            }
+
+            return res;
+
+        }
+
         private void btn_ok_Click(object sender, EventArgs e)
         {
+
+
 
         }
 

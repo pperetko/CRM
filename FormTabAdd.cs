@@ -25,18 +25,7 @@ namespace CRM
             change = false;
         }
 
-        private void FormTabAdd_Load(object sender, EventArgs e)
-        {
-            
-            if (id != -1)
-            {
-                DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
-                var tab = dc.tab_filters.FirstOrDefault(d => d.id_tab_filters == id);
-                tb_cat_name.Text = CRMHelper.NullToString(tab.name);
-                cb_tab_fixed.Checked = tab.fix.Value;
 
-            }
-        }
 
 
         private bool ValidateFields()
@@ -86,6 +75,19 @@ namespace CRM
             }
 
 
+
+        }
+
+        private void FormTabAdd_Load_1(object sender, EventArgs e)
+        {
+            if (id != -1)
+            {
+                DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
+                var tab = dc.tab_filters.FirstOrDefault(d => d.id_tab_filters == id);
+                tb_cat_name.Text = CRMHelper.NullToString(tab.name);
+                cb_tab_fixed.Checked = tab.fix.Value;
+
+            }
 
         }
     }

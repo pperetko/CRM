@@ -86,6 +86,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(442, 184);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.cbx_cat_sub_show_on_list);
@@ -93,6 +94,7 @@
             this.Controls.Add(this.lbl_name);
             this.Name = "FormCategoriesSubAdd";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Categories Sub Add";
             this.ResumeLayout(false);
             this.PerformLayout();

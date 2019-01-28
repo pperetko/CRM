@@ -104,6 +104,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 187);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.tb_password);

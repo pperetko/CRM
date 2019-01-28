@@ -17,6 +17,8 @@
             InitializeComponent();
             show_tabs(-1);
             show_category(-1);
+            shows_categories_subitems(-1);
+            set_enabled_sub_buttons(false);
         }
 
         /// <summary>
@@ -83,10 +85,9 @@
         private void btn_cat_edit_Click(object sender, EventArgs e)
         {
             FormCategoriesAdd frm = new FormCategoriesAdd();
-            ListViewItem lvi = lv_categories.SelectedItems[0];
-            if (lvi != null)
-            {
-                frm.id = Convert.ToInt32(lvi.Tag.ToString());
+            if (lv_categories.Items.Count > 0) { 
+               ListViewItem lvi = lv_categories.SelectedItems[0];
+               frm.id = Convert.ToInt32(lvi.Tag.ToString());
             }
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
@@ -106,10 +107,9 @@
 
             if (CRMHelper.Question(@"Question", @"Delete selected items ?") == DialogResult.OK)
             {
-
-                ListViewItem lvi = lv_categories.SelectedItems[0];
-                if (lvi != null)
+                if (lv_categories.Items.Count > 0)
                 {
+                    ListViewItem lvi = lv_categories.SelectedItems[0];
                     id = Convert.ToInt32(lvi.Tag.ToString());
                 }
                 else
@@ -168,8 +168,8 @@
         private void show_tabs(int id)
         {
             int index = -1;
-            lv_categories.BeginUpdate();
-            lv_categories.Items.Clear();
+            lv_tabs.BeginUpdate();
+            lv_tabs.Items.Clear();
             DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
             var data = from p in db.tab_filters
                         orderby p.name
@@ -189,7 +189,7 @@
 
                 }
             }
-            lv_categories.EndUpdate();
+            lv_tabs.EndUpdate();
             if (index != -1)
             {
                 lv_tabs.Items[index].Selected = true;
@@ -203,9 +203,8 @@
         {
 
             FormTabAdd frm = new FormTabAdd();
-            ListViewItem lvi = lv_tabs.SelectedItems[0];
-            if (lvi != null)
-            {
+            if (lv_tabs.Items.Count>0) { 
+                ListViewItem lvi = lv_tabs.SelectedItems[0];
                 frm.id = Convert.ToInt32(lvi.Tag.ToString());
             }
             frm.ShowDialog();
@@ -226,10 +225,9 @@
 
             if (CRMHelper.Question(@"Question", @"Delete selected items ?") == DialogResult.OK)
             {
-
-                ListViewItem lvi = lv_tabs.SelectedItems[0];
-                if (lvi != null)
+                if  ( lv_tabs.Items.Count >0)
                 {
+                    ListViewItem lvi = lv_tabs.SelectedItems[0];
                     id = Convert.ToInt32(lvi.Tag.ToString());
                 }
                 else
@@ -244,6 +242,137 @@
                     if (cat != null)
                     {
                         db.tab_filters.DeleteOnSubmit(cat);
+                        // zapisujemy zmiany
+                        db.SubmitChanges();
+                        show_tabs(-1);
+
+                    }
+                }
+                else
+                {
+                    CRMHelper.Information(@"Information", @"Cant delete selected items!");
+                    return;
+                }
+            }
+
+        }
+
+        private void set_enabled_sub_buttons(bool enabled) {
+            btn_categories_sub_add.Enabled = enabled;
+            btn_categories_sub_del.Enabled = enabled;
+            btn_categories_sub_edit.Enabled = enabled;
+        }
+
+        private void lv_categories_Click(object sender, EventArgs e)
+        {
+            set_enabled_sub_buttons(false);
+            if (lv_categories.Items.Count > 0)
+            {
+                ListViewItem lvi = lv_categories.SelectedItems[0];
+                if (lvi != null)
+                {
+                    if ((lvi.SubItems[2].Text == @"Combo Box") || (lvi.SubItems[2].Text ==@"List Check Box")) {
+                        set_enabled_sub_buttons(true);
+                    }
+                }
+            }
+        }
+
+        //-------------------Categories subitems
+        private void btn_categories_sub_add_Click(object sender, EventArgs e)
+        {
+            FormCategoriesSubAdd frm = new FormCategoriesSubAdd();
+            frm.id = -1;
+            frm.ShowDialog();
+
+        }
+
+
+
+
+
+        private void btn_categories_sub_edit_Click(object sender, EventArgs e)
+        {
+            FormCategoriesSubAdd frm = new FormCategoriesSubAdd();
+            if (lv_categories_sub.Items.Count > 0)
+            {
+                ListViewItem lvi = lv_categories_sub.SelectedItems[0];
+                frm.id = Convert.ToInt32(lvi.Tag.ToString());
+            }
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                shows_categories_subitems(frm.id);
+            }
+
+
+        }
+
+
+        private void shows_categories_subitems(int id) {
+            int index = -1;
+            lv_categories_sub.BeginUpdate();
+            lv_categories_sub.Items.Clear();
+            DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
+            var data = from p in db.category_subs
+                       orderby p.name
+                       select new { u1 = p.name, u2 = p.show_on_list, id = p.id_category_sub };
+            foreach (var item in data)
+            {
+
+                ListViewItem lvi = new ListViewItem();
+                lvi.Text = item.u1;
+                lvi.SubItems.Add(item.u2.ToString());
+
+                lvi.Tag = item.id;
+                lv_tabs.Items.Add(lvi);
+                if (id == item.id)
+                {
+                    index = lvi.Index;
+
+                }
+            }
+            lv_categories_sub.EndUpdate();
+            if (index != -1)
+            {
+                lv_categories_sub.Items[index].Selected = true;
+                lv_categories_sub.Select();
+
+            }
+
+
+
+        }
+
+        private void btn_categories_sub_del_Click(object sender, EventArgs e)
+        {
+
+            int id = -1;
+
+            if (lv_tabs.Items.Count == 0)
+            {
+                return;
+            }
+
+            if (CRMHelper.Question(@"Question", @"Delete selected items ?") == DialogResult.OK)
+            {
+                if (lv_categories_sub.Items.Count > 0)
+                {
+                    ListViewItem lvi = lv_categories_sub.SelectedItems[0];
+                    id = Convert.ToInt32(lvi.Tag.ToString());
+                }
+                else
+                {
+                    CRMHelper.Information(@"Information", @"Cant delete selected items!");
+                    return;
+                }
+                if (id != -1)
+                {
+                    DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
+                    var cat = db.category_subs.FirstOrDefault(d => d.id_category_sub == id);
+                    if (cat != null)
+                    {
+                        db.category_subs.DeleteOnSubmit(cat);
                         // zapisujemy zmiany
                         db.SubmitChanges();
                         show_tabs(-1);

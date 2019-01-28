@@ -95,6 +95,7 @@
             this.Controls.Add(this.btn_ok);
             this.Name = "FormTabAdd";
             this.Text = "Customer Tab";
+            this.Load += new System.EventHandler(this.FormTabAdd_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
