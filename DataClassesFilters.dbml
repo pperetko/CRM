@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CRM" Class="DataClassesFiltersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=USER-KOMPUTER\SQL2017;Initial Catalog=CRM;Persist Security Info=True;User ID=sa" SettingsObjectName="CRM.Properties.Settings" SettingsPropertyName="CRMConnectionString2" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.category" Member="categories">
-    <Type Name="category">
-      <Column Name="id_category" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="id_categories_types" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="show_on_list" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="id_tab_filters" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="category_category_sub" Member="category_sub" ThisKey="id_category" OtherKey="id_category_sub" Type="category_sub" Cardinality="One" />
-      <Association Name="categories_type_category" Member="categories_type" ThisKey="id_categories_types" OtherKey="id_categories_types" Type="categories_type" IsForeignKey="true" />
-      <Association Name="tab_filter_category" Member="tab_filter" ThisKey="id_tab_filters" OtherKey="id_tab_filters" Type="tab_filter" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.categories_types" Member="categories_types">
     <Type Name="categories_type">
       <Column Name="id_categories_types" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -29,13 +17,44 @@
       <Association Name="tab_filter_category" Member="categories" ThisKey="id_tab_filters" OtherKey="id_tab_filters" Type="category" />
     </Type>
   </Table>
+  <Table Name="dbo.filters" Member="filters">
+    <Type Name="filter">
+      <Column Name="id_filters" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="[index]" Member="index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="filter_category_filter" Member="category_filters" ThisKey="id_filters" OtherKey="id_filter" Type="category_filter" />
+    </Type>
+  </Table>
   <Table Name="dbo.category_sub" Member="category_subs">
     <Type Name="category_sub">
       <Column Name="id_category_sub" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="show_on_list" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="id_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="category_category_sub" Member="category" ThisKey="id_category" OtherKey="id_category" Type="category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category" Member="categories">
+    <Type Name="category">
+      <Column Name="id_category" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="id_categories_types" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="show_on_list" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="id_tab_filters" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="category_category_sub" Member="category_subs" ThisKey="id_category" OtherKey="id_category" Type="category_sub" />
+      <Association Name="category_category_filter" Member="category_filters" ThisKey="id_category" OtherKey="id_category" Type="category_filter" />
+      <Association Name="categories_type_category" Member="categories_type" ThisKey="id_categories_types" OtherKey="id_categories_types" Type="categories_type" IsForeignKey="true" />
+      <Association Name="tab_filter_category" Member="tab_filter" ThisKey="id_tab_filters" OtherKey="id_tab_filters" Type="tab_filter" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category_filters" Member="category_filters">
+    <Type Name="category_filter">
+      <Column Name="id_category_filters" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="id_category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="category_category_sub" Member="category" ThisKey="id_category_sub" OtherKey="id_category" Type="category" IsForeignKey="true" />
+      <Column Name="id_filter" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="category_category_filter" Member="category" ThisKey="id_category" OtherKey="id_category" Type="category" IsForeignKey="true" />
+      <Association Name="filter_category_filter" Member="filter" ThisKey="id_filter" OtherKey="id_filters" Type="filter" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

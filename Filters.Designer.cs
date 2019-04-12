@@ -54,9 +54,18 @@
             this.btn_cat_edit = new System.Windows.Forms.Button();
             this.btn_cat_add = new System.Windows.Forms.Button();
             this.ts_filters = new System.Windows.Forms.TabPage();
+            this.lv_filters = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_filters_delete = new System.Windows.Forms.Button();
+            this.btn_filters_edit = new System.Windows.Forms.Button();
+            this.btn_filters_add = new System.Windows.Forms.Button();
             this.tc_main.SuspendLayout();
             this.ts_tab.SuspendLayout();
             this.ts_categories.SuspendLayout();
+            this.ts_filters.SuspendLayout();
             this.SuspendLayout();
             // 
             // tc_main
@@ -248,6 +257,7 @@
             this.lv_categories.UseCompatibleStateImageBehavior = false;
             this.lv_categories.View = System.Windows.Forms.View.Details;
             this.lv_categories.Click += new System.EventHandler(this.lv_categories_Click);
+            this.lv_categories.DoubleClick += new System.EventHandler(this.lv_categories_DoubleClick);
             // 
             // column_name
             // 
@@ -300,13 +310,85 @@
             // 
             // ts_filters
             // 
+            this.ts_filters.Controls.Add(this.lv_filters);
+            this.ts_filters.Controls.Add(this.btn_filters_delete);
+            this.ts_filters.Controls.Add(this.btn_filters_edit);
+            this.ts_filters.Controls.Add(this.btn_filters_add);
             this.ts_filters.Location = new System.Drawing.Point(4, 22);
             this.ts_filters.Name = "ts_filters";
             this.ts_filters.Padding = new System.Windows.Forms.Padding(3);
             this.ts_filters.Size = new System.Drawing.Size(871, 573);
             this.ts_filters.TabIndex = 1;
-            this.ts_filters.Text = "Filters of positions";
+            this.ts_filters.Text = "Filters";
             this.ts_filters.UseVisualStyleBackColor = true;
+            // 
+            // lv_filters
+            // 
+            this.lv_filters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lv_filters.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.lv_filters.FullRowSelect = true;
+            this.lv_filters.GridLines = true;
+            this.lv_filters.HideSelection = false;
+            this.lv_filters.Location = new System.Drawing.Point(18, 45);
+            this.lv_filters.MultiSelect = false;
+            this.lv_filters.Name = "lv_filters";
+            this.lv_filters.Size = new System.Drawing.Size(365, 485);
+            this.lv_filters.TabIndex = 11;
+            this.lv_filters.UseCompatibleStateImageBehavior = false;
+            this.lv_filters.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Name";
+            this.columnHeader5.Width = 173;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Tab";
+            this.columnHeader6.Width = 134;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Type";
+            this.columnHeader7.Width = 123;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Show On List";
+            // 
+            // btn_filters_delete
+            // 
+            this.btn_filters_delete.Location = new System.Drawing.Point(128, 16);
+            this.btn_filters_delete.Name = "btn_filters_delete";
+            this.btn_filters_delete.Size = new System.Drawing.Size(49, 23);
+            this.btn_filters_delete.TabIndex = 10;
+            this.btn_filters_delete.Text = "Delete";
+            this.btn_filters_delete.UseVisualStyleBackColor = true;
+            // 
+            // btn_filters_edit
+            // 
+            this.btn_filters_edit.Location = new System.Drawing.Point(73, 16);
+            this.btn_filters_edit.Name = "btn_filters_edit";
+            this.btn_filters_edit.Size = new System.Drawing.Size(49, 23);
+            this.btn_filters_edit.TabIndex = 9;
+            this.btn_filters_edit.Text = "Edit";
+            this.btn_filters_edit.UseVisualStyleBackColor = true;
+            this.btn_filters_edit.Click += new System.EventHandler(this.btn_filters_edit_Click);
+            // 
+            // btn_filters_add
+            // 
+            this.btn_filters_add.Location = new System.Drawing.Point(18, 16);
+            this.btn_filters_add.Name = "btn_filters_add";
+            this.btn_filters_add.Size = new System.Drawing.Size(49, 23);
+            this.btn_filters_add.TabIndex = 8;
+            this.btn_filters_add.Text = "Add";
+            this.btn_filters_add.UseVisualStyleBackColor = true;
+            this.btn_filters_add.Click += new System.EventHandler(this.btn_filters_add_Click);
             // 
             // Filters
             // 
@@ -320,6 +402,7 @@
             this.tc_main.ResumeLayout(false);
             this.ts_tab.ResumeLayout(false);
             this.ts_categories.ResumeLayout(false);
+            this.ts_filters.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -352,5 +435,13 @@
         private System.Windows.Forms.Button btn_categories_sub_del;
         private System.Windows.Forms.Button btn_categories_sub_edit;
         private System.Windows.Forms.Button btn_categories_sub_add;
+        private System.Windows.Forms.ListView lv_filters;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Button btn_filters_delete;
+        private System.Windows.Forms.Button btn_filters_edit;
+        private System.Windows.Forms.Button btn_filters_add;
     }
 }

@@ -14,7 +14,9 @@ namespace CRM
     {
 
         public int id;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public FrmCustomers()
         {
             InitializeComponent();
@@ -40,15 +42,17 @@ namespace CRM
         private void tsb_edit_Click(object sender, EventArgs e)
         {
             FrmCustomerAddModify form = new FrmCustomerAddModify();
-
+            if (lv_customers.Items.Count > 0)
+            { 
             ListViewItem lvi = lv_customers.SelectedItems[0];
-            if (lvi != null)
-            {
-                form.setid(Convert.ToInt32(lvi.Tag.ToString()));
-                form.ShowDialog(this);
-                if (form.DialogResult == DialogResult.OK)
+                if (lvi != null)
                 {
-                    RefreshSelectedRow();
+                    form.setid(Convert.ToInt32(lvi.Tag.ToString()));
+                    form.ShowDialog(this);
+                    if (form.DialogResult == DialogResult.OK)
+                    {
+                        RefreshSelectedRow();
+                    }
                 }
             }
         }

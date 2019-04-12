@@ -96,6 +96,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Categories Sub Add";
+            this.Load += new System.EventHandler(this.FormCategoriesSubAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

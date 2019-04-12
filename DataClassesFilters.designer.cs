@@ -30,18 +30,24 @@ namespace CRM
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Insertcategory(category instance);
-    partial void Updatecategory(category instance);
-    partial void Deletecategory(category instance);
     partial void Insertcategories_type(categories_type instance);
     partial void Updatecategories_type(categories_type instance);
     partial void Deletecategories_type(categories_type instance);
     partial void Inserttab_filter(tab_filter instance);
     partial void Updatetab_filter(tab_filter instance);
     partial void Deletetab_filter(tab_filter instance);
+    partial void Insertfilter(filter instance);
+    partial void Updatefilter(filter instance);
+    partial void Deletefilter(filter instance);
     partial void Insertcategory_sub(category_sub instance);
     partial void Updatecategory_sub(category_sub instance);
     partial void Deletecategory_sub(category_sub instance);
+    partial void Insertcategory(category instance);
+    partial void Updatecategory(category instance);
+    partial void Deletecategory(category instance);
+    partial void Insertcategory_filter(category_filter instance);
+    partial void Updatecategory_filter(category_filter instance);
+    partial void Deletecategory_filter(category_filter instance);
     #endregion
 		
 		public DataClassesFiltersDataContext() : 
@@ -74,14 +80,6 @@ namespace CRM
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<category> categories
-		{
-			get
-			{
-				return this.GetTable<category>();
-			}
-		}
-		
 		public System.Data.Linq.Table<categories_type> categories_types
 		{
 			get
@@ -98,6 +96,14 @@ namespace CRM
 			}
 		}
 		
+		public System.Data.Linq.Table<filter> filters
+		{
+			get
+			{
+				return this.GetTable<filter>();
+			}
+		}
+		
 		public System.Data.Linq.Table<category_sub> category_subs
 		{
 			get
@@ -105,276 +111,20 @@ namespace CRM
 				return this.GetTable<category_sub>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
-	public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_category;
-		
-		private string _name;
-		
-		private int _id_categories_types;
-		
-		private System.Nullable<bool> _show_on_list;
-		
-		private int _id_tab_filters;
-		
-		private EntityRef<category_sub> _category_sub;
-		
-		private EntityRef<categories_type> _categories_type;
-		
-		private EntityRef<tab_filter> _tab_filter;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_categoryChanging(int value);
-    partial void Onid_categoryChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void Onid_categories_typesChanging(int value);
-    partial void Onid_categories_typesChanged();
-    partial void Onshow_on_listChanging(System.Nullable<bool> value);
-    partial void Onshow_on_listChanged();
-    partial void Onid_tab_filtersChanging(int value);
-    partial void Onid_tab_filtersChanged();
-    #endregion
-		
-		public category()
-		{
-			this._category_sub = default(EntityRef<category_sub>);
-			this._categories_type = default(EntityRef<categories_type>);
-			this._tab_filter = default(EntityRef<tab_filter>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_category
+		public System.Data.Linq.Table<category> categories
 		{
 			get
 			{
-				return this._id_category;
-			}
-			set
-			{
-				if ((this._id_category != value))
-				{
-					this.Onid_categoryChanging(value);
-					this.SendPropertyChanging();
-					this._id_category = value;
-					this.SendPropertyChanged("id_category");
-					this.Onid_categoryChanged();
-				}
+				return this.GetTable<category>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string name
+		public System.Data.Linq.Table<category_filter> category_filters
 		{
 			get
 			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categories_types", DbType="Int NOT NULL")]
-		public int id_categories_types
-		{
-			get
-			{
-				return this._id_categories_types;
-			}
-			set
-			{
-				if ((this._id_categories_types != value))
-				{
-					if (this._categories_type.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_categories_typesChanging(value);
-					this.SendPropertyChanging();
-					this._id_categories_types = value;
-					this.SendPropertyChanged("id_categories_types");
-					this.Onid_categories_typesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_show_on_list", DbType="Bit")]
-		public System.Nullable<bool> show_on_list
-		{
-			get
-			{
-				return this._show_on_list;
-			}
-			set
-			{
-				if ((this._show_on_list != value))
-				{
-					this.Onshow_on_listChanging(value);
-					this.SendPropertyChanging();
-					this._show_on_list = value;
-					this.SendPropertyChanged("show_on_list");
-					this.Onshow_on_listChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_tab_filters", DbType="Int NOT NULL")]
-		public int id_tab_filters
-		{
-			get
-			{
-				return this._id_tab_filters;
-			}
-			set
-			{
-				if ((this._id_tab_filters != value))
-				{
-					if (this._tab_filter.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_tab_filtersChanging(value);
-					this.SendPropertyChanging();
-					this._id_tab_filters = value;
-					this.SendPropertyChanged("id_tab_filters");
-					this.Onid_tab_filtersChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_category_sub", Storage="_category_sub", ThisKey="id_category", OtherKey="id_category_sub", IsUnique=true, IsForeignKey=false)]
-		public category_sub category_sub
-		{
-			get
-			{
-				return this._category_sub.Entity;
-			}
-			set
-			{
-				category_sub previousValue = this._category_sub.Entity;
-				if (((previousValue != value) 
-							|| (this._category_sub.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._category_sub.Entity = null;
-						previousValue.category = null;
-					}
-					this._category_sub.Entity = value;
-					if ((value != null))
-					{
-						value.category = this;
-					}
-					this.SendPropertyChanged("category_sub");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="categories_type_category", Storage="_categories_type", ThisKey="id_categories_types", OtherKey="id_categories_types", IsForeignKey=true)]
-		public categories_type categories_type
-		{
-			get
-			{
-				return this._categories_type.Entity;
-			}
-			set
-			{
-				categories_type previousValue = this._categories_type.Entity;
-				if (((previousValue != value) 
-							|| (this._categories_type.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._categories_type.Entity = null;
-						previousValue.categories.Remove(this);
-					}
-					this._categories_type.Entity = value;
-					if ((value != null))
-					{
-						value.categories.Add(this);
-						this._id_categories_types = value.id_categories_types;
-					}
-					else
-					{
-						this._id_categories_types = default(int);
-					}
-					this.SendPropertyChanged("categories_type");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tab_filter_category", Storage="_tab_filter", ThisKey="id_tab_filters", OtherKey="id_tab_filters", IsForeignKey=true)]
-		public tab_filter tab_filter
-		{
-			get
-			{
-				return this._tab_filter.Entity;
-			}
-			set
-			{
-				tab_filter previousValue = this._tab_filter.Entity;
-				if (((previousValue != value) 
-							|| (this._tab_filter.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tab_filter.Entity = null;
-						previousValue.categories.Remove(this);
-					}
-					this._tab_filter.Entity = value;
-					if ((value != null))
-					{
-						value.categories.Add(this);
-						this._id_tab_filters = value.id_tab_filters;
-					}
-					else
-					{
-						this._id_tab_filters = default(int);
-					}
-					this.SendPropertyChanged("tab_filter");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<category_filter>();
 			}
 		}
 	}
@@ -679,6 +429,168 @@ namespace CRM
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.filters")]
+	public partial class filter : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_filters;
+		
+		private string _name;
+		
+		private System.Nullable<bool> _active;
+		
+		private int _index;
+		
+		private EntitySet<category_filter> _category_filters;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_filtersChanging(int value);
+    partial void Onid_filtersChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnactiveChanging(System.Nullable<bool> value);
+    partial void OnactiveChanged();
+    partial void OnindexChanging(int value);
+    partial void OnindexChanged();
+    #endregion
+		
+		public filter()
+		{
+			this._category_filters = new EntitySet<category_filter>(new Action<category_filter>(this.attach_category_filters), new Action<category_filter>(this.detach_category_filters));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_filters", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_filters
+		{
+			get
+			{
+				return this._id_filters;
+			}
+			set
+			{
+				if ((this._id_filters != value))
+				{
+					this.Onid_filtersChanging(value);
+					this.SendPropertyChanging();
+					this._id_filters = value;
+					this.SendPropertyChanged("id_filters");
+					this.Onid_filtersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit")]
+		public System.Nullable<bool> active
+		{
+			get
+			{
+				return this._active;
+			}
+			set
+			{
+				if ((this._active != value))
+				{
+					this.OnactiveChanging(value);
+					this.SendPropertyChanging();
+					this._active = value;
+					this.SendPropertyChanged("active");
+					this.OnactiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[index]", Storage="_index", DbType="Int NOT NULL")]
+		public int index
+		{
+			get
+			{
+				return this._index;
+			}
+			set
+			{
+				if ((this._index != value))
+				{
+					this.OnindexChanging(value);
+					this.SendPropertyChanging();
+					this._index = value;
+					this.SendPropertyChanged("index");
+					this.OnindexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="filter_category_filter", Storage="_category_filters", ThisKey="id_filters", OtherKey="id_filter")]
+		public EntitySet<category_filter> category_filters
+		{
+			get
+			{
+				return this._category_filters;
+			}
+			set
+			{
+				this._category_filters.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_category_filters(category_filter entity)
+		{
+			this.SendPropertyChanging();
+			entity.filter = this;
+		}
+		
+		private void detach_category_filters(category_filter entity)
+		{
+			this.SendPropertyChanging();
+			entity.filter = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category_sub")]
 	public partial class category_sub : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -691,7 +603,7 @@ namespace CRM
 		
 		private System.Nullable<bool> _show_on_list;
 		
-		private int _id_category;
+		private System.Nullable<int> _id_category;
 		
 		private EntityRef<category> _category;
 		
@@ -705,7 +617,7 @@ namespace CRM
     partial void OnnameChanged();
     partial void Onshow_on_listChanging(System.Nullable<bool> value);
     partial void Onshow_on_listChanged();
-    partial void Onid_categoryChanging(int value);
+    partial void Onid_categoryChanging(System.Nullable<int> value);
     partial void Onid_categoryChanged();
     #endregion
 		
@@ -726,10 +638,6 @@ namespace CRM
 			{
 				if ((this._id_category_sub != value))
 				{
-					if (this._category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.Onid_category_subChanging(value);
 					this.SendPropertyChanging();
 					this._id_category_sub = value;
@@ -779,7 +687,135 @@ namespace CRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", DbType="Int")]
+		public System.Nullable<int> id_category
+		{
+			get
+			{
+				return this._id_category;
+			}
+			set
+			{
+				if ((this._id_category != value))
+				{
+					if (this._category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_categoryChanging(value);
+					this.SendPropertyChanging();
+					this._id_category = value;
+					this.SendPropertyChanged("id_category");
+					this.Onid_categoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_category_sub", Storage="_category", ThisKey="id_category", OtherKey="id_category", IsForeignKey=true)]
+		public category category
+		{
+			get
+			{
+				return this._category.Entity;
+			}
+			set
+			{
+				category previousValue = this._category.Entity;
+				if (((previousValue != value) 
+							|| (this._category.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._category.Entity = null;
+						previousValue.category_subs.Remove(this);
+					}
+					this._category.Entity = value;
+					if ((value != null))
+					{
+						value.category_subs.Add(this);
+						this._id_category = value.id_category;
+					}
+					else
+					{
+						this._id_category = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("category");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category")]
+	public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_category;
+		
+		private string _name;
+		
+		private int _id_categories_types;
+		
+		private System.Nullable<bool> _show_on_list;
+		
+		private int _id_tab_filters;
+		
+		private EntitySet<category_sub> _category_subs;
+		
+		private EntitySet<category_filter> _category_filters;
+		
+		private EntityRef<categories_type> _categories_type;
+		
+		private EntityRef<tab_filter> _tab_filter;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_categoryChanging(int value);
+    partial void Onid_categoryChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void Onid_categories_typesChanging(int value);
+    partial void Onid_categories_typesChanged();
+    partial void Onshow_on_listChanging(System.Nullable<bool> value);
+    partial void Onshow_on_listChanged();
+    partial void Onid_tab_filtersChanging(int value);
+    partial void Onid_tab_filtersChanged();
+    #endregion
+		
+		public category()
+		{
+			this._category_subs = new EntitySet<category_sub>(new Action<category_sub>(this.attach_category_subs), new Action<category_sub>(this.detach_category_subs));
+			this._category_filters = new EntitySet<category_filter>(new Action<category_filter>(this.attach_category_filters), new Action<category_filter>(this.detach_category_filters));
+			this._categories_type = default(EntityRef<categories_type>);
+			this._tab_filter = default(EntityRef<tab_filter>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id_category
 		{
 			get
@@ -799,7 +835,337 @@ namespace CRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_category_sub", Storage="_category", ThisKey="id_category_sub", OtherKey="id_category", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_categories_types", DbType="Int NOT NULL")]
+		public int id_categories_types
+		{
+			get
+			{
+				return this._id_categories_types;
+			}
+			set
+			{
+				if ((this._id_categories_types != value))
+				{
+					if (this._categories_type.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_categories_typesChanging(value);
+					this.SendPropertyChanging();
+					this._id_categories_types = value;
+					this.SendPropertyChanged("id_categories_types");
+					this.Onid_categories_typesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_show_on_list", DbType="Bit")]
+		public System.Nullable<bool> show_on_list
+		{
+			get
+			{
+				return this._show_on_list;
+			}
+			set
+			{
+				if ((this._show_on_list != value))
+				{
+					this.Onshow_on_listChanging(value);
+					this.SendPropertyChanging();
+					this._show_on_list = value;
+					this.SendPropertyChanged("show_on_list");
+					this.Onshow_on_listChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_tab_filters", DbType="Int NOT NULL")]
+		public int id_tab_filters
+		{
+			get
+			{
+				return this._id_tab_filters;
+			}
+			set
+			{
+				if ((this._id_tab_filters != value))
+				{
+					if (this._tab_filter.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_tab_filtersChanging(value);
+					this.SendPropertyChanging();
+					this._id_tab_filters = value;
+					this.SendPropertyChanged("id_tab_filters");
+					this.Onid_tab_filtersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_category_sub", Storage="_category_subs", ThisKey="id_category", OtherKey="id_category")]
+		public EntitySet<category_sub> category_subs
+		{
+			get
+			{
+				return this._category_subs;
+			}
+			set
+			{
+				this._category_subs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_category_filter", Storage="_category_filters", ThisKey="id_category", OtherKey="id_category")]
+		public EntitySet<category_filter> category_filters
+		{
+			get
+			{
+				return this._category_filters;
+			}
+			set
+			{
+				this._category_filters.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="categories_type_category", Storage="_categories_type", ThisKey="id_categories_types", OtherKey="id_categories_types", IsForeignKey=true)]
+		public categories_type categories_type
+		{
+			get
+			{
+				return this._categories_type.Entity;
+			}
+			set
+			{
+				categories_type previousValue = this._categories_type.Entity;
+				if (((previousValue != value) 
+							|| (this._categories_type.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._categories_type.Entity = null;
+						previousValue.categories.Remove(this);
+					}
+					this._categories_type.Entity = value;
+					if ((value != null))
+					{
+						value.categories.Add(this);
+						this._id_categories_types = value.id_categories_types;
+					}
+					else
+					{
+						this._id_categories_types = default(int);
+					}
+					this.SendPropertyChanged("categories_type");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tab_filter_category", Storage="_tab_filter", ThisKey="id_tab_filters", OtherKey="id_tab_filters", IsForeignKey=true)]
+		public tab_filter tab_filter
+		{
+			get
+			{
+				return this._tab_filter.Entity;
+			}
+			set
+			{
+				tab_filter previousValue = this._tab_filter.Entity;
+				if (((previousValue != value) 
+							|| (this._tab_filter.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tab_filter.Entity = null;
+						previousValue.categories.Remove(this);
+					}
+					this._tab_filter.Entity = value;
+					if ((value != null))
+					{
+						value.categories.Add(this);
+						this._id_tab_filters = value.id_tab_filters;
+					}
+					else
+					{
+						this._id_tab_filters = default(int);
+					}
+					this.SendPropertyChanged("tab_filter");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_category_subs(category_sub entity)
+		{
+			this.SendPropertyChanging();
+			entity.category = this;
+		}
+		
+		private void detach_category_subs(category_sub entity)
+		{
+			this.SendPropertyChanging();
+			entity.category = null;
+		}
+		
+		private void attach_category_filters(category_filter entity)
+		{
+			this.SendPropertyChanging();
+			entity.category = this;
+		}
+		
+		private void detach_category_filters(category_filter entity)
+		{
+			this.SendPropertyChanging();
+			entity.category = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.category_filters")]
+	public partial class category_filter : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_category_filters;
+		
+		private int _id_category;
+		
+		private int _id_filter;
+		
+		private EntityRef<category> _category;
+		
+		private EntityRef<filter> _filter;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_category_filtersChanging(int value);
+    partial void Onid_category_filtersChanged();
+    partial void Onid_categoryChanging(int value);
+    partial void Onid_categoryChanged();
+    partial void Onid_filterChanging(int value);
+    partial void Onid_filterChanged();
+    #endregion
+		
+		public category_filter()
+		{
+			this._category = default(EntityRef<category>);
+			this._filter = default(EntityRef<filter>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category_filters", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_category_filters
+		{
+			get
+			{
+				return this._id_category_filters;
+			}
+			set
+			{
+				if ((this._id_category_filters != value))
+				{
+					this.Onid_category_filtersChanging(value);
+					this.SendPropertyChanging();
+					this._id_category_filters = value;
+					this.SendPropertyChanged("id_category_filters");
+					this.Onid_category_filtersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", DbType="Int NOT NULL")]
+		public int id_category
+		{
+			get
+			{
+				return this._id_category;
+			}
+			set
+			{
+				if ((this._id_category != value))
+				{
+					if (this._category.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_categoryChanging(value);
+					this.SendPropertyChanging();
+					this._id_category = value;
+					this.SendPropertyChanged("id_category");
+					this.Onid_categoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_filter", DbType="Int NOT NULL")]
+		public int id_filter
+		{
+			get
+			{
+				return this._id_filter;
+			}
+			set
+			{
+				if ((this._id_filter != value))
+				{
+					if (this._filter.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_filterChanging(value);
+					this.SendPropertyChanging();
+					this._id_filter = value;
+					this.SendPropertyChanged("id_filter");
+					this.Onid_filterChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_category_filter", Storage="_category", ThisKey="id_category", OtherKey="id_category", IsForeignKey=true)]
 		public category category
 		{
 			get
@@ -816,19 +1182,53 @@ namespace CRM
 					if ((previousValue != null))
 					{
 						this._category.Entity = null;
-						previousValue.category_sub = null;
+						previousValue.category_filters.Remove(this);
 					}
 					this._category.Entity = value;
 					if ((value != null))
 					{
-						value.category_sub = this;
-						this._id_category_sub = value.id_category;
+						value.category_filters.Add(this);
+						this._id_category = value.id_category;
 					}
 					else
 					{
-						this._id_category_sub = default(int);
+						this._id_category = default(int);
 					}
 					this.SendPropertyChanged("category");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="filter_category_filter", Storage="_filter", ThisKey="id_filter", OtherKey="id_filters", IsForeignKey=true)]
+		public filter filter
+		{
+			get
+			{
+				return this._filter.Entity;
+			}
+			set
+			{
+				filter previousValue = this._filter.Entity;
+				if (((previousValue != value) 
+							|| (this._filter.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._filter.Entity = null;
+						previousValue.category_filters.Remove(this);
+					}
+					this._filter.Entity = value;
+					if ((value != null))
+					{
+						value.category_filters.Add(this);
+						this._id_filter = value.id_filters;
+					}
+					else
+					{
+						this._id_filter = default(int);
+					}
+					this.SendPropertyChanged("filter");
 				}
 			}
 		}
