@@ -134,6 +134,9 @@
   <data name="pc_main.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
+  <data name="&gt;&gt;pc_main.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -183,9 +186,6 @@
   <data name="tr_menu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="sp_main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1037, 726</value>
-  </data>
   <data name="&gt;&gt;sp_main.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -194,9 +194,6 @@
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormMain</value>
-  </data>
-  <data name="&gt;&gt;pc_main.Name" xml:space="preserve">
-    <value>pc_main</value>
   </data>
   <data name="&gt;&gt;sp_main.Panel1.Parent" xml:space="preserve">
     <value>sp_main</value>
@@ -207,17 +204,14 @@
   <data name="&gt;&gt;imageList1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;sp_main.Panel2.Name" xml:space="preserve">
+    <value>sp_main.Panel2</value>
+  </data>
   <data name="pc_main.ItemSize" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
   </data>
-  <data name="pc_main.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="sp_main.SplitterWidth" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="pc_main.Size" type="System.Drawing.Size, System.Drawing">
-    <value>797, 726</value>
+  <data name="$this.RightToLeftLayout" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;sp_main.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -225,14 +219,17 @@
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="&gt;&gt;pc_main.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;pc_main.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="pc_main.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;pc_main.Parent" xml:space="preserve">
-    <value>sp_main.Panel2</value>
+  <data name="sp_main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1037, 726</value>
   </data>
   <data name="tr_menu.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 726</value>
@@ -267,8 +264,8 @@
   <data name="&gt;&gt;sp_main.Panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tr_menu.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="pc_main.Size" type="System.Drawing.Size, System.Drawing">
+    <value>797, 726</value>
   </data>
   <data name="sp_main.SplitterDistance" type="System.Int32, mscorlib">
     <value>237</value>
@@ -279,11 +276,11 @@
   <data name="&gt;&gt;sp_main.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;pc_main.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tr_menu.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="sp_main.SplitterWidth" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="tr_menu.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 13, 4, 4</value>
@@ -297,8 +294,8 @@
   <data name="sp_main.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
   </data>
-  <data name="$this.RightToLeftLayout" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="pc_main.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;sp_main.Panel2.Parent" xml:space="preserve">
     <value>sp_main</value>
@@ -306,29 +303,29 @@
   <data name="imageList1.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 10.25pt</value>
+  <data name="&gt;&gt;pc_main.Name" xml:space="preserve">
+    <value>pc_main</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>CRM</value>
   </data>
-  <data name="&gt;&gt;sp_main.Panel2.Name" xml:space="preserve">
+  <data name="&gt;&gt;pc_main.Parent" xml:space="preserve">
     <value>sp_main.Panel2</value>
   </data>
   <data name="sp_main.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10.25pt</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>pl</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="tr_menu.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

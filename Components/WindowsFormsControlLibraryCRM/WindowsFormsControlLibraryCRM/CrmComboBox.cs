@@ -34,15 +34,15 @@ namespace WindowsFormsControlLibraryCRM
 
         private int getIndex(long id) {
 
-            int pos = -1;
+            int pos_ = -1;
             foreach (long element in idList)
             {
-                pos = +1;
+                pos_++;
                 if (element == id)
                     break;
 
             }
-            return pos;
+            return pos_;
         }
 
 

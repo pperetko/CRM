@@ -15,11 +15,11 @@
         public Filters()
         {
             InitializeComponent();
-            show_tabs(-1);
-            show_category(-1);
-            shows_categories_subitems(-1);
+            Show_tabs(-1);
+            Show_category(-1);
+            Shows_categories_subitems(-1);
             ShowFilters(-1);
-            set_enabled_sub_buttons(false);
+            Set_enabled_sub_buttons(false);
         }
 
         /// <summary>
@@ -27,13 +27,13 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_cat_add_Click(object sender, EventArgs e)
+        private void Btn_cat_add_click(object sender, EventArgs e)
         {
             FormCategoriesAdd frm = new FormCategoriesAdd();
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                show_category(frm.id);
+                Show_category(frm.id);
             }
         }
 
@@ -41,7 +41,7 @@
         /// The show_category
         /// </summary>
         /// <param name="id">The id<see cref="int"/></param>
-        private void show_category(int id)
+        private void Show_category(int id)
         {
             int index = -1;
             lv_categories.BeginUpdate();
@@ -56,13 +56,14 @@
             foreach (var item in data)
             {
 
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = item.u1;
+                ListViewItem lvi = new ListViewItem(item.u1);
+               // lvi.Text = ;
                 lvi.SubItems.Add(item.u3);
                 lvi.SubItems.Add(item.u2);
                 lvi.SubItems.Add(item.shw_on_list.ToString());
                 lvi.Tag = item.id;
                 lv_categories.Items.Add(lvi);
+            
                 if (id == item.id)
                 {
                     index = lvi.Index;
@@ -83,7 +84,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_cat_edit_Click(object sender, EventArgs e)
+        private void Btn_cat_edit_Click(object sender, EventArgs e)
         {
             FormCategoriesAdd frm = new FormCategoriesAdd();
             if (lv_categories.Items.Count > 0)
@@ -94,7 +95,7 @@
                   frm.ShowDialog();
                   if (frm.DialogResult == DialogResult.OK)
                    {
-                        show_category(frm.id);
+                        Show_category(frm.id);
                    }
                 }
             }
@@ -106,7 +107,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_cat_delete_Click(object sender, EventArgs e)
+        private void Btn_cat_delete_Click(object sender, EventArgs e)
         {
             int id = -1;
 
@@ -131,7 +132,7 @@
                         db.categories.DeleteOnSubmit(cat);
                         // zapisujemy zmiany
                         db.SubmitChanges();
-                        show_category(-1);
+                        Show_category(-1);
 
                     }
                 }
@@ -148,21 +149,15 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_add_tab_Click(object sender, EventArgs e)
+        private void Btn_add_tab_Click(object sender, EventArgs e)
         {
             FormTabAdd frm = new FormTabAdd();
-            if (lv_tabs.Items.Count > 0)
-            {
-                ListViewItem lvi = lv_tabs.SelectedItems[0];
-                if (lvi != null)
-                {
-                    frm.id = Convert.ToInt32(lvi.Tag.ToString());
-                }
-            }
+
+            frm.EdtTabClear();
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                show_tabs(frm.id);
+                Show_tabs(frm.id);
             }
         }
 
@@ -170,7 +165,7 @@
         /// The show_tabs
         /// </summary>
         /// <param name="id">The id<see cref="int"/></param>
-        private void show_tabs(int id)
+        private void Show_tabs(int id)
         {
             int index = -1;
             lv_tabs.BeginUpdate();
@@ -182,8 +177,8 @@
             foreach (var item in data)
             {
 
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = item.u1;
+                ListViewItem lvi = new ListViewItem(item.u1);
+                //lvi.Text = ;
                 lvi.SubItems.Add(item.u2.ToString());
 
                 lvi.Tag = item.id;
@@ -208,7 +203,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_tab_edit_Click(object sender, EventArgs e)
+        private void Btn_tab_edit_Click(object sender, EventArgs e)
         {
 
             FormTabAdd frm = new FormTabAdd();
@@ -221,19 +216,40 @@
                     frm.ShowDialog();
                     if (frm.DialogResult == DialogResult.OK)
                     {
-                        show_tabs(frm.id);
+                        Show_tabs(frm.id);
                     }
                 }
             }
             
         }
 
+
+        private bool Check_tab_used(int id_) {
+            DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
+            var data = from p in db.categories
+
+                          where  p.id_tab_filters==id_
+                          orderby p.name
+                       select new { u1 = p.name};
+
+            if (data.Count() == 0)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+
+            
+        }
+
+
         /// <summary>
         /// The btn_tab_del_Click
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_tab_del_Click(object sender, EventArgs e)
+        private void Btn_tab_del_Click(object sender, EventArgs e)
         {
             int id = -1;
 
@@ -241,6 +257,8 @@
             {
                 return;
             }
+            
+
 
             if (CRMHelper.Question(@"Question", @"Delete selected items ?") == DialogResult.OK)
             {
@@ -256,6 +274,15 @@
                 }
                 if (id != -1)
                 {
+
+                    //Check if used
+                    if (Check_tab_used(id) == false) {
+                        CRMHelper.Information(@"Information", @"This items is used!. Cant this delete");
+                        return;
+                    }
+        
+
+
                     DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
                     var cat = db.tab_filters.FirstOrDefault(d => d.id_tab_filters == id);
                     if (cat != null)
@@ -263,7 +290,7 @@
                         db.tab_filters.DeleteOnSubmit(cat);
                         // zapisujemy zmiany
                         db.SubmitChanges();
-                        show_tabs(-1);
+                        Show_tabs(-1);
 
                     }
                 }
@@ -279,7 +306,7 @@
         /// The set_enabled_sub_buttons
         /// </summary>
         /// <param name="enabled">The enabled<see cref="bool"/></param>
-        private void set_enabled_sub_buttons(bool enabled)
+        private void Set_enabled_sub_buttons(bool enabled)
         {
             btn_categories_sub_add.Enabled = enabled;
             btn_categories_sub_del.Enabled = enabled;
@@ -291,9 +318,9 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void lv_categories_Click(object sender, EventArgs e)
+        private void Lv_categories_Click(object sender, EventArgs e)
         {
-            set_enabled_sub_buttons(false);
+            Set_enabled_sub_buttons(false);
             if (lv_categories.Items.Count > 0)
             {
                 ListViewItem lvi = lv_categories.SelectedItems[0];
@@ -301,22 +328,24 @@
                 {
                     if ((lvi.SubItems[2].Text == @"Combo Box") || (lvi.SubItems[2].Text == @"List Check Box"))
                     {
-                        set_enabled_sub_buttons(true);
+                        Set_enabled_sub_buttons(true);
                     }
+
+                    Shows_categories_subitems(Convert.ToInt32(lvi.Tag.ToString()));
                 }
             }
         }
 
-        //-------------------Categories subitems
+        //-------------------Categories subitems -------------------------------------------------------------
         /// <summary>
         /// The btn_categories_sub_add_Click
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_categories_sub_add_Click(object sender, EventArgs e)
+        private void Btn_categories_sub_add_Click(object sender, EventArgs e)
         {
-            FormCategoriesSubAdd frm = new FormCategoriesSubAdd();
-            frm.id = -1;
+            FormCategoriesSubAdd frm = new FormCategoriesSubAdd(-1);
+            //frm.id = -1;
             if (lv_categories.Items.Count > 0)
             {
                 ListViewItem lvi = lv_categories.SelectedItems[0];
@@ -328,7 +357,7 @@
             if (lv_categories.Items.Count > 0)
             {
                 ListViewItem lvi = lv_categories.SelectedItems[0];
-                shows_categories_subitems(Convert.ToInt32(lvi.Tag.ToString()));
+                Shows_categories_subitems(Convert.ToInt32(lvi.Tag.ToString()));
             }
         }
 
@@ -337,34 +366,38 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_categories_sub_edit_Click(object sender, EventArgs e)
+        private void Btn_categories_sub_edit_Click(object sender, EventArgs e)
         {
-            FormCategoriesSubAdd frm = new FormCategoriesSubAdd();
+
             if (lv_categories_sub.Items.Count > 0)
             {
-                ListViewItem lvi = lv_categories_sub.SelectedItems[0];
-                frm.id = Convert.ToInt32(lvi.Tag.ToString());
+                if (lv_categories_sub.SelectedItems.Count > 0)
+                {
+                    ListViewItem lvi = lv_categories_sub.SelectedItems[0];
+                    FormCategoriesSubAdd frm = new FormCategoriesSubAdd(Convert.ToInt32(lvi.Tag.ToString()));
+                    frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                    {
+                         if (lv_categories.Items.Count > 0)
+                        {                        
+                            ListViewItem lva = lv_categories.SelectedItems[0];
+                            if (lva != null)
+                            {
+                                Shows_categories_subitems(Convert.ToInt32(lva.Tag.ToString()));
+                            }
+                        }
+                    }
+                }
             }
-            frm.ShowDialog();
-            if (frm.DialogResult == DialogResult.OK)
-            {
-                shows_categories_subitems(frm.id);
-            }
-            if (lv_categories.Items.Count > 0)
-            {
-                ListViewItem lvi = lv_categories.SelectedItems[0];
-                shows_categories_subitems(Convert.ToInt32(lvi.Tag.ToString()));
-            }
-
         }
 
         /// <summary>
         /// The shows_categories_subitems
         /// </summary>
         /// <param name="id">The id<see cref="int"/></param>
-        private void shows_categories_subitems(int id)
+        private void Shows_categories_subitems(int id)
         {
-            int index = -1;
+             int index = -1;
             lv_categories_sub.BeginUpdate();
             lv_categories_sub.Items.Clear();
             DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
@@ -375,8 +408,8 @@
             foreach (var item in data)
             {
 
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = item.u1;
+                ListViewItem lvi = new ListViewItem(item.u1);
+                //lvi.Text = ;
                 lvi.SubItems.Add(item.u2.ToString());
 
                 lvi.Tag = item.id;
@@ -401,7 +434,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_categories_sub_del_Click(object sender, EventArgs e)
+        private void Btn_categories_sub_del_Click(object sender, EventArgs e)
         {
 
             int id = -1;
@@ -432,7 +465,7 @@
                         db.category_subs.DeleteOnSubmit(cat);
                         // zapisujemy zmiany
                         db.SubmitChanges();
-                        show_tabs(-1);
+                        Show_tabs(-1);
 
                     }
                 }
@@ -444,20 +477,19 @@
             }
         }
 
-        private void lv_categories_DoubleClick(object sender, EventArgs e)
+        private void Lv_categories_DoubleClick(object sender, EventArgs e)
         {
             if (lv_categories.Items.Count > 0) {
                 ListViewItem lvi = lv_categories.SelectedItems[0];
-                shows_categories_subitems(Convert.ToInt32(lvi.Tag.ToString()));
+                Shows_categories_subitems(Convert.ToInt32(lvi.Tag.ToString()));
             }
         }
 
         //FILTERS  Definition --------------------------------------------------------------------------------------
         //BTN ADD
-        private void btn_filters_add_Click(object sender, EventArgs e)
+        private void Btn_filters_add_Click(object sender, EventArgs e)
         {
-            FormFiltersAdd form = new FormFiltersAdd();
-            form.id= -1;
+            FormFiltersAdd form = new FormFiltersAdd(-1);
             form.ShowDialog();
             ShowFilters(form.id);
 
@@ -476,15 +508,12 @@
             lv_filters.Items.Clear();
             DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
             var data = from p in db.filters
-                       
-                       
                        orderby p.name
                        select new { u1 = p.name, u2 = p.index, u3=p.id_filters};
             foreach (var item in data)
             {
 
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = item.u1;
+                ListViewItem lvi = new ListViewItem(item.u1);
                 lvi.SubItems.Add(item.u2.ToString());
                 lvi.Tag = item.u3;
                 lv_filters.Items.Add(lvi);
@@ -506,10 +535,10 @@
 
         }
 
-        private void btn_filters_edit_Click(object sender, EventArgs e)
+        private void Btn_filters_edit_Click(object sender, EventArgs e)
         {
 
-            FormFiltersAdd form = new FormFiltersAdd();
+            FormFiltersAdd form = new FormFiltersAdd(-1);
             if (lv_filters.Items.Count > 0) {
                 if (lv_filters.SelectedItems.Count > 0)
                 {

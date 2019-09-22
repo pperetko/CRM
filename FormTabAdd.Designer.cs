@@ -88,12 +88,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 184);
+            this.ControlBox = false;
             this.Controls.Add(this.cb_tab_fixed);
             this.Controls.Add(this.tb_cat_name);
             this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_ok);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FormTabAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Customer Tab";
             this.Load += new System.EventHandler(this.FormTabAdd_Load_1);
             this.ResumeLayout(false);

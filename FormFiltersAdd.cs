@@ -14,9 +14,10 @@ namespace CRM
 {
     public partial class FormFiltersAdd : Form
     {
-        public FormFiltersAdd()
+        public FormFiltersAdd(int id_)
         {
             InitializeComponent();
+            id = id_;
         }
 
         public int id;
@@ -46,7 +47,7 @@ namespace CRM
         /// This function load connected category to  left list view.
         /// </summary>
 
-        private void loadCategoryToFilterEdit()
+        private void LoadCategoryToFilterEdit()
         {
             DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
             var data = from p in dc.filters
@@ -65,12 +66,10 @@ namespace CRM
             {
                 foreach (var item in data)
                 {
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = item.cat_name;
+                    ListViewItem lvi = new ListViewItem(item.cat_name);
                     lvi.SubItems.Add(item.cat_type);
                     lvi.SubItems.Add(item.show_on_list.ToString());
                     lvi.Tag = item.id_category.ToString();
-
                     lv_filters.Items.Add(lvi);
 
                 }
@@ -81,7 +80,7 @@ namespace CRM
         /// <summary>
         /// Set data filter on edit mode
         /// </summary>
-        private void setDataFilterEdit()
+        private void SetDataFilterEdit()
         {
 
             DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
@@ -103,7 +102,7 @@ namespace CRM
          //   where !_context.ServiceCalls.Any(s => s.ApartmentID == a.ID)
         //select a; przykład na not exists in linq
 
-        private void loadAviableCategory() {
+        private void LoadAviableCategory() {
             DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
             var data =
                       from c in dc.categories
@@ -117,8 +116,7 @@ namespace CRM
             {
                 foreach (var item in data)
                 {
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = item.cat_name;
+                    ListViewItem lvi = new ListViewItem(item.cat_name);
                     lvi.SubItems.Add(item.cat_type);
                     lvi.SubItems.Add(item.show_on_list.ToString());
                     lvi.Tag = item.id_category.ToString();
@@ -131,7 +129,7 @@ namespace CRM
         /// 
         /// </summary>
 
-        private void loadFixedCategory() {
+        private void LoadFixedCategory() {
 
 
 
@@ -145,14 +143,14 @@ namespace CRM
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void btn_filters_left_Click(object sender, EventArgs e)
+        private void Btn_filters_left_Click(object sender, EventArgs e)
         {
 
             if (lv_aviable_categories.SelectedItems.Count > 0)
             {
                 ListViewItem lvi = lv_aviable_categories.SelectedItems[0];
-                ListViewItem lvi_category = new ListViewItem();
-                lvi_category.Text = lvi.Text;
+                ListViewItem lvi_category = new ListViewItem(lvi.Text);
+                //lvi_category.Text = ;
                 lvi_category.SubItems.Add(lvi.SubItems[1].Text);
                 lvi_category.SubItems.Add(lvi.SubItems[2].Text);
                 lvi_category.Tag = Convert.ToInt32(lvi.Tag);
@@ -170,13 +168,12 @@ namespace CRM
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void btn_filters_right_Click(object sender, EventArgs e)
+        private void Btn_filters_right_Click(object sender, EventArgs e)
         {
             if (lv_filters.SelectedItems.Count > 0)
             {
                 ListViewItem lvi = lv_filters.SelectedItems[0];
-                ListViewItem lvi_category = new ListViewItem();
-                lvi_category.Text = lvi.Text;
+                ListViewItem lvi_category = new ListViewItem(lvi.Text);
                 lvi_category.SubItems.Add(lvi.SubItems[1].Text);
                 lvi_category.SubItems.Add(lvi.SubItems[2].Text);
                 lvi_category.Tag = Convert.ToInt32(lvi.Tag);
@@ -191,10 +188,10 @@ namespace CRM
 
         private void FormFiltersAdd_Load(object sender, EventArgs e)
         {
-            loadAviableCategory();
-            loadFixedCategory();
-            loadCategoryToFilterEdit();
-            setDataFilterEdit();
+            LoadAviableCategory();
+            LoadFixedCategory();
+            LoadCategoryToFilterEdit();
+            SetDataFilterEdit();
         }
 
         
@@ -210,22 +207,25 @@ namespace CRM
                     if (filter != null)
                     {
                         filter.name = tb_filters_name.Text;
-
-
-
-                        var data = dc.category_filters.FirstOrDefault(x => x.id_filter == id);
-                        if (data != null)
+                        DataClassesFiltersDataContext db = new DataClassesFiltersDataContext();
+                        var data = from p in db.category_filters
+                                   where p.id_filter== id
+                                   select p;
+                        foreach (var item in data)
                         {
-                            dc.category_filters.DeleteOnSubmit(data);
-                            dc.SubmitChanges();
+                            db.category_filters.DeleteOnSubmit(item);
+                            db.SubmitChanges();
+
                         }
+
+                       
 
                         for (int i = 0; i <= lv_filters.Items.Count - 1; i++)
                         {
                             ListViewItem lvi = lv_filters.Items[i];
-                            category_filter cat = new category_filter();
-                            cat.id_category = Convert.ToInt32(lvi.Tag);
-                            cat.id_filter = id; 
+                            category_filter cat = new category_filter(Convert.ToInt32(lvi.Tag), id);
+                           // cat.id_category =;
+                           // cat.id_filter = id; 
                             dc.category_filters.InsertOnSubmit(cat);
                             dc.SubmitChanges();
                         }
@@ -235,17 +235,15 @@ namespace CRM
                 }
                 else
                 {
-                    filter filtr = new filter();
-                    filtr.name = tb_filters_name.Text;
+                    filter filtr = new filter(tb_filters_name.Text);
+                    //filtr.name = tb_filters_name.Text;
                     dc.filters.InsertOnSubmit(filtr);
                     dc.SubmitChanges();
                     id = Convert.ToInt32(filtr.id_filters);
                     for (int i = 0; i <= lv_filters.Items.Count - 1; i++)
                     {
                         ListViewItem lvi = lv_filters.Items[i];
-                        category_filter cat = new category_filter();
-                        cat.id_category = Convert.ToInt32(lvi.Tag);
-                        cat.id_filter = id;
+                        category_filter cat = new category_filter(Convert.ToInt32(lvi.Tag),id);
                         dc.category_filters.InsertOnSubmit(cat);
                         dc.SubmitChanges();
                     }

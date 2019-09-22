@@ -42,6 +42,7 @@
             this.tb_cat_sub_name.Name = "tb_cat_sub_name";
             this.tb_cat_sub_name.Size = new System.Drawing.Size(318, 20);
             this.tb_cat_sub_name.TabIndex = 3;
+            this.tb_cat_sub_name.TextChanged += new System.EventHandler(this.tb_cat_sub_name_TextChanged);
             // 
             // lbl_name
             // 
@@ -70,7 +71,7 @@
             this.btn_ok.TabIndex = 8;
             this.btn_ok.Text = "Ok";
             this.btn_ok.UseVisualStyleBackColor = true;
-            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
+            this.btn_ok.Click += new System.EventHandler(this.Btn_ok_Click);
             // 
             // cbx_cat_sub_show_on_list
             // 
@@ -81,6 +82,7 @@
             this.cbx_cat_sub_show_on_list.TabIndex = 7;
             this.cbx_cat_sub_show_on_list.Text = "Show on list";
             this.cbx_cat_sub_show_on_list.UseVisualStyleBackColor = true;
+            this.cbx_cat_sub_show_on_list.CheckedChanged += new System.EventHandler(this.cbx_cat_sub_show_on_list_CheckedChanged);
             // 
             // FormCategoriesSubAdd
             // 

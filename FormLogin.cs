@@ -19,7 +19,7 @@ namespace CRM
 
         private bool log_to_app=false;
 
-        public bool login
+        public bool Login
         {
             get
             {
@@ -34,32 +34,33 @@ namespace CRM
         }
 
 
-        private void loginToApp() {
-           string pass = "qulaola";
+        private void LoginToApp() {
+              string pass = "qulaola";
 
-            DataClassesCRMDataContext db = new DataClassesCRMDataContext();
-            var data = from p in db.logins
-                       where p.login1 == tb_login.Text.ToString() &&
-                             p.pass == Encrypting.EncryptString(tb_password.Text.ToString(), pass) &&
-                             p.bloced == false
-                       select p;
+               DataClassesCRMDataContext db = new DataClassesCRMDataContext();
+               var data = from p in db.logins
+                          where p.login1 == tb_login.Text.ToString() &&
+                                p.pass == Encrypting.EncryptString(tb_password.Text.ToString(), pass) &&
+                                p.bloced == false
+                          select p;
 
 
-            if (data.Count() > 0)
-            {
-                log_to_app = true;
-            }
-            Close();
+               if (data.Count() > 0)
+               {
+                   log_to_app = true;
+               }
+               
+               Close();
 
         }
 
 
-        private void btn_ok_Click(object sender, EventArgs e)
+        private void Btn_ok_Click(object sender, EventArgs e)
         {
-            loginToApp();
+            LoginToApp();
         }
 
-        private void btn_cancel_Click(object sender, EventArgs e)
+        private void Btn_cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -69,11 +70,11 @@ namespace CRM
           
         }
 
-        private void tb_password_KeyDown(object sender, KeyEventArgs e)
+        private void Tb_password_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                loginToApp();
+                LoginToApp();
             }
         }
     }
@@ -83,12 +84,12 @@ namespace CRM
     public static class Logins
     {
 
-        public static bool login_to()
+        public static bool Login_to()
         {
 
             FormLogin form = new FormLogin();
             form.ShowDialog();
-            return form.login; 
+            return form.Login; 
         }
     }
 

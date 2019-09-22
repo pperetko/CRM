@@ -20,7 +20,7 @@ namespace WindowsFormsTestComponents
         private void button1_Click(object sender, EventArgs e)
         {
             crmComboBox1.AddItem(textBox1.Text,2);
-
+            crmComboBox1.SetID(2);
         }
 
         private void button2_Click(object sender, EventArgs e)

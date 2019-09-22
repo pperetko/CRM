@@ -40,7 +40,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tp_fixed_categories = new System.Windows.Forms.TabPage();
             this.btn_filters_left = new System.Windows.Forms.Button();
             this.btn_filters_right = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
@@ -103,7 +102,6 @@
             // tc_categories
             // 
             this.tc_categories.Controls.Add(this.tp_aviable_categories);
-            this.tc_categories.Controls.Add(this.tp_fixed_categories);
             this.tc_categories.Location = new System.Drawing.Point(467, 75);
             this.tc_categories.Name = "tc_categories";
             this.tc_categories.SelectedIndex = 0;
@@ -154,16 +152,6 @@
             this.columnHeader3.Text = "Show on list";
             this.columnHeader3.Width = 123;
             // 
-            // tp_fixed_categories
-            // 
-            this.tp_fixed_categories.Location = new System.Drawing.Point(4, 22);
-            this.tp_fixed_categories.Name = "tp_fixed_categories";
-            this.tp_fixed_categories.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_fixed_categories.Size = new System.Drawing.Size(437, 548);
-            this.tp_fixed_categories.TabIndex = 1;
-            this.tp_fixed_categories.Text = "Fixed categories";
-            this.tp_fixed_categories.UseVisualStyleBackColor = true;
-            // 
             // btn_filters_left
             // 
             this.btn_filters_left.Location = new System.Drawing.Point(417, 76);
@@ -172,7 +160,7 @@
             this.btn_filters_left.TabIndex = 14;
             this.btn_filters_left.Text = "<<";
             this.btn_filters_left.UseVisualStyleBackColor = true;
-            this.btn_filters_left.Click += new System.EventHandler(this.btn_filters_left_Click);
+            this.btn_filters_left.Click += new System.EventHandler(this.Btn_filters_left_Click);
             // 
             // btn_filters_right
             // 
@@ -182,7 +170,7 @@
             this.btn_filters_right.TabIndex = 15;
             this.btn_filters_right.Text = ">>";
             this.btn_filters_right.UseVisualStyleBackColor = true;
-            this.btn_filters_right.Click += new System.EventHandler(this.btn_filters_right_Click);
+            this.btn_filters_right.Click += new System.EventHandler(this.Btn_filters_right_Click);
             // 
             // btn_ok
             // 
@@ -193,7 +181,6 @@
             this.btn_ok.TabIndex = 16;
             this.btn_ok.Text = "Ok";
             this.btn_ok.UseVisualStyleBackColor = true;
-            
             // 
             // btn_cancel
             // 
@@ -229,6 +216,7 @@
             this.Controls.Add(this.tb_filters_name);
             this.Controls.Add(this.lbl_filter_name);
             this.Name = "FormFiltersAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Filter Definition";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormFiltersAdd_FormClosed);
             this.Load += new System.EventHandler(this.FormFiltersAdd_Load);
@@ -249,7 +237,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.TabControl tc_categories;
         private System.Windows.Forms.TabPage tp_aviable_categories;
-        private System.Windows.Forms.TabPage tp_fixed_categories;
         private System.Windows.Forms.Button btn_filters_left;
         private System.Windows.Forms.Button btn_filters_right;
         private System.Windows.Forms.Button btn_ok;

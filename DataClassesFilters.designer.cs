@@ -464,8 +464,15 @@ namespace CRM
 			this._category_filters = new EntitySet<category_filter>(new Action<category_filter>(this.attach_category_filters), new Action<category_filter>(this.detach_category_filters));
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_filters", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+
+        public filter(string name_)
+        {
+            this._category_filters = new EntitySet<category_filter>(new Action<category_filter>(this.attach_category_filters), new Action<category_filter>(this.detach_category_filters));
+            OnCreated();
+            name = name_;
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_filters", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id_filters
 		{
 			get
@@ -626,8 +633,17 @@ namespace CRM
 			this._category = default(EntityRef<category>);
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category_sub", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+
+        public category_sub(string name_,int id_category_, bool show_on_list_)
+        {
+            this._category = default(EntityRef<category>);
+            OnCreated();
+            name = name_;
+            id_category = id_category_;
+            show_on_list = show_on_list_;
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category_sub", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id_category_sub
 		{
 			get
@@ -814,8 +830,21 @@ namespace CRM
 			this._tab_filter = default(EntityRef<tab_filter>);
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+
+        public category(string  name_)
+        {
+            this._category_subs = new EntitySet<category_sub>(new Action<category_sub>(this.attach_category_subs), new Action<category_sub>(this.detach_category_subs));
+            this._category_filters = new EntitySet<category_filter>(new Action<category_filter>(this.attach_category_filters), new Action<category_filter>(this.detach_category_filters));
+            this._categories_type = default(EntityRef<categories_type>);
+            this._tab_filter = default(EntityRef<tab_filter>);
+            OnCreated();
+            name = name_;
+        }
+
+
+
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id_category
 		{
 			get
@@ -1096,8 +1125,19 @@ namespace CRM
 			this._filter = default(EntityRef<filter>);
 			OnCreated();
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category_filters", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+
+
+        public category_filter(int id_category_,int id_filter_)
+        {
+            this._category = default(EntityRef<category>);
+            this._filter = default(EntityRef<filter>);
+            OnCreated();
+            id_category = id_category_;
+            id_filter = id_filter_;
+        }
+
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_category_filters", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id_category_filters
 		{
 			get

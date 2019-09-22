@@ -145,7 +145,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void tb_cat_name_TextChanged(object sender, EventArgs e)
+        private void Tb_cat_name_TextChanged(object sender, EventArgs e)
         {
             change = true;
         }
@@ -155,7 +155,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void cb_cat_type_SelectedIndexChanged(object sender, EventArgs e)
+        private void Cb_cat_type_SelectedIndexChanged(object sender, EventArgs e)
         {
             change = true;
         }
@@ -165,7 +165,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void cbx_cat_show_on_list_CheckedChanged(object sender, EventArgs e)
+        private void Cbx_cat_show_on_list_CheckedChanged(object sender, EventArgs e)
         {
             change = true;
         }
@@ -175,7 +175,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_ok_Click(object sender, EventArgs e)
+        private void Btn_ok_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             if (ValidateFields() == true)
@@ -204,8 +204,8 @@
 
                 else if (id == -1)
                 {
-                    category cat = new category();
-                    cat.name = tb_cat_name.Text;
+                    category cat = new category(tb_cat_name.Text);
+                   // cat.name = ;
                     if (cb_cat_type.SelectedIndex != -1)
                     {
                         cat.id_categories_types = Convert.ToInt32(cb_cat_type.GetID());

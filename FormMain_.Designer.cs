@@ -58,8 +58,10 @@
             // tr_menu
             // 
             resources.ApplyResources(this.tr_menu, "tr_menu");
-            this.tr_menu.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tr_menu.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tr_menu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tr_menu.FullRowSelect = true;
+            this.tr_menu.LabelEdit = true;
             this.tr_menu.Name = "tr_menu";
             this.tr_menu.ShowLines = false;
             this.tr_menu.ShowRootLines = false;

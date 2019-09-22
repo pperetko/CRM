@@ -18,6 +18,12 @@ namespace CRM
         
         private bool change;
 
+
+        public void EdtTabClear()
+        {
+            tb_cat_name.Text= @"";
+        }
+
         public FormTabAdd()
         {
             InitializeComponent();

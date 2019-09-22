@@ -128,7 +128,7 @@
             this.btn_tab_del.TabIndex = 2;
             this.btn_tab_del.Text = "Delete";
             this.btn_tab_del.UseVisualStyleBackColor = true;
-            this.btn_tab_del.Click += new System.EventHandler(this.btn_tab_del_Click);
+            this.btn_tab_del.Click += new System.EventHandler(this.Btn_tab_del_Click);
             // 
             // btn_tab_edit
             // 
@@ -138,7 +138,7 @@
             this.btn_tab_edit.TabIndex = 1;
             this.btn_tab_edit.Text = "Edit";
             this.btn_tab_edit.UseVisualStyleBackColor = true;
-            this.btn_tab_edit.Click += new System.EventHandler(this.btn_tab_edit_Click);
+            this.btn_tab_edit.Click += new System.EventHandler(this.Btn_tab_edit_Click);
             // 
             // btn_add_tab
             // 
@@ -148,7 +148,7 @@
             this.btn_add_tab.TabIndex = 0;
             this.btn_add_tab.Text = "Add";
             this.btn_add_tab.UseVisualStyleBackColor = true;
-            this.btn_add_tab.Click += new System.EventHandler(this.btn_add_tab_Click);
+            this.btn_add_tab.Click += new System.EventHandler(this.Btn_add_tab_Click);
             // 
             // ts_categories
             // 
@@ -215,7 +215,7 @@
             this.btn_categories_sub_del.TabIndex = 10;
             this.btn_categories_sub_del.Text = "Delete";
             this.btn_categories_sub_del.UseVisualStyleBackColor = true;
-            this.btn_categories_sub_del.Click += new System.EventHandler(this.btn_categories_sub_del_Click);
+            this.btn_categories_sub_del.Click += new System.EventHandler(this.Btn_categories_sub_del_Click);
             // 
             // btn_categories_sub_edit
             // 
@@ -225,7 +225,7 @@
             this.btn_categories_sub_edit.TabIndex = 9;
             this.btn_categories_sub_edit.Text = "Edit";
             this.btn_categories_sub_edit.UseVisualStyleBackColor = true;
-            this.btn_categories_sub_edit.Click += new System.EventHandler(this.btn_categories_sub_edit_Click);
+            this.btn_categories_sub_edit.Click += new System.EventHandler(this.Btn_categories_sub_edit_Click);
             // 
             // btn_categories_sub_add
             // 
@@ -235,12 +235,14 @@
             this.btn_categories_sub_add.TabIndex = 8;
             this.btn_categories_sub_add.Text = "Add";
             this.btn_categories_sub_add.UseVisualStyleBackColor = true;
-            this.btn_categories_sub_add.Click += new System.EventHandler(this.btn_categories_sub_add_Click);
+            this.btn_categories_sub_add.Click += new System.EventHandler(this.Btn_categories_sub_add_Click);
             // 
             // lv_categories
             // 
+            this.lv_categories.AllowColumnReorder = true;
             this.lv_categories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.lv_categories.BackColor = System.Drawing.SystemColors.Window;
             this.lv_categories.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.column_name,
             this.column_tab,
@@ -248,7 +250,9 @@
             this.column_show_on_list});
             this.lv_categories.FullRowSelect = true;
             this.lv_categories.GridLines = true;
+            this.lv_categories.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lv_categories.HideSelection = false;
+            this.lv_categories.HoverSelection = true;
             this.lv_categories.Location = new System.Drawing.Point(17, 45);
             this.lv_categories.MultiSelect = false;
             this.lv_categories.Name = "lv_categories";
@@ -256,8 +260,8 @@
             this.lv_categories.TabIndex = 7;
             this.lv_categories.UseCompatibleStateImageBehavior = false;
             this.lv_categories.View = System.Windows.Forms.View.Details;
-            this.lv_categories.Click += new System.EventHandler(this.lv_categories_Click);
-            this.lv_categories.DoubleClick += new System.EventHandler(this.lv_categories_DoubleClick);
+            this.lv_categories.Click += new System.EventHandler(this.Lv_categories_Click);
+            this.lv_categories.DoubleClick += new System.EventHandler(this.Lv_categories_DoubleClick);
             // 
             // column_name
             // 
@@ -286,7 +290,7 @@
             this.btn_cat_delete.TabIndex = 6;
             this.btn_cat_delete.Text = "Delete";
             this.btn_cat_delete.UseVisualStyleBackColor = true;
-            this.btn_cat_delete.Click += new System.EventHandler(this.btn_cat_delete_Click);
+            this.btn_cat_delete.Click += new System.EventHandler(this.Btn_cat_delete_Click);
             // 
             // btn_cat_edit
             // 
@@ -296,7 +300,7 @@
             this.btn_cat_edit.TabIndex = 5;
             this.btn_cat_edit.Text = "Edit";
             this.btn_cat_edit.UseVisualStyleBackColor = true;
-            this.btn_cat_edit.Click += new System.EventHandler(this.btn_cat_edit_Click);
+            this.btn_cat_edit.Click += new System.EventHandler(this.Btn_cat_edit_Click);
             // 
             // btn_cat_add
             // 
@@ -306,7 +310,7 @@
             this.btn_cat_add.TabIndex = 4;
             this.btn_cat_add.Text = "Add";
             this.btn_cat_add.UseVisualStyleBackColor = true;
-            this.btn_cat_add.Click += new System.EventHandler(this.btn_cat_add_Click);
+            this.btn_cat_add.Click += new System.EventHandler(this.Btn_cat_add_click);
             // 
             // ts_filters
             // 
@@ -378,7 +382,7 @@
             this.btn_filters_edit.TabIndex = 9;
             this.btn_filters_edit.Text = "Edit";
             this.btn_filters_edit.UseVisualStyleBackColor = true;
-            this.btn_filters_edit.Click += new System.EventHandler(this.btn_filters_edit_Click);
+            this.btn_filters_edit.Click += new System.EventHandler(this.Btn_filters_edit_Click);
             // 
             // btn_filters_add
             // 
@@ -388,7 +392,7 @@
             this.btn_filters_add.TabIndex = 8;
             this.btn_filters_add.Text = "Add";
             this.btn_filters_add.UseVisualStyleBackColor = true;
-            this.btn_filters_add.Click += new System.EventHandler(this.btn_filters_add_Click);
+            this.btn_filters_add.Click += new System.EventHandler(this.Btn_filters_add_Click);
             // 
             // Filters
             // 
@@ -417,7 +421,6 @@
         private System.Windows.Forms.Button btn_tab_del;
         private System.Windows.Forms.Button btn_tab_edit;
         private System.Windows.Forms.Button btn_add_tab;
-        private System.Windows.Forms.ListView lv_categories;
         private System.Windows.Forms.Button btn_cat_delete;
         private System.Windows.Forms.Button btn_cat_edit;
         private System.Windows.Forms.Button btn_cat_add;
@@ -443,5 +446,6 @@
         private System.Windows.Forms.Button btn_filters_delete;
         private System.Windows.Forms.Button btn_filters_edit;
         private System.Windows.Forms.Button btn_filters_add;
+        private System.Windows.Forms.ListView lv_categories;
     }
 }

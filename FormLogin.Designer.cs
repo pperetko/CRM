@@ -74,7 +74,7 @@
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(250, 23);
             this.tb_password.TabIndex = 3;
-            this.tb_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_password_KeyDown);
+            this.tb_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tb_password_KeyDown);
             // 
             // btn_ok
             // 
@@ -86,7 +86,7 @@
             this.btn_ok.TabIndex = 4;
             this.btn_ok.Text = "Ok";
             this.btn_ok.UseVisualStyleBackColor = true;
-            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
+            this.btn_ok.Click += new System.EventHandler(this.Btn_ok_Click);
             // 
             // btn_cancel
             // 
@@ -97,7 +97,7 @@
             this.btn_cancel.TabIndex = 5;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.btn_cancel.Click += new System.EventHandler(this.Btn_cancel_Click);
             // 
             // FormLogin
             // 

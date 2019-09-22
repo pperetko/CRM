@@ -55,7 +55,7 @@
             this.tb_cat_name.Name = "tb_cat_name";
             this.tb_cat_name.Size = new System.Drawing.Size(318, 20);
             this.tb_cat_name.TabIndex = 1;
-            this.tb_cat_name.TextChanged += new System.EventHandler(this.tb_cat_name_TextChanged);
+            this.tb_cat_name.TextChanged += new System.EventHandler(this.Tb_cat_name_TextChanged);
             // 
             // lbl_type
             // 
@@ -74,7 +74,7 @@
             this.cb_cat_type.Name = "cb_cat_type";
             this.cb_cat_type.Size = new System.Drawing.Size(318, 21);
             this.cb_cat_type.TabIndex = 3;
-            this.cb_cat_type.SelectedIndexChanged += new System.EventHandler(this.cb_cat_type_SelectedIndexChanged);
+            this.cb_cat_type.SelectedIndexChanged += new System.EventHandler(this.Cb_cat_type_SelectedIndexChanged);
             // 
             // cbx_cat_show_on_list
             // 
@@ -85,7 +85,7 @@
             this.cbx_cat_show_on_list.TabIndex = 4;
             this.cbx_cat_show_on_list.Text = "Show on list";
             this.cbx_cat_show_on_list.UseVisualStyleBackColor = true;
-            this.cbx_cat_show_on_list.CheckedChanged += new System.EventHandler(this.cbx_cat_show_on_list_CheckedChanged);
+            this.cbx_cat_show_on_list.CheckedChanged += new System.EventHandler(this.Cbx_cat_show_on_list_CheckedChanged);
             // 
             // btn_ok
             // 
@@ -95,7 +95,7 @@
             this.btn_ok.TabIndex = 5;
             this.btn_ok.Text = "Ok";
             this.btn_ok.UseVisualStyleBackColor = true;
-            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
+            this.btn_ok.Click += new System.EventHandler(this.Btn_ok_Click);
             // 
             // btn_cancel
             // 
@@ -130,6 +130,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 184);
+            this.ControlBox = false;
             this.Controls.Add(this.cb_cat_tabs);
             this.Controls.Add(this.lbl_tabs);
             this.Controls.Add(this.btn_cancel);
@@ -139,6 +140,7 @@
             this.Controls.Add(this.lbl_type);
             this.Controls.Add(this.tb_cat_name);
             this.Controls.Add(this.lbl_name);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.Name = "FormCategoriesAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

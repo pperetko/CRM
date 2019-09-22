@@ -12,10 +12,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="FormCategoriesSubAdd"/> class.
         /// </summary>
-        public FormCategoriesSubAdd()
+        public FormCategoriesSubAdd(int id_)
         {
             InitializeComponent();
-            id = -1;
+            id = id_;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@
         /// <summary>
         /// Defines the id
         /// </summary>
-        public int id;
+        private int id;
 
         /// <summary>
         /// Gets or sets the id_category
@@ -56,7 +56,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/></param>
         /// <param name="e">The e<see cref="EventArgs"/></param>
-        private void btn_ok_Click(object sender, EventArgs e)
+        private void Btn_ok_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             if (ValidateFields() == true)
@@ -64,7 +64,7 @@
                 DataClassesFiltersDataContext dc = new DataClassesFiltersDataContext();
                 if ((change == true) && (id != -1))
                 {
-                    var cat = dc.category_subs.FirstOrDefault(d => d.id_category == id);
+                    var cat = dc.category_subs.FirstOrDefault(d => d.id_category_sub == id);
                     if (cat != null)
                     {
                         cat.name = tb_cat_sub_name.Text;
@@ -75,10 +75,10 @@
 
                 else if (id == -1)
                 {
-                    category_sub cat = new category_sub();
-                    cat.name = tb_cat_sub_name.Text;
-                    cat.id_category = id_category;
-                    cat.show_on_list = cbx_cat_sub_show_on_list.Checked;
+                    category_sub cat = new category_sub(tb_cat_sub_name.Text, id_category, cbx_cat_sub_show_on_list.Checked);
+                    //cat.name = ;
+                    //cat.id_category = ;
+                    //cat.show_on_list = ;
                     dc.category_subs.InsertOnSubmit(cat);
                     dc.SubmitChanges();
                     id = Convert.ToInt32( cat.id_category);
@@ -121,6 +121,16 @@
             if (id != -1) {
                 SetCatSubValues();
             }
+        }
+
+        private void cbx_cat_sub_show_on_list_CheckedChanged(object sender, EventArgs e)
+        {
+            change = true;
+        }
+
+        private void tb_cat_sub_name_TextChanged(object sender, EventArgs e)
+        {
+            change = true;
         }
     }
 }

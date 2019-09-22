@@ -16,7 +16,10 @@ namespace CRM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (Logins.login_to())
+            //Check how Ms SQL is work
+
+
+            if (Logins.Login_to())
             {
                 Application.Run(new FormMain());
             }
